@@ -1,0 +1,646 @@
+/* ============================================
+   BLAZETOPIA - Shop Roles & Items
+   Complete Stylesheet
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0a0000;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at top, rgba(255, 0, 0, 0.08), transparent 70%),
+        radial-gradient(ellipse at bottom, rgba(100, 0, 0, 0.05), transparent 70%),
+        #0a0000;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff0000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a0000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff3030;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cc0000;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 0 40px;
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff2d2d, #ff6b35, #ff2d2d);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+.header p {
+    color: #aaa;
+    font-size: 16px;
+}
+
+/* ===== BALANCE CARD ===== */
+.balance-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 16px;
+    background: rgba(35, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 70, 70, 0.15);
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.balance-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.balance-info span {
+    font-size: 14px;
+}
+
+#usernameDisplay {
+    color: #ff6666;
+    font-weight: 700;
+}
+
+#playerBalance {
+    color: #ffd700;
+}
+
+.btn-login {
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 0, 0, 0.2);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: rgba(255, 0, 0, 0.4);
+    border-color: #ff4444;
+    transform: scale(1.02);
+}
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(25, 8, 8, 0.8);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 15px;
+}
+
+#searchInput:focus {
+    border-color: #ff4444;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.05);
+}
+
+#searchInput::placeholder {
+    color: #666;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(25, 8, 8, 0.6);
+    color: #888;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab:hover {
+    border-color: #ff4444;
+    color: #fff;
+}
+
+.tab.active {
+    background: linear-gradient(90deg, #ff3030, #b30000);
+    border-color: #ff3030;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+}
+
+/* ===== SHOP GRID ===== */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* ===== SHOP ITEM ===== */
+.shop-item {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(25, 8, 8, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.shop-item:hover::before {
+    opacity: 1;
+}
+
+.shop-item:hover {
+    border-color: rgba(255, 68, 68, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.shop-item .icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.shop-item .name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.shop-item .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffd700;
+    margin: 6px 0;
+}
+
+.shop-item .price small {
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+}
+
+.shop-item .badge-container {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 8px 0 12px;
+}
+
+.shop-item .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.badge-role {
+    background: #6c3ce0;
+    color: #fff;
+}
+
+.badge-command {
+    background: #ff6b35;
+    color: #fff;
+}
+
+.badge-feature {
+    background: #00b894;
+    color: #fff;
+}
+
+.badge-vip {
+    background: #fdcb6e;
+    color: #2d3436;
+}
+
+.badge-popular {
+    background: #ff3030;
+    color: #fff;
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 48, 48, 0.4); }
+    50% { box-shadow: 0 0 20px 5px rgba(255, 48, 48, 0.1); }
+}
+
+/* ===== COMMANDS LIST ===== */
+.commands-list {
+    margin: 10px 0;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.commands-list code {
+    display: inline-block;
+    font-size: 11px;
+    color: #88ddff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 3px;
+    font-family: 'Courier New', monospace;
+}
+
+.commands-list code:hover {
+    background: rgba(255, 68, 68, 0.2);
+}
+
+/* ===== FEATURES LIST ===== */
+.features-list {
+    margin: 10px 0;
+    padding: 0 4px;
+}
+
+.features-list li {
+    font-size: 13px;
+    color: #ccc;
+    list-style: none;
+    padding: 3px 0 3px 20px;
+    position: relative;
+}
+
+.features-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #ff4444;
+}
+
+/* ===== BUY BUTTON ===== */
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #ff3030, #b30000);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.buy-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: 0.4s;
+}
+
+.buy-btn:hover::after {
+    transform: translateX(0);
+}
+
+.buy-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 30px rgba(255, 0, 0, 0.3);
+}
+
+.buy-btn:active {
+    transform: scale(0.98);
+}
+
+.buy-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.buy-btn:disabled::after {
+    display: none;
+}
+
+/* ===== TOAST ===== */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    padding: 14px 32px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 14px;
+    z-index: 9999;
+    animation: toastIn 0.4s ease;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #00cc88, #008855);
+    color: #fff;
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #ff3030, #8a0000);
+    color: #fff;
+}
+
+.toast-info {
+    background: linear-gradient(135deg, #ff8800, #cc6600);
+    color: #fff;
+}
+
+.toast-warning {
+    background: linear-gradient(135deg, #ffcc00, #cc9900);
+    color: #2d3436;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+        scale: 0.9;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        scale: 1;
+    }
+}
+
+.toast-out {
+    animation: toastOut 0.4s ease forwards;
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        scale: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+        scale: 0.9;
+    }
+}
+
+/* ===== SPINNER ===== */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== SHOP NOTICE ===== */
+.shop-notice {
+    text-align: center;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px dashed rgba(255, 0, 0, 0.12);
+    color: #888;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 10px;
+}
+
+.shop-notice strong {
+    color: #ff6666;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
+    font-size: 14px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px 30px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .balance-card {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .balance-info {
+        justify-content: center;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .category-tabs {
+        justify-content: center;
+    }
+
+    .tab {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+
+    .shop-item .name {
+        font-size: 16px;
+    }
+
+    .shop-item .price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    .balance-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .balance-info span {
+        font-size: 13px;
+    }
+
+    .shop-item {
+        padding: 16px;
+    }
+
+    .shop-item .icon {
+        font-size: 32px;
+    }
+
+    .commands-list code {
+        font-size: 10px;
+        padding: 1px 6px;
+    }
+
+    .features-list li {
+        font-size: 12px;
+    }
+
+    .buy-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .toast {
+        font-size: 13px;
+        padding: 12px 20px;
+        bottom: 15px;
+        width: 90%;
+    }
+}
+
+/* ============================================
+   SOLD OUT / OUT OF STOCK
+   ============================================ */
+.shop-item.sold-out {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.shop-item.sold-out::after {
+    content: "SOLD OUT";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ff3030;
+    font-weight: 900;
+    font-size: 20px;
+    border-radius: 18px;
+    letter-spacing: 3px;
+}
