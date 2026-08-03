@@ -26,6 +26,7 @@ max-width:1200px;
 margin:auto;
 }
 
+
 header{
 position:fixed;
 top:0;
@@ -38,11 +39,13 @@ z-index:999;
 border-bottom:1px solid rgba(255,255,255,.08);
 }
 
+
 header .container{
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
+
 
 .logo{
 font-size:30px;
@@ -50,9 +53,11 @@ font-weight:800;
 color:#fff;
 }
 
+
 .logo span{
 color:#7289da;
 }
+
 
 nav ul{
 display:flex;
@@ -60,13 +65,17 @@ gap:30px;
 list-style:none;
 }
 
+
 nav a{
 transition:.3s;
 }
 
+
 nav a:hover{
 color:#7289da;
 }
+
+
 
 .btn{
 display:inline-block;
@@ -77,10 +86,13 @@ font-weight:600;
 transition:.3s;
 }
 
+
 .btn:hover{
 transform:translateY(-4px);
 box-shadow:0 0 25px rgba(114,137,218,.5);
 }
+
+
 
 .btn2{
 display:inline-block;
@@ -91,13 +103,18 @@ margin-left:15px;
 transition:.3s;
 }
 
+
 .btn2:hover{
 background:#7289da;
 }
 
+
+
 .hero{
 padding:180px 0 120px;
 }
+
+
 
 .hero-grid{
 display:grid;
@@ -105,6 +122,8 @@ grid-template-columns:1fr 1fr;
 align-items:center;
 gap:60px;
 }
+
+
 
 .tag{
 display:inline-block;
@@ -115,11 +134,15 @@ color:#7289da;
 margin-bottom:25px;
 }
 
+
+
 .hero h1{
 font-size:64px;
 line-height:1.1;
 margin-bottom:25px;
 }
+
+
 
 .hero p{
 font-size:18px;
@@ -127,29 +150,37 @@ opacity:.8;
 margin-bottom:40px;
 }
 
+
+
 .hero-right{
 text-align:center;
 }
+
+
 
 .hero-right img{
 width:100%;
 max-width:460px;
 border-radius:25px;
 box-shadow:0 0 60px rgba(114,137,218,.25);
-}.title{
+}
+
+
+
+.title{
 text-align:center;
 font-size:42px;
 font-weight:700;
 margin-bottom:15px;
 }
 
+
+
 .subtitle{
 text-align:center;
 opacity:.7;
 margin-bottom:60px;
-}
-
-.services,
+}.services,
 .pricing,
 .order,
 .reviews,
@@ -157,12 +188,16 @@ margin-bottom:60px;
 padding:100px 0;
 }
 
+
+
 .service-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 margin-top:50px;
 }
+
+
 
 .service-card{
 background:#131313;
@@ -173,11 +208,15 @@ transition:.35s;
 text-align:center;
 }
 
+
+
 .service-card:hover{
 transform:translateY(-10px);
 border-color:#7289da;
 box-shadow:0 0 30px rgba(114,137,218,.25);
 }
+
+
 
 .service-card i{
 font-size:55px;
@@ -185,14 +224,22 @@ color:#7289da;
 margin-bottom:20px;
 }
 
+
+
 .service-card h3{
 margin-bottom:15px;
 font-size:24px;
 }
 
+
+
 .service-card p{
 opacity:.75;
 }
+
+
+
+
 
 .price-grid{
 display:grid;
@@ -200,6 +247,8 @@ grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
 margin-top:60px;
 }
+
+
 
 .price-card{
 background:#131313;
@@ -211,14 +260,20 @@ position:relative;
 transition:.35s;
 }
 
+
+
 .price-card:hover{
 transform:translateY(-10px);
 box-shadow:0 0 35px rgba(114,137,218,.25);
 }
 
+
+
 .price-card.active{
 border:2px solid #7289da;
 }
+
+
 
 .popular{
 position:absolute;
@@ -232,10 +287,14 @@ font-size:13px;
 font-weight:700;
 }
 
+
+
 .price-card h3{
 font-size:28px;
 margin-bottom:15px;
 }
+
+
 
 .price-card h1{
 font-size:52px;
@@ -243,20 +302,98 @@ color:#7289da;
 margin-bottom:25px;
 }
 
+
+
 .price-card ul{
 list-style:none;
 margin-bottom:35px;
 }
 
+
+
 .price-card li{
 margin:14px 0;
 opacity:.85;
+}
+
+
+
+
+
+/* ORDER FORM */
+
+
+.order-box{
+
+max-width:600px;
+margin:40px auto 0;
+background:#131313;
+padding:40px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+
+#orderForm{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
+}
+
+
+
+#orderForm input,
+#orderForm select{
+
+width:100%;
+padding:15px 18px;
+background:#090909;
+color:#fff;
+border:1px solid rgba(255,255,255,.15);
+border-radius:12px;
+outline:none;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+
+#orderForm input:focus,
+#orderForm select:focus{
+
+border-color:#7289da;
+box-shadow:0 0 15px rgba(114,137,218,.3);
+
+}
+
+
+
+#orderForm select option{
+
+background:#090909;
+color:#fff;
+
+}
+
+
+
+#orderForm .btn{
+
+border:none;
+cursor:pointer;
+font-family:'Poppins',sans-serif;
+
 }.steps{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 margin-top:60px;
 }
+
 
 .step{
 background:#131313;
@@ -267,10 +404,12 @@ text-align:center;
 transition:.35s;
 }
 
+
 .step:hover{
 transform:translateY(-10px);
 box-shadow:0 0 30px rgba(114,137,218,.2);
 }
+
 
 .step span{
 display:inline-flex;
@@ -285,19 +424,24 @@ font-weight:700;
 margin-bottom:20px;
 }
 
+
 .step h3{
 margin-bottom:15px;
 }
+
 
 .step p{
 opacity:.8;
 margin-bottom:15px;
 }
 
+
 .step a{
 color:#7289da;
 font-weight:600;
 }
+
+
 
 .template-box{
 background:linear-gradient(135deg,#7289da,#5865f2);
@@ -306,15 +450,19 @@ border-radius:25px;
 text-align:center;
 }
 
+
 .template-box h2{
 font-size:42px;
 margin-bottom:20px;
 }
 
+
 .template-box p{
 opacity:.95;
 margin-bottom:30px;
 }
+
+
 
 .review-grid{
 display:grid;
@@ -322,6 +470,8 @@ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 margin-top:50px;
 }
+
+
 
 .review-card{
 background:#131313;
@@ -331,15 +481,23 @@ border:1px solid rgba(255,255,255,.08);
 transition:.35s;
 }
 
+
+
 .review-card:hover{
 transform:translateY(-10px);
 border-color:#7289da;
 }
 
+
+
 .review-card p{
 margin:20px 0;
 opacity:.8;
 }
+
+
+
+
 
 footer{
 background:#0b0b0b;
@@ -347,16 +505,22 @@ padding:70px 0 30px;
 border-top:1px solid rgba(255,255,255,.08);
 }
 
+
+
 .footer{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:40px;
 }
 
+
+
 .footer h2,
 .footer h3{
 margin-bottom:15px;
 }
+
+
 
 .footer a{
 display:block;
@@ -365,10 +529,14 @@ opacity:.8;
 transition:.3s;
 }
 
+
+
 .footer a:hover{
 color:#7289da;
 opacity:1;
 }
+
+
 
 .copy{
 margin-top:40px;
@@ -377,53 +545,87 @@ opacity:.6;
 font-size:14px;
 }
 
+
+
+
 @media(max-width:900px){
 
+
 header .container{
+
 flex-direction:column;
 gap:20px;
+
 }
 
+
 nav ul{
+
 flex-wrap:wrap;
 justify-content:center;
 gap:18px;
+
 }
+
 
 .hero{
+
 padding-top:170px;
+
 }
+
 
 .hero-grid{
+
 grid-template-columns:1fr;
 text-align:center;
+
 }
+
 
 .hero h1{
+
 font-size:44px;
+
 }
+
 
 .hero-right{
+
 margin-top:30px;
+
 }
 
+
 .buttons{
+
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:15px;
+
 }
+
 
 .btn2{
+
 margin-left:0;
+
 }
+
 
 .title{
+
 font-size:34px;
+
 }
+
 
 .template-box h2{
+
 font-size:32px;
+
 }
 
-  }
+
+}
