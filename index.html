@@ -22,8 +22,6 @@ body{
     background:#000;
     color:white;
     display:flex;
-    justify-content:center;
-    align-items:center;
 }
 
 body::before{
@@ -63,7 +61,10 @@ opacity:.65;
 }
 
 .card{
-    position:relative;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
 
     width:360px;
     padding:30px;
