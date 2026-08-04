@@ -1,166 +1,311 @@
-#pragma once
-struct gamepacket_t
-{
-private:
-	int index = 0, len = 0;
-	BYTE* packet_data = new BYTE[61];
-public:
-	gamepacket_t(int delay = 0, int NetID = -1) {
-		len = 61;
-		int MessageType = 0x4, PacketType = 0x1, CharState = 0x8;
-		memset(packet_data, 0, 61);
-		memcpy(packet_data, &MessageType, 4);
-		memcpy(packet_data + 4, &PacketType, 4);
-		memcpy(packet_data + 8, &NetID, 4);
-		memcpy(packet_data + 16, &CharState, 4);
-		memcpy(packet_data + 24, &delay, 4);
-	};
-	//~gamepacket_t() {
-		//delete[] packet_data;
-	//}
-	void Insert(string a) {
-		BYTE* data = new BYTE[len + 2 + a.length() + 4];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x2;
-		int str_len = (int)a.length();
-		memcpy(data + len + 2, &str_len, 4);
-		memcpy(data + len + 6, a.data(), str_len);
-		len = len + 2 + (int)a.length() + 4;
-		index++;
-		packet_data[60] = index;
-	}
-	void Insert(int a) {
-		BYTE* data = new BYTE[len + 2 + 4];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x9;
-		memcpy(data + len + 2, &a, 4);
-		len = len + 2 + 4;
-		index++;
-		packet_data[60] = index;
-	}
-	void Insert(unsigned int a) {
-		BYTE* data = new BYTE[len + 2 + 4];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x5;
-		memcpy(data + len + 2, &a, 4);
-		len = len + 2 + 4;
-		index++;
-		packet_data[60] = index;
-	}
-	void Insert(float a) {
-		BYTE* data = new BYTE[len + 2 + 4];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x1;
-		memcpy(data + len + 2, &a, 4);
-		len = len + 2 + 4;
-		index++;
-		packet_data[60] = index;
-	}
-	void Insert(float a, float b) {
-		BYTE* data = new BYTE[len + 2 + 8];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x3;
-		memcpy(data + len + 2, &a, 4);
-		memcpy(data + len + 6, &b, 4);
-		len = len + 2 + 8;
-		index++;
-		packet_data[60] = index;
-	}
-	void Insert(float a, float b, float c) {
-		BYTE* data = new BYTE[len + 2 + 12];
-		memcpy(data, packet_data, len);
-		//delete[] packet_data;
-		packet_data = data;
-		data[len] = index;
-		data[len + 1] = 0x4;
-		memcpy(data + len + 2, &a, 4);
-		memcpy(data + len + 6, &b, 4);
-		memcpy(data + len + 10, &c, 4);
-		len = len + 2 + 12;
-		index++;
-		packet_data[60] = index;
-	}
-	void CreatePacket(ENetPeer* peer) {
-		ENetPacket* packet = enet_packet_create(packet_data, len, 1);
-		enet_peer_send(peer, 0, packet);
-	}
-};
-BYTE* packPlayerMoving(PlayerMoving* dataStruct, int size_ = 56) {
-	BYTE* data = new BYTE[size_];
-	memset(data, 0, size_);
-	memcpy(data, &dataStruct->packetType, 4);
-	memcpy(data + 4, &dataStruct->netID, 4);
-	memcpy(data + 12, &dataStruct->characterState, 4);
-	memcpy(data + 20, &dataStruct->plantingTree, 4);
-	memcpy(data + 24, &dataStruct->x, 4);
-	memcpy(data + 28, &dataStruct->y, 4);
-	memcpy(data + 32, &dataStruct->XSpeed, 4);
-	memcpy(data + 36, &dataStruct->YSpeed, 4);
-	memcpy(data + 44, &dataStruct->punchX, 4);
-	memcpy(data + 48, &dataStruct->punchY, 4);
-	return data;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THOM</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
 }
-PlayerMoving* unpackPlayerMoving(BYTE* data) {
-	PlayerMoving* dataStruct = new PlayerMoving;
-	memcpy(&dataStruct->packetType, data, 4);
-	memcpy(&dataStruct->netID, data + 4, 4);
-	memcpy(&dataStruct->characterState, data + 12, 4);
-	memcpy(&dataStruct->plantingTree, data + 20, 4);
-	memcpy(&dataStruct->x, data + 24, 4);
-	memcpy(&dataStruct->y, data + 28, 4);
-	memcpy(&dataStruct->XSpeed, data + 32, 4);
-	memcpy(&dataStruct->YSpeed, data + 36, 4);
-	memcpy(&dataStruct->punchX, data + 44, 4);
-	memcpy(&dataStruct->punchY, data + 48, 4);
-	return dataStruct;
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:#000;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-void send_raw(ENetPeer* peer, int a1, void* packetData, size_t packetDataSize, int packetFlag) {
-	ENetPacket* p;
-	if (peer) {
-		if (a1 == 4 && *((BYTE*)packetData + 12) & 8) {
-			p = enet_packet_create(0, packetDataSize + *((DWORD*)packetData + 13) + 5, packetFlag);
-			int four = 4;
-			memcpy(p->data, &four, 4);
-			memcpy((char*)p->data + 4, packetData, packetDataSize);
-			memcpy((char*)p->data + packetDataSize + 4, 0, *((DWORD*)packetData + 13));
-		} else {
-			p = enet_packet_create(0, packetDataSize + 5, packetFlag);
-			memcpy(p->data, &a1, 4);
-			memcpy((char*)p->data + 4, packetData, packetDataSize);
-		}
-		enet_peer_send(peer, 0, p);
-	}
+
+body::before{
+    content:"";
+    position:absolute;
+    inset:-20px;
+
+    background:
+    radial-gradient(
+    circle at center,
+    rgba(255,255,255,.25),
+    rgba(0,0,0,.85)
+    ),
+    url("https://cdn.phototourl.com/free/2026-08-04-d6f9b2fe-ed73-4dee-bf3a-8319470183c7.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    filter:blur(3px);
+    opacity:.55;
+
+    transform:scale(1.08);
+
+    animation:bgGlow 5s infinite alternate;
 }
-BYTE* get_struct(ENetPacket* packet) {
-	const unsigned int packetLenght = (unsigned int)packet->dataLength;
-	BYTE* result = nullptr;
-	if (packetLenght >= 0x3C) {
-		BYTE* packetData = packet->data;
-		result = packetData + 4;
-		if (*static_cast<BYTE*>(packetData + 16) & 8) {
-			if (packetLenght < (unsigned int)*reinterpret_cast<int*>(packetData + 56) + 60)
-				result = nullptr;
-		}
-		else {
-			int zero = 0;
-			memcpy(packetData + 56, &zero, 4);
-		}
-	}
-	return result;
+
+@keyframes bgGlow{
+from{
+filter:blur(3px);
+opacity:.45;
 }
-      
+
+to{
+filter:blur(1px);
+opacity:.65;
+}
+}
+
+.card{
+    position:relative;
+
+    width:360px;
+    padding:30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 40px rgba(255,255,255,.15);
+
+    animation:fade 1.5s;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:none;
+}
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid transparent;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ffffff,
+    #000000,
+    #ffffff
+    );
+
+    background-size:200%;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.5);
+
+    animation:textGlow 3s linear infinite;
+}.name{
+
+    margin-top:15px;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    color:transparent;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ffffff,
+    #ff0000,
+    #000000,
+    #ffffff
+    );
+
+    background-size:200%;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    animation:textGlow 3s linear infinite;
+}
+
+.bio{
+
+    margin-top:10px;
+
+    color:#ccc;
+
+    font-size:14px;
+
+}
+
+.buttons{
+
+    margin-top:25px;
+
+}
+
+.buttons a{
+
+    display:block;
+
+    margin:12px 0;
+
+    padding:13px;
+
+    text-decoration:none;
+
+    font-weight:800;
+
+    color:transparent;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ffffff,
+    #000000,
+    #ffffff
+    );
+
+    background-size:200%;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    animation:textGlow 3s linear infinite;
+
+    background-color:rgba(255,255,255,.1);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.buttons a:hover{
+
+    box-shadow:
+    0 0 20px white;
+
+}
+
+@keyframes textGlow{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:200%;
+}
+
+}
+
+/* Emoji jatuh */
+
+.fall{
+    position:fixed;
+    top:-50px;
+    pointer-events:none;
+    user-select:none;
+    z-index:1;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img class="avatar"
+src="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png">
+
+<div class="name">
+𝗧𝗛𝗢𝗠
+</div>
+
+<div class="bio">
+The less you know, the better.
+</div>
+
+<div class="buttons">
+
+<a href="https://discord.gg/GeXwAPfUY">
+🎮 Discord
+</a>
+
+<a href="https://tiktok.com/@thom_id">
+🎵 TikTok
+</a>
+
+</div>
+
+</div><script>
+
+function createEmoji(){
+
+    const emoji=document.createElement("div");
+
+    emoji.className="fall";
+
+    emoji.innerHTML="🜲";
+
+    emoji.style.left=Math.random()*window.innerWidth+"px";
+
+    emoji.style.fontSize=(18+Math.random()*20)+"px";
+
+    emoji.style.animationDuration=(3+Math.random()*3)+"s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(function(){
+
+        emoji.remove();
+
+    },6000);
+
+}
+
+setInterval(createEmoji,250);
+
+</script>
+
+</body>
+</html>
