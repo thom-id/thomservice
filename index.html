@@ -331,8 +331,11 @@ function createEmoji(){
 
 }
 
-setInterval(createEmoji,250);
-
+setInterval(() => {
+    for(let i = 0; i < 5; i++){
+        createEmoji();
+    }
+}, 100);
 /* Mencegah scroll */
 document.addEventListener("touchmove", function(e){
     e.preventDefault();
