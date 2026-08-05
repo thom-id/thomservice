@@ -8,7 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#f0f0f0;line-height:1.5;overflow-x:hidden}
+body{font-family:'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#f0f0f0;line-height:1.6;overflow-x:hidden}
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,0,0,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(255,255,255,0.05) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(255,0,0,0.05) 0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
 @keyframes bgPulse{0%{opacity:0.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
 .particles{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;overflow:hidden}
@@ -29,59 +29,62 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .particle:nth-child(14){width:12px;height:12px;background:#ffffff;left:50%;animation-duration:20s;animation-delay:1s}
 .particle:nth-child(15){width:7px;height:7px;background:#ff0000;left:95%;animation-duration:16s;animation-delay:5s}
 @keyframes floatParticle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.2}90%{opacity:0.2}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
-.container{max-width:1280px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
-.navbar{display:flex;align-items:center;justify-content:center;padding:1.2rem 0;border-bottom:2px solid rgba(255,0,0,0.3);animation:slideDown 0.8s ease-out}
+.container{max-width:100%;margin:0 auto;padding:0 1rem;position:relative;z-index:1}
+.navbar{display:flex;align-items:center;justify-content:center;padding:1rem 0;border-bottom:2px solid rgba(255,0,0,0.3);animation:slideDown 0.8s ease-out}
 @keyframes slideDown{0%{transform:translateY(-30px);opacity:0}100%{transform:translateY(0);opacity:1}}
-.logo{font-size:2rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerLogo 3s ease-in-out infinite}
+.logo{font-size:1.8rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerLogo 3s ease-in-out infinite}
 @keyframes shimmerLogo{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .logo i{margin-right:8px;color:#ff0000;animation:pulseIcon 2s ease-in-out infinite}
 @keyframes pulseIcon{0%,100%{transform:scale(1)}50%{transform:scale(1.2);color:#ff3333}}
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 0 1.5rem;animation:fadeInUp 1s ease-out}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2rem 0 1.5rem;animation:fadeInUp 1s ease-out}
 @keyframes fadeInUp{0%{transform:translateY(40px);opacity:0}100%{transform:translateY(0);opacity:1}}
-.hero h1{font-size:3.5rem;font-weight:800;max-width:800px;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000,#ffffff);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerHero 4s ease-in-out infinite;margin-bottom:1.2rem}
+.hero h1{font-size:2.5rem;font-weight:800;max-width:100%;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000,#ffffff);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerHero 4s ease-in-out infinite;margin-bottom:1rem}
 @keyframes shimmerHero{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero p{font-size:1.25rem;color:#b0b0b0;max-width:700px;margin-bottom:2rem}
-.hero-buttons{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
-.hero-buttons .sep{color:#ff0000;font-size:1.8rem;font-weight:300;opacity:0.6}
-.btn-hero{padding:0.7rem 2.5rem;border-radius:50px;font-weight:700;font-size:1.1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:0.3s;border:2px solid transparent;white-space:nowrap}
+.hero p{font-size:1.1rem;color:#b0b0b0;max-width:100%;margin-bottom:1.5rem;padding:0 0.5rem}
+.hero-buttons{display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;width:100%}
+.hero-buttons .sep{color:#ff0000;font-size:1.5rem;font-weight:300;opacity:0.6}
+.btn-hero{padding:0.6rem 1.5rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:0.3s;border:2px solid transparent;white-space:nowrap}
 .btn-play{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;box-shadow:0 0 30px rgba(255,0,0,0.3);animation:glowBtn 2s ease-in-out infinite alternate}
-.btn-play:hover{transform:scale(1.08);box-shadow:0 0 60px rgba(255,0,0,0.5)}
+.btn-play:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,0,0,0.5)}
 .btn-discord{background:transparent;color:#fff;border:2px solid #5865F2}
-.btn-discord:hover{transform:scale(1.08);background:rgba(88,101,242,0.15)}
+.btn-discord:hover{transform:scale(1.05);background:rgba(88,101,242,0.15)}
 @keyframes glowBtn{0%{box-shadow:0 0 15px rgba(255,0,0,0.2)}100%{box-shadow:0 0 40px rgba(255,0,0,0.5)}}
-.btn-hero i{font-size:1.2rem}
+.btn-hero i{font-size:1rem}
 .scroll-indicator{margin:0.5rem 0;color:#888;font-size:0.8rem;letter-spacing:2px;animation:bounceScroll 2s ease-in-out infinite}
 @keyframes bounceScroll{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .scroll-indicator i{display:block;font-size:1.5rem;margin-top:2px;color:#ff0000}
-.section-title{font-size:2.2rem;font-weight:700;margin-bottom:2rem;text-align:center}
+.section-title{font-size:1.8rem;font-weight:700;margin-bottom:1.5rem;text-align:center}
 .section-title span{background:linear-gradient(135deg,#ff0000,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerTitle 3s ease-in-out infinite;background-size:200% 200%}
 @keyframes shimmerTitle{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin:2.5rem 0 3rem}
-.howto-card{background:rgba(20,20,20,0.9);padding:1.8rem 1.5rem;border-radius:24px;border:1px solid rgba(255,0,0,0.2);transition:0.4s;backdrop-filter:blur(10px);animation:cardFadeIn 0.8s ease-out forwards;opacity:0}
+.howto-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin:1.5rem 0 2rem}
+.howto-card{background:rgba(20,20,20,0.9);padding:1.5rem 1.2rem;border-radius:20px;border:1px solid rgba(255,0,0,0.2);transition:0.4s;backdrop-filter:blur(10px);animation:cardFadeIn 0.8s ease-out forwards;opacity:0;width:100%}
 .howto-card:nth-child(1){animation-delay:0.1s}
 .howto-card:nth-child(2){animation-delay:0.2s}
 .howto-card:nth-child(3){animation-delay:0.3s}
 .howto-card:nth-child(4){animation-delay:0.4s}
 .howto-card:nth-child(5){animation-delay:0.5s}
 @keyframes cardFadeIn{0%{transform:translateY(30px);opacity:0}100%{transform:translateY(0);opacity:1}}
-.howto-card:hover{border-color:#ff0000;transform:translateY(-8px);box-shadow:0 15px 40px rgba(255,0,0,0.15)}
-.howto-card h3{font-size:1.4rem;margin-bottom:1rem;color:#ff0000}
+.howto-card:hover{border-color:#ff0000;transform:translateY(-5px);box-shadow:0 10px 30px rgba(255,0,0,0.15)}
+.howto-card h3{font-size:1.3rem;margin-bottom:0.8rem;color:#ff0000;word-break:break-word}
 .howto-card h3 i{margin-right:10px;animation:pulseIcon 2s ease-in-out infinite}
-.howto-card ul,.howto-card p,.howto-card ol{color:#c8d0dc;font-size:0.95rem;list-style:none;padding-left:0}
-.howto-card li{margin-bottom:0.6rem}
-.howto-card .step-number{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;font-weight:700;font-size:0.8rem;line-height:24px;margin-right:8px}
-.download-btn{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.5rem 1.5rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.5rem;transition:0.3s;animation:glowBtn 2s ease-in-out infinite alternate;white-space:nowrap;font-size:0.95rem}
-.download-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,0,0,0.4)}
-.server-link-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.85rem;word-break:break-all;overflow-wrap:break-word}
-.server-link-box a{color:#ff3333;text-decoration:none}
+.howto-card ul,.howto-card p,.howto-card ol{color:#c8d0dc;font-size:0.95rem;list-style:none;padding-left:0;word-break:break-word}
+.howto-card li{margin-bottom:0.5rem;word-break:break-word}
+.howto-card .step-number{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;border-radius:50%;width:22px;height:22px;text-align:center;font-weight:700;font-size:0.75rem;line-height:22px;margin-right:8px;flex-shrink:0}
+.download-btn{display:block;width:100%;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.7rem 1rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.8rem;transition:0.3s;animation:glowBtn 2s ease-in-out infinite alternate;font-size:0.95rem;text-align:center;border:none;cursor:pointer}
+.download-btn:hover{transform:scale(1.02);box-shadow:0 0 40px rgba(255,0,0,0.4)}
+.download-btn i{margin-right:8px}
+.server-link-box{background:#0a0a0a;padding:0.7rem 1rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.8rem;word-break:break-all;overflow-wrap:break-word;width:100%}
+.server-link-box a{color:#ff3333;text-decoration:none;word-break:break-all}
 .server-link-box a:hover{text-decoration:underline}
-.ip-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;word-break:break-all;overflow-wrap:break-word}
-.ip-box .ip-line{display:block}
-@media(max-width:700px){.hero h1{font-size:2.2rem}.hero-buttons{gap:0.5rem}.hero-buttons .sep{font-size:1.2rem}.btn-hero{padding:0.5rem 1.2rem;font-size:0.9rem;white-space:nowrap}}
+.ip-box{background:#0a0a0a;padding:0.7rem 1rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.85rem;word-break:break-all;overflow-wrap:break-word;width:100%}
+.ip-box .ip-line{display:block;word-break:break-word}
+code{background:#0a0a0a;padding:0.2rem 0.5rem;border-radius:6px;font-size:0.8rem;color:#ff6666;word-break:break-word}
+@media(min-width:768px){.container{max-width:1280px;padding:0 1.5rem}.howto-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:3.5rem}.download-btn{width:auto;display:inline-block;padding:0.5rem 1.5rem}}
+@media(min-width:1024px){.howto-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-<div class="particles">
+  <div class="particles">
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -101,7 +104,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 </section>
 
 <h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
-<p style="text-align:center;color:#b0b0b0;margin-bottom:0.5rem;">Pilih aplikasi yang ingin digunakan!</p>
+<p style="text-align:center;color:#b0b0b0;margin-bottom:0.5rem;font-size:0.95rem;">Pilih aplikasi yang ingin digunakan!</p>
 
 <div class="howto-grid">
 
@@ -109,19 +112,20 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 <div class="howto-card">
 <h3><i class="fas fa-mobile-alt"></i> Android APK</h3>
 <p>Hapus Growtopia asli dulu, lalu install APK ini.</p>
-<p style="margin-top:0.5rem;color:#ff3333;">Langsung login tanpa Virtual Host / PowerTunnel.</p>
-<a href="https://www.mediafire.com/file/mt1hhcikzmnbue7/Indonesia.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
+<p style="margin-top:0.5rem;color:#ff3333;font-size:0.9rem;">Langsung login tanpa Virtual Host / PowerTunnel.</p>
+<a href="https://www.mediafire.com/file/mt1hhcikzmnbue7/Indonesia.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download APK Indonesia</a>
 </div>
 
 <!-- PowerTunnel -->
 <div class="howto-card">
 <h3><i class="fas fa-wifi"></i> PowerTunnel</h3>
 <ol style="list-style:none;padding-left:0">
-<li><span class="step-number">1</span> <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" style="color:#ff3333;">Download PowerTunnel</a> & instal</li>
+<li><span class="step-number">1</span> Download & instal PowerTunnel</li>
 <li><span class="step-number">2</span> Buka → titik 3 → Hosts → Settings</li>
 <li><span class="step-number">3</span> Paste link di bawah</li>
 <li><span class="step-number">4</span> Klik Connect → buka Growtopia</li>
 </ol>
+<a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download PowerTunnel</a>
 <div class="server-link-box"><a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank">https://gtpshosting.web.id/raw/Indonesia</a></div>
 </div>
 
@@ -129,11 +133,12 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 <div class="howto-card">
 <h3><i class="fas fa-server"></i> Virtual Host</h3>
 <ol style="list-style:none;padding-left:0">
-<li><span class="step-number">1</span> <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" style="color:#ff3333;">Download Virtual Host</a> & instal</li>
+<li><span class="step-number">1</span> Download & instal Virtual Host</li>
 <li><span class="step-number">2</span> Buka → RE-SELECT HOSTS FILE</li>
 <li><span class="step-number">3</span> Download host di link bawah</li>
 <li><span class="step-number">4</span> Pilih file → buka Growtopia</li>
 </ol>
+<a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Virtual Host</a>
 <div class="server-link-box"><a href="https://gtpshosting.web.id/how-to-play/Indonesia" target="_blank">https://gtpshosting.web.id/how-to-play/Indonesia</a></div>
 </div>
 
@@ -161,10 +166,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 <li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
 <li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
 </ol>
+<div style="margin-top:0.5rem;">
+<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn" style="display:block;width:100%;"><i class="fab fa-app-store"></i> Download Surge 5</a>
+</div>
 <div class="server-link-box"><a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank">https://gtpshosting.web.id/ios/Indonesia</a></div>
 </div>
 
 </div>
 </div>
 </body>
-  </html>
+</html>
