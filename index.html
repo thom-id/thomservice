@@ -88,7 +88,7 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 </style>
 </head>
 <body>
- <div class="particles">
+<div class="particles">
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -129,7 +129,7 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <li><span class="step-number">4</span> Klik Connect → buka Growtopia</li>
 </ol>
 <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download PowerTunnel</a>
-<div class="link-box"><a href="https://gtpshosting.web.id/raw/Blazetopia" target="_blank">SALIN URL</a></div>
+<div class="link-box"><a href="#" onclick="copyPowerTunnel()" style="cursor:pointer;">SALIN URL</a></div>
 </div>
 
 <!-- Virtual Host -->
@@ -146,7 +146,56 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <span class="unduh-label">⬇ UNDUH HOST</span>
 <a href="#" class="unduh-btn" onclick="downloadHost()"><i class="fas fa-download"></i> Unduh Host</a>
 </div>
+</div>
+
+<!-- Windows -->
+<div class="howto-card">
+<h3><i class="fab fa-windows"></i> Windows</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> Tekan <strong>Win+R</strong> → ketik <code>C:\Windows\System32\drivers\etc</code></li>
+<li><span class="step-number">2</span> Edit file <strong>hosts</strong> dengan Notepad</li>
+<li><span class="step-number">3</span> Salin host di bawah</li>
+<li><span class="step-number">4</span> Save → buka Growtopia</li>
+</ol>
+<div class="link-box"><a href="#" onclick="copyHost()" style="cursor:pointer;">SALIN HOST</a></div>
+</div>
+
+<!-- iOS / Surge 5 -->
+<div class="howto-card">
+<h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> Install Surge di iPhone/iPad</li>
+<li><span class="step-number">2</span> Salin URL di bawah</li>
+<li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
+<li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
+</ol>
+<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surge 5</a>
+<div class="link-box"><a href="#" onclick="copyIOS()" style="cursor:pointer;">SALIN URL</a></div>
+</div>
+
+</div>
+</div>
+
 <script>
+// PowerTunnel - langsung salin URL
+function copyPowerTunnel() {
+    var text = "https://gtpshosting.web.id/raw/Indonesia";
+    navigator.clipboard.writeText(text);
+}
+
+// iOS / Surge 5 - langsung salin URL
+function copyIOS() {
+    var text = "https://gtpshosting.web.id/ios/Indonesia";
+    navigator.clipboard.writeText(text);
+}
+
+// Windows - langsung salin host tanpa alert
+function copyHost() {
+    var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
+    navigator.clipboard.writeText(text);
+}
+
+// Virtual Host - download hosts.txt
 function downloadHost() {
     var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
     var blob = new Blob([text], {type: 'text/plain'});
@@ -160,44 +209,6 @@ function downloadHost() {
     URL.revokeObjectURL(url);
 }
 </script>
-</div>
 
-<!-- Windows -->
-<div class="howto-card">
-<h3><i class="fab fa-windows"></i> Windows</h3>
-<ol style="list-style:none;padding-left:0">
-<li><span class="step-number">1</span> Tekan <strong>Win+R</strong> → ketik <code>C:\Windows\System32\drivers\etc</code></li>
-<li><span class="step-number">2</span> Edit file <strong>hosts</strong> dengan Notepad</li>
-<li><span class="step-number">3</span> Salin host di bawah</li>
-<li><span class="step-number">4</span> Save → buka Growtopia</li>
-</ol>
-<div class="link-box"><a href="#" onclick="copyHost()" style="cursor:pointer;">SALIN HOST</a></div>
-<script>
-function copyHost() {
-    var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
-    navigator.clipboard.writeText(text).then(function() {
-        alert('Host berhasil disalin!');
-    }, function() {
-        alert('Gagal menyalin, silakan copy manual.');
-    });
-}
-</script>
-</div>
-
-<!-- iOS / Surge 5 -->
-<div class="howto-card">
-<h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
-<ol style="list-style:none;padding-left:0">
-<li><span class="step-number">1</span> Install Surge di iPhone/iPad</li>
-<li><span class="step-number">2</span> Salin URL di bawah</li>
-<li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
-<li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
-</ol>
-<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surge 5</a>
-<div class="link-box"><a href="https://gtpshosting.web.id/ios/Blazetopia" target="_blank">SALIN URL</a></div>
-</div>
-
-</div>
-</div>
 </body>
 </html>
