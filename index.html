@@ -77,9 +77,10 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .link-box a:hover{text-decoration:underline}
 .ip-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border-left:4px solid #ff0000;margin:0.5rem 0;width:100%;word-break:break-word;overflow-wrap:break-word;font-size:0.8rem}
 .ip-box .ip-line{display:block;color:#ff3333;font-family:monospace;word-break:break-word;padding:0.1rem 0;text-align:center}
-.unduh-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border:2px solid #ff0000;margin:0.5rem 0;width:100%;word-break:break-word;overflow-wrap:break-word;font-size:0.8rem}
-.unduh-box .ip-line{display:block;color:#ff3333;font-family:monospace;word-break:break-word;padding:0.1rem 0;text-align:center}
-.unduh-label{color:#ff0000;font-weight:700;font-size:0.85rem;text-align:center;display:block;margin-bottom:0.3rem}
+.unduh-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border:2px solid #ff0000;margin:0.5rem 0;width:100%;text-align:center}
+.unduh-box .unduh-label{color:#ff0000;font-weight:700;font-size:0.85rem;display:block}
+.unduh-box .unduh-btn{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.5rem 1.5rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.3rem;transition:0.3s;font-size:0.85rem;border:none;cursor:pointer;animation:glowBtn 2s ease-in-out infinite alternate}
+.unduh-box .unduh-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,0,0,0.4)}
 code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75rem;color:#ff6666;word-break:break-word}
 .sub-text{text-align:center;color:#b0b0b0;margin-bottom:0.3rem;font-size:0.85rem;word-break:keep-all}
 @media(min-width:768px){.container{max-width:1280px;padding:0 1.5rem}.howto-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:3.5rem}.download-btn{width:auto;display:inline-block;padding:0.5rem 1.5rem}}
@@ -124,11 +125,11 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <ol style="list-style:none;padding-left:0">
 <li><span class="step-number">1</span> Download & instal PowerTunnel</li>
 <li><span class="step-number">2</span> Buka → titik 3 → Hosts → Settings</li>
-<li><span class="step-number">3</span> Paste link di bawah</li>
+<li><span class="step-number">3</span> Salin URL di bawah</li>
 <li><span class="step-number">4</span> Klik Connect → buka Growtopia</li>
 </ol>
 <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download PowerTunnel</a>
-<div class="link-box"><a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank">SALIN URL</a></div>
+<div class="link-box"><a href="https://gtpshosting.web.id/raw/Blazetopia" target="_blank">SALIN URL</a></div>
 </div>
 
 <!-- Virtual Host -->
@@ -143,9 +144,22 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Virtual Host</a>
 <div class="unduh-box">
 <span class="unduh-label">⬇ UNDUH HOST</span>
-<span class="ip-line">149.202.58.185 www.growtopia1.com</span>
-<span class="ip-line">149.202.58.185 www.growtopia2.com</span>
+<a href="#" class="unduh-btn" onclick="downloadHost()"><i class="fas fa-download"></i> Unduh Host</a>
 </div>
+<script>
+function downloadHost() {
+    var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
+    var blob = new Blob([text], {type: 'text/plain'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'hosts.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+</script>
 </div>
 
 <!-- Windows -->
@@ -154,13 +168,20 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <ol style="list-style:none;padding-left:0">
 <li><span class="step-number">1</span> Tekan <strong>Win+R</strong> → ketik <code>C:\Windows\System32\drivers\etc</code></li>
 <li><span class="step-number">2</span> Edit file <strong>hosts</strong> dengan Notepad</li>
-<li><span class="step-number">3</span> Copy IP di bawah & paste</li>
+<li><span class="step-number">3</span> Salin host di bawah</li>
 <li><span class="step-number">4</span> Save → buka Growtopia</li>
 </ol>
-<div class="ip-box">
-<span class="ip-line">149.202.58.185 www.growtopia1.com</span>
-<span class="ip-line">149.202.58.185 www.growtopia2.com</span>
-</div>
+<div class="link-box"><a href="#" onclick="copyHost()" style="cursor:pointer;">SALIN HOST</a></div>
+<script>
+function copyHost() {
+    var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Host berhasil disalin!');
+    }, function() {
+        alert('Gagal menyalin, silakan copy manual.');
+    });
+}
+</script>
 </div>
 
 <!-- iOS / Surge 5 -->
@@ -168,15 +189,15 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
 <ol style="list-style:none;padding-left:0">
 <li><span class="step-number">1</span> Install Surge di iPhone/iPad</li>
-<li><span class="step-number">2</span> Copy konfigurasi dari link bawah</li>
+<li><span class="step-number">2</span> Salin URL di bawah</li>
 <li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
 <li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
 </ol>
 <a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surge 5</a>
-<div class="link-box"><a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank">SALIN URL</a></div>
+<div class="link-box"><a href="https://gtpshosting.web.id/ios/Blazetopia" target="_blank">SALIN URL</a></div>
 </div>
 
 </div>
 </div>
 </body>
- </html>
+</html>
