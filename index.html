@@ -1,540 +1,165 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IndonesiaPS | The Best Growtopia Private Server</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-      background: #0a0a0a;
-      color: #f0f0f0;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(ellipse at 20% 50%, rgba(255,0,0,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 60%),
-        radial-gradient(ellipse at 50% 100%, rgba(255,0,0,0.05) 0%, transparent 50%);
-      z-index: -1;
-      animation: bgPulse 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes bgPulse {
-      0% { opacity: 0.6; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.05); }
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-      animation: floatParticle linear infinite;
-    }
-
-    .particle:nth-child(1) { width: 8px; height: 8px; background: #ff0000; left: 10%; animation-duration: 14s; animation-delay: 0s; }
-    .particle:nth-child(2) { width: 12px; height: 12px; background: #ffffff; left: 25%; animation-duration: 18s; animation-delay: 2s; }
-    .particle:nth-child(3) { width: 6px; height: 6px; background: #ff0000; left: 40%; animation-duration: 12s; animation-delay: 4s; }
-    .particle:nth-child(4) { width: 10px; height: 10px; background: #ffffff; left: 55%; animation-duration: 20s; animation-delay: 1s; }
-    .particle:nth-child(5) { width: 7px; height: 7px; background: #ff0000; left: 70%; animation-duration: 16s; animation-delay: 3s; }
-    .particle:nth-child(6) { width: 14px; height: 14px; background: #ffffff; left: 85%; animation-duration: 22s; animation-delay: 5s; }
-    .particle:nth-child(7) { width: 9px; height: 9px; background: #ff0000; left: 15%; animation-duration: 17s; animation-delay: 7s; }
-    .particle:nth-child(8) { width: 11px; height: 11px; background: #ffffff; left: 45%; animation-duration: 19s; animation-delay: 2s; }
-    .particle:nth-child(9) { width: 5px; height: 5px; background: #ff0000; left: 65%; animation-duration: 13s; animation-delay: 6s; }
-    .particle:nth-child(10) { width: 13px; height: 13px; background: #ffffff; left: 90%; animation-duration: 21s; animation-delay: 4s; }
-    .particle:nth-child(11) { width: 8px; height: 8px; background: #ff0000; left: 5%; animation-duration: 15s; animation-delay: 8s; }
-    .particle:nth-child(12) { width: 10px; height: 10px; background: #ffffff; left: 35%; animation-duration: 18s; animation-delay: 3s; }
-    .particle:nth-child(13) { width: 6px; height: 6px; background: #ff0000; left: 75%; animation-duration: 14s; animation-delay: 9s; }
-    .particle:nth-child(14) { width: 12px; height: 12px; background: #ffffff; left: 50%; animation-duration: 20s; animation-delay: 1s; }
-    .particle:nth-child(15) { width: 7px; height: 7px; background: #ff0000; left: 95%; animation-duration: 16s; animation-delay: 5s; }
-
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.2; }
-      90% { opacity: 0.2; }
-      100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.2rem 0;
-      border-bottom: 2px solid rgba(255,0,0,0.3);
-      animation: slideDown 0.8s ease-out;
-    }
-
-    @keyframes slideDown {
-      0% { transform: translateY(-30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ff0000, #ffffff, #ff0000);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmerLogo 3s ease-in-out infinite;
-    }
-
-    @keyframes shimmerLogo {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .logo i {
-      margin-right: 8px;
-      color: #ff0000;
-      animation: pulseIcon 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); color: #ff3333; }
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 2.5rem 0 1.5rem;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      0% { transform: translateY(40px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      max-width: 800px;
-      background: linear-gradient(135deg, #ff0000, #ffffff, #ff0000, #ffffff);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmerHero 4s ease-in-out infinite;
-      margin-bottom: 1.2rem;
-    }
-
-    @keyframes shimmerHero {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: #b0b0b0;
-      max-width: 700px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .hero-buttons .separator {
-      color: #ff0000;
-      font-size: 1.5rem;
-      font-weight: 300;
-      opacity: 0.5;
-    }
-
-    .btn-hero {
-      padding: 0.7rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.3s;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-
-    .btn-play {
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-      color: #ffffff;
-      box-shadow: 0 0 30px rgba(255,0,0,0.3);
-      animation: glowBtn 2s ease-in-out infinite alternate;
-    }
-
-    .btn-play:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 60px rgba(255,0,0,0.5);
-    }
-
-    .btn-discord {
-      background: transparent;
-      color: #ffffff;
-      border: 2px solid #5865F2;
-    }
-
-    .btn-discord:hover {
-      transform: scale(1.08);
-      background: rgba(88, 101, 242, 0.15);
-      box-shadow: 0 0 40px rgba(88, 101, 242, 0.2);
-    }
-
-    @keyframes glowBtn {
-      0% { box-shadow: 0 0 15px rgba(255,0,0,0.2); }
-      100% { box-shadow: 0 0 40px rgba(255,0,0,0.5); }
-    }
-
-    .btn-hero i {
-      font-size: 1.2rem;
-    }
-
-    .scroll-indicator {
-      margin: 0.5rem 0 0.5rem;
-      color: #888;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      animation: bounceScroll 2s ease-in-out infinite;
-    }
-
-    @keyframes bounceScroll {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    .scroll-indicator i {
-      display: block;
-      font-size: 1.5rem;
-      margin-top: 2px;
-      color: #ff0000;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .section-title span {
-      background: linear-gradient(135deg, #ff0000, #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmerTitle 3s ease-in-out infinite;
-      background-size: 200% 200%;
-    }
-
-    @keyframes shimmerTitle {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .howto-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin: 2.5rem 0 4rem;
-    }
-
-    .howto-card {
-      background: rgba(20, 20, 20, 0.9);
-      padding: 1.8rem 1.5rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255,0,0,0.2);
-      transition: 0.4s;
-      backdrop-filter: blur(10px);
-      animation: cardFadeIn 0.8s ease-out forwards;
-      opacity: 0;
-    }
-
-    .howto-card:nth-child(1) { animation-delay: 0.1s; }
-    .howto-card:nth-child(2) { animation-delay: 0.2s; }
-    .howto-card:nth-child(3) { animation-delay: 0.3s; }
-    .howto-card:nth-child(4) { animation-delay: 0.4s; }
-    .howto-card:nth-child(5) { animation-delay: 0.5s; }
-
-    @keyframes cardFadeIn {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .howto-card:hover {
-      border-color: #ff0000;
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 15px 40px rgba(255,0,0,0.15);
-    }
-
-    .howto-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      color: #ff0000;
-    }
-    .howto-card h3 i {
-      margin-right: 10px;
-      animation: pulseIcon 2s ease-in-out infinite;
-    }
-
-    .howto-card ul, .howto-card p, .howto-card ol {
-      color: #c8d0dc;
-      font-size: 0.95rem;
-      list-style: none;
-      padding-left: 0;
-    }
-    .howto-card li {
-      margin-bottom: 0.6rem;
-      padding-left: 0.2rem;
-    }
-    .howto-card li i {
-      color: #ff0000;
-      width: 20px;
-      font-size: 0.8rem;
-    }
-    .howto-card code, .howto-card .hosts-block {
-      background: #0a0a0a;
-      padding: 0.2rem 0.6rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      color: #ff3333;
-      word-break: break-all;
-    }
-    .howto-card .hosts-block {
-      display: block;
-      padding: 0.8rem 1rem;
-      border-left: 3px solid #ff0000;
-      margin: 0.8rem 0;
-      font-family: monospace;
-      color: #d4dce8;
-      border-radius: 16px;
-    }
-    .howto-card .download-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-      color: #ffffff;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      font-weight: 700;
-      text-decoration: none;
-      margin-top: 0.5rem;
-      transition: 0.3s;
-      animation: glowBtn 2s ease-in-out infinite alternate;
-    }
-    .howto-card .download-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(255,0,0,0.4);
-    }
-    .howto-card .step-number {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-      color: #ffffff;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.8rem;
-      line-height: 24px;
-      margin-right: 8px;
-    }
-
-    .ip-box {
-      background: #0a0a0a;
-      padding: 1rem 1.5rem;
-      border-radius: 16px;
-      border-left: 4px solid #ff0000;
-      font-family: monospace;
-      color: #ff3333;
-      margin: 0.8rem 0;
-      font-size: 0.9rem;
-      white-space: pre-wrap;
-    }
-
-    @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-      }
-      .hero-buttons .separator {
-        display: none;
-      }
-      .btn-hero {
-        width: 80%;
-        justify-content: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndonesiaPS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#f0f0f0;line-height:1.5;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,0,0,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(255,255,255,0.05) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(255,0,0,0.05) 0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+@keyframes bgPulse{0%{opacity:0.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
+.particles{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0.15;animation:floatParticle linear infinite}
+.particle:nth-child(1){width:8px;height:8px;background:#ff0000;left:10%;animation-duration:14s;animation-delay:0s}
+.particle:nth-child(2){width:12px;height:12px;background:#ffffff;left:25%;animation-duration:18s;animation-delay:2s}
+.particle:nth-child(3){width:6px;height:6px;background:#ff0000;left:40%;animation-duration:12s;animation-delay:4s}
+.particle:nth-child(4){width:10px;height:10px;background:#ffffff;left:55%;animation-duration:20s;animation-delay:1s}
+.particle:nth-child(5){width:7px;height:7px;background:#ff0000;left:70%;animation-duration:16s;animation-delay:3s}
+.particle:nth-child(6){width:14px;height:14px;background:#ffffff;left:85%;animation-duration:22s;animation-delay:5s}
+.particle:nth-child(7){width:9px;height:9px;background:#ff0000;left:15%;animation-duration:17s;animation-delay:7s}
+.particle:nth-child(8){width:11px;height:11px;background:#ffffff;left:45%;animation-duration:19s;animation-delay:2s}
+.particle:nth-child(9){width:5px;height:5px;background:#ff0000;left:65%;animation-duration:13s;animation-delay:6s}
+.particle:nth-child(10){width:13px;height:13px;background:#ffffff;left:90%;animation-duration:21s;animation-delay:4s}
+.particle:nth-child(11){width:8px;height:8px;background:#ff0000;left:5%;animation-duration:15s;animation-delay:8s}
+.particle:nth-child(12){width:10px;height:10px;background:#ffffff;left:35%;animation-duration:18s;animation-delay:3s}
+.particle:nth-child(13){width:6px;height:6px;background:#ff0000;left:75%;animation-duration:14s;animation-delay:9s}
+.particle:nth-child(14){width:12px;height:12px;background:#ffffff;left:50%;animation-duration:20s;animation-delay:1s}
+.particle:nth-child(15){width:7px;height:7px;background:#ff0000;left:95%;animation-duration:16s;animation-delay:5s}
+@keyframes floatParticle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.2}90%{opacity:0.2}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
+.navbar{display:flex;align-items:center;justify-content:center;padding:1.2rem 0;border-bottom:2px solid rgba(255,0,0,0.3);animation:slideDown 0.8s ease-out}
+@keyframes slideDown{0%{transform:translateY(-30px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.logo{font-size:2rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerLogo 3s ease-in-out infinite}
+@keyframes shimmerLogo{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.logo i{margin-right:8px;color:#ff0000;animation:pulseIcon 2s ease-in-out infinite}
+@keyframes pulseIcon{0%,100%{transform:scale(1)}50%{transform:scale(1.2);color:#ff3333}}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 0 1.5rem;animation:fadeInUp 1s ease-out}
+@keyframes fadeInUp{0%{transform:translateY(40px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.hero h1{font-size:3.5rem;font-weight:800;max-width:800px;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000,#ffffff);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerHero 4s ease-in-out infinite;margin-bottom:1.2rem}
+@keyframes shimmerHero{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero p{font-size:1.25rem;color:#b0b0b0;max-width:700px;margin-bottom:2rem}
+.hero-buttons{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.hero-buttons .sep{color:#ff0000;font-size:1.8rem;font-weight:300;opacity:0.6}
+.btn-hero{padding:0.7rem 2.5rem;border-radius:50px;font-weight:700;font-size:1.1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:0.3s;border:2px solid transparent;white-space:nowrap}
+.btn-play{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;box-shadow:0 0 30px rgba(255,0,0,0.3);animation:glowBtn 2s ease-in-out infinite alternate}
+.btn-play:hover{transform:scale(1.08);box-shadow:0 0 60px rgba(255,0,0,0.5)}
+.btn-discord{background:transparent;color:#fff;border:2px solid #5865F2}
+.btn-discord:hover{transform:scale(1.08);background:rgba(88,101,242,0.15)}
+@keyframes glowBtn{0%{box-shadow:0 0 15px rgba(255,0,0,0.2)}100%{box-shadow:0 0 40px rgba(255,0,0,0.5)}}
+.btn-hero i{font-size:1.2rem}
+.scroll-indicator{margin:0.5rem 0;color:#888;font-size:0.8rem;letter-spacing:2px;animation:bounceScroll 2s ease-in-out infinite}
+@keyframes bounceScroll{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.scroll-indicator i{display:block;font-size:1.5rem;margin-top:2px;color:#ff0000}
+.section-title{font-size:2.2rem;font-weight:700;margin-bottom:2rem;text-align:center}
+.section-title span{background:linear-gradient(135deg,#ff0000,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerTitle 3s ease-in-out infinite;background-size:200% 200%}
+@keyframes shimmerTitle{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin:2.5rem 0 3rem}
+.howto-card{background:rgba(20,20,20,0.9);padding:1.8rem 1.5rem;border-radius:24px;border:1px solid rgba(255,0,0,0.2);transition:0.4s;backdrop-filter:blur(10px);animation:cardFadeIn 0.8s ease-out forwards;opacity:0}
+.howto-card:nth-child(1){animation-delay:0.1s}
+.howto-card:nth-child(2){animation-delay:0.2s}
+.howto-card:nth-child(3){animation-delay:0.3s}
+.howto-card:nth-child(4){animation-delay:0.4s}
+.howto-card:nth-child(5){animation-delay:0.5s}
+@keyframes cardFadeIn{0%{transform:translateY(30px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.howto-card:hover{border-color:#ff0000;transform:translateY(-8px);box-shadow:0 15px 40px rgba(255,0,0,0.15)}
+.howto-card h3{font-size:1.4rem;margin-bottom:1rem;color:#ff0000}
+.howto-card h3 i{margin-right:10px;animation:pulseIcon 2s ease-in-out infinite}
+.howto-card ul,.howto-card p,.howto-card ol{color:#c8d0dc;font-size:0.95rem;list-style:none;padding-left:0}
+.howto-card li{margin-bottom:0.6rem}
+.howto-card .step-number{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;font-weight:700;font-size:0.8rem;line-height:24px;margin-right:8px}
+.download-btn{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.5rem 1.5rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.5rem;transition:0.3s;animation:glowBtn 2s ease-in-out infinite alternate;white-space:nowrap;font-size:0.95rem}
+.download-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,0,0,0.4)}
+.server-link-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;white-space:nowrap;overflow-x:auto}
+.server-link-box a{color:#ff3333;text-decoration:none}
+.server-link-box a:hover{text-decoration:underline}
+.ip-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;white-space:nowrap;overflow-x:auto}
+@media(max-width:700px){.hero h1{font-size:2.2rem}.hero-buttons{gap:0.5rem}.hero-buttons .sep{font-size:1.2rem}.btn-hero{padding:0.5rem 1.2rem;font-size:0.9rem;white-space:nowrap}.server-link-box{white-space:normal;overflow-x:auto}.ip-box{white-space:normal;overflow-x:auto}}
+</style>
 </head>
-<body><!-- PARTIKEL MERAH PUTIH -->
-<div class="particles">
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
+<body><div class="particles">
+<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+<div class="container">
+<nav class="navbar"><div class="logo"><i class="fas fa-crown"></i> IndonesiaPS</div></nav>
+
+<section class="hero">
+<h1>Welcome To Indonesia Private Server</h1>
+<p>Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
+<div class="hero-buttons">
+<a href="#how-to-play" class="btn-hero btn-play"><i class="fas fa-play"></i> Play Now</a>
+<span class="sep">|</span>
+<a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn-hero btn-discord"><i class="fab fa-discord"></i> Discord</a>
+</div>
+<div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
+<p style="text-align:center;color:#b0b0b0;margin-bottom:0.5rem;">Pilih aplikasi yang ingin digunakan!</p>
+
+<div class="howto-grid">
+
+<!-- Android APK -->
+<div class="howto-card">
+<h3><i class="fas fa-mobile-alt"></i> Android APK</h3>
+<p>Hapus Growtopia asli dulu, lalu install APK ini.</p>
+<p style="margin-top:0.5rem;color:#ff3333;">Langsung login tanpa Virtual Host / PowerTunnel.</p>
+<a href="https://www.mediafire.com/file/mt1hhcikzmnbue7/Indonesia.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
 </div>
 
-<div class="container">
+<!-- PowerTunnel -->
+<div class="howto-card">
+<h3><i class="fas fa-wifi"></i> PowerTunnel</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" style="color:#ff3333;">Download PowerTunnel</a> & instal</li>
+<li><span class="step-number">2</span> Buka → titik 3 → Hosts → Settings</li>
+<li><span class="step-number">3</span> Paste link di bawah</li>
+<li><span class="step-number">4</span> Klik Connect → buka Growtopia</li>
+</ol>
+<div class="server-link-box"><a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank">https://gtpshosting.web.id/raw/Indonesia</a></div>
+</div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo"><i class="fas fa-crown"></i> IndonesiaPS</div>
-  </nav>
+<!-- Virtual Host -->
+<div class="howto-card">
+<h3><i class="fas fa-server"></i> Virtual Host</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" style="color:#ff3333;">Download Virtual Host</a> & instal</li>
+<li><span class="step-number">2</span> Buka → RE-SELECT HOSTS FILE</li>
+<li><span class="step-number">3</span> Download host di link bawah</li>
+<li><span class="step-number">4</span> Pilih file → buka Growtopia</li>
+</ol>
+<div class="server-link-box"><a href="https://gtpshosting.web.id/how-to-play/Indonesia" target="_blank">https://gtpshosting.web.id/how-to-play/Indonesia</a></div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Welcome To Indonesia Private Server</h1>
-    <p>Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
+<!-- Windows -->
+<div class="howto-card">
+<h3><i class="fab fa-windows"></i> Windows</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> Tekan <strong>Win+R</strong> → ketik <code>C:\Windows\System32\drivers\etc</code></li>
+<li><span class="step-number">2</span> Edit file <strong>hosts</strong> dengan Notepad</li>
+<li><span class="step-number">3</span> Copy IP di bawah & paste</li>
+<li><span class="step-number">4</span> Save → buka Growtopia</li>
+</ol>
+<div class="ip-box">149.202.58.185 www.growtopia1.com<br>149.202.58.185 www.growtopia2.com</div>
+</div>
 
-    <!-- TOMBOL PLAY NOW & DISCORD dengan separator -->
-    <div class="hero-buttons">
-      <a href="#how-to-play" class="btn-hero btn-play">
-        <i class="fas fa-play"></i> Play Now
-      </a>
-      <span class="separator">|</span>
-      <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn-hero btn-discord">
-        <i class="fab fa-discord"></i> Discord
-      </a>
-    </div>
+<!-- IOS / Surge 5 -->
+<div class="howto-card">
+<h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
+<ol style="list-style:none;padding-left:0">
+<li><span class="step-number">1</span> Install Surge di iPhone/iPad</li>
+<li><span class="step-number">2</span> Copy konfigurasi dari link bawah</li>
+<li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
+<li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
+</ol>
+<div class="server-link-box"><a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank">https://gtpshosting.web.id/ios/Indonesia</a></div>
+</div>
 
-    <div class="scroll-indicator">
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
-
-  <!-- HOW TO PLAY -->
-  <h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
-  <p style="text-align:center; color:#b0b0b0; margin-bottom: 0.5rem;">Please select the application you want to use!</p>
-
-  <div class="howto-grid">
-
-    <!-- Android APK -->
-    <div class="howto-card">
-      <h3><i class="fas fa-mobile-alt"></i> Indonesia APK - Android</h3>
-      <p>You need to delete real Growtopia app first if you want to use Indonesia's app.</p>
-      <p style="margin-top: 0.5rem; color: #ff3333;">Jika ingin login menggunakan aplikasi Indonesia, tidak perlu lagi untuk menggunakan virtual host ataupun powertunnel. Kalian bisa langsung login ke dalam game.</p>
-      <a href="https://www.mediafire.com/file/mt1hhcikzmnbue7/Indonesia.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Indonesia APK - Android</a>
-    </div>
-
-    <!-- PowerTunnel -->
-    <div class="howto-card">
-      <h3><i class="fas fa-wifi"></i> PowerTunnel (Android)</h3>
-      <ol style="list-style: none; padding-left: 0;">
-        <li><span class="step-number">1</span> Download <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" style="color: #ff3333;">PowerTunnel APK</a> dan instal.</li>
-        <li><span class="step-number">2</span> Buka aplikasi lalu pencet tombol bergambar titik tiga-list di sebelah kiri tombol bergambar gir.</li>
-        <li><span class="step-number">3</span> Pencet tombol bergambar gir di opsi "Hosts".</li>
-        <li><span class="step-number">4</span> Copy dan paste <a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank" style="color: #ff3333;">Server link</a> pada opsi "Hosts File URL".</li>
-        <li><span class="step-number">5</span> Pencet tombol "Connect" dan cobalah login melalui Growtopia.</li>
-      </ol>
-    </div>
-
-    <!-- Virtual Host -->
-    <div class="howto-card">
-      <h3><i class="fas fa-server"></i> Virtual Host (Android)</h3>
-      <ol style="list-style: none; padding-left: 0;">
-        <li><span class="step-number">1</span> Download <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" style="color: #ff3333;">Virtual Host APK</a> dan instal.</li>
-        <li><span class="step-number">2</span> Buka aplikasi lalu pencet tombol <strong>RE-SELECT HOSTS FILE.</strong></li>
-        <li><span class="step-number">3</span> Pencet Host yang sudah di download.</li>
-        <li><span class="step-number">4</span> Download Host <a href="https://gtpshosting.web.id/how-to-play/Indonesia" target="_blank" style="color: #ff3333;">Server link</a> pada opsi "Hosts File URL".</li>
-        <li><span class="step-number">5</span> Cobalah login melalui Growtopia.</li>
-      </ol>
-    </div>
-
-    <!-- Windows -->
-    <div class="howto-card">
-      <h3><i class="fab fa-windows"></i> Windows</h3>
-      <ol style="list-style: none; padding-left: 0;">
-        <li><span class="step-number">1</span> Press <strong>⊞ Win+R</strong> (Windows Key + R) to open the "Run" window.</li>
-        <li><span class="step-number">2</span> Type <code>C:\Windows\System32\drivers\etc</code> in the textbox.</li>
-        <li><span class="step-number">3</span> Find the file named <strong>hosts</strong>.</li>
-        <li><span class="step-number">4</span> Right-click on the "hosts" file and edit it with Notepad/text editor.</li>
-        <li><span class="step-number">5</span> Copy the Server IP Below and Paste it in the file.</li>
-        <li><span class="step-number">6</span> Save, then log in to your Growtopia.</li>
-      </ol>
-      <p style="margin-top: 0.8rem;"><strong>🖥️ <a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank" style="color: #ff3333;">➔ Anddres Windows IP</a></strong></p>
-      <div class="ip-box">
-        149.202.58.185 www.growtopia1.com
-        149.202.58.185 www.growtopia2.com
-      </div>
-    </div>
-
-    <!-- IOS / SURGE 5 -->
-    <div class="howto-card">
-      <h3><i class="fab fa-apple"></i> IOS / SURGE 5</h3>
-      <ol style="list-style: none; padding-left: 0;">
-        <li><span class="step-number">1</span> Install Surge di iPhone / iPad kamu.</li>
-        <li><span class="step-number">2</span> Salin konfigurasi Surge menggunakan <a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank" style="color: #ff3333;">Server Link</a>.</li>
-        <li><span class="step-number">3</span> Buka Surge → import konfigurasi dari clipboard.</li>
-        <li><span class="step-number">4</span> Aktifkan Surge - Growtopia akan diarahkan ke server kami.</li>
-        <li><span class="step-number">5</span> Buka Growtopia dan selamat bermain!</li>
-      </ol>
-    </div>
-
-  </div>
-
+</div>
 </div>
 </body>
-  </html>
+</html>
