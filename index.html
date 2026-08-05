@@ -41,9 +41,8 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .hero h1{font-size:2.5rem;font-weight:800;max-width:100%;background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000,#ffffff);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerHero 4s ease-in-out infinite;margin-bottom:1rem}
 @keyframes shimmerHero{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero p{font-size:1.1rem;color:#b0b0b0;max-width:100%;margin-bottom:1.5rem;padding:0 0.5rem}
-.hero-buttons{display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;width:100%}
-.hero-buttons .sep{color:#ff0000;font-size:1.5rem;font-weight:300;opacity:0.6}
-.btn-hero{padding:0.6rem 1.5rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:0.3s;border:2px solid transparent;white-space:nowrap}
+.hero-buttons{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;width:100%}
+.btn-hero{padding:0.6rem 2rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:0.3s;border:2px solid transparent;white-space:nowrap}
 .btn-play{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;box-shadow:0 0 30px rgba(255,0,0,0.3);animation:glowBtn 2s ease-in-out infinite alternate}
 .btn-play:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,0,0,0.5)}
 .btn-discord{background:transparent;color:#fff;border:2px solid #5865F2}
@@ -76,15 +75,16 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .server-link-box{background:#0a0a0a;padding:0.7rem 1rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.8rem;word-break:break-all;overflow-wrap:break-word;width:100%}
 .server-link-box a{color:#ff3333;text-decoration:none;word-break:break-all}
 .server-link-box a:hover{text-decoration:underline}
-.ip-box{background:#0a0a0a;padding:0.7rem 1rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.85rem;word-break:break-all;overflow-wrap:break-word;width:100%}
+.ip-box{background:#0a0a0a;padding:0.7rem 1rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.85rem;word-break:break-word;overflow-wrap:break-word;width:100%}
 .ip-box .ip-line{display:block;word-break:break-word}
 code{background:#0a0a0a;padding:0.2rem 0.5rem;border-radius:6px;font-size:0.8rem;color:#ff6666;word-break:break-word}
+.sub-text{text-align:center;color:#b0b0b0;margin-bottom:0.5rem;font-size:0.95rem}
 @media(min-width:768px){.container{max-width:1280px;padding:0 1.5rem}.howto-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:3.5rem}.download-btn{width:auto;display:inline-block;padding:0.5rem 1.5rem}}
 @media(min-width:1024px){.howto-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-  <div class="particles">
+ <div class="particles">
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -97,14 +97,13 @@ code{background:#0a0a0a;padding:0.2rem 0.5rem;border-radius:6px;font-size:0.8rem
 <p>Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
 <div class="hero-buttons">
 <a href="#how-to-play" class="btn-hero btn-play"><i class="fas fa-play"></i> Play Now</a>
-<span class="sep">|</span>
 <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn-hero btn-discord"><i class="fab fa-discord"></i> Discord</a>
 </div>
 <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
 </section>
 
 <h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
-<p style="text-align:center;color:#b0b0b0;margin-bottom:0.5rem;font-size:0.95rem;">Pilih aplikasi yang ingin digunakan!</p>
+<p class="sub-text">Pilih aplikasi yang ingin digunakan!</p>
 
 <div class="howto-grid">
 
@@ -166,13 +165,11 @@ code{background:#0a0a0a;padding:0.2rem 0.5rem;border-radius:6px;font-size:0.8rem
 <li><span class="step-number">3</span> Buka Surge → import dari clipboard</li>
 <li><span class="step-number">4</span> Aktifkan → buka Growtopia</li>
 </ol>
-<div style="margin-top:0.5rem;">
-<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn" style="display:block;width:100%;"><i class="fab fa-app-store"></i> Download Surge 5</a>
-</div>
+<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surge 5</a>
 <div class="server-link-box"><a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank">https://gtpshosting.web.id/ios/Indonesia</a></div>
 </div>
 
 </div>
 </div>
 </body>
-</html>
+</html> 
