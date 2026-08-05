@@ -1,362 +1,518 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>THOM</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Poppins,sans-serif;
-}
-
-html{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    touch-action:none;
-    overscroll-behavior:none;
-}
-
-body{
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:#000;
-    color:white;
-    display:flex;
-
-    position:fixed;
-    inset:0;
-
-    touch-action:none;
-    overscroll-behavior:none;
-}
-
-body::before{
-    content:"";
-    position:absolute;
-    inset:-20px;
-
-    background:
-    radial-gradient(
-    circle at center,
-    rgba(255,255,255,.25),
-    rgba(0,0,0,.85)
-    ),
-    url("https://cdn.phototourl.com/free/2026-08-04-d6f9b2fe-ed73-4dee-bf3a-8319470183c7.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-    filter:blur(3px);
-    opacity:.55;
-
-    transform:scale(1.08);
-
-    animation:bgGlow 5s infinite alternate;
-}
-
-@keyframes bgGlow{
-from{
-filter:blur(3px);
-opacity:.45;
-}
-
-to{
-filter:blur(1px);
-opacity:.65;
-}
-}
-
-.card{
-
-    position:fixed;
-
-    top:50%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:360px;
-    padding:30px;
-
-    text-align:center;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    backdrop-filter:blur(15px);
-
-    border-radius:20px;
-
-    box-shadow:
-    0 0 40px rgba(255,255,255,.15);
-
-    animation:fade 1.5s;
-
-    z-index:2;
-}
-
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translate(-50%,-40%);
-}
-
-to{
-opacity:1;
-transform:translate(-50%,-50%);
-}
-}
-
-.avatar{
-
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:3px solid transparent;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ffffff,
-    #000000,
-    #ffffff
-    );
-
-    background-size:200%;
-
-    box-shadow:
-    0 0 25px rgba(255,255,255,.5);
-
-    animation:textGlow 3s linear infinite;
-}.name{
-
-    margin-top:15px;
-
-    font-size:32px;
-
-    font-weight:800;
-
-    letter-spacing:3px;
-
-    color:transparent;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ffffff,
-    #ff0000,
-    #000000,
-    #ffffff
-    );
-
-    background-size:200%;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    animation:textGlow 3s linear infinite;
-}
-
-.bio{
-
-    margin-top:10px;
-
-    color:#ccc;
-
-    font-size:14px;
-}
-
-.buttons{
-
-    margin-top:25px;
-}
-
-.buttons a{
-
-    display:block;
-
-    margin:12px 0;
-
-    padding:13px;
-
-    text-decoration:none;
-
-    font-weight:800;
-
-    color:transparent;
-
-    background:
-    linear-gradient(
-    90deg,
-    #ffffff,
-    #000000,
-    #ffffff
-    );
-
-    background-size:200%;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    animation:textGlow 3s linear infinite;
-
-    background-color:rgba(255,255,255,.1);
-
-    border:1px solid rgba(255,255,255,.25);
-
-    border-radius:12px;
-
-    transition:.3s;
-}
-
-.buttons a:hover{
-
-    box-shadow:0 0 20px white;
-}
-
-@keyframes textGlow{
-
-0%{
-background-position:0%;
-}
-
-100%{
-background-position:200%;
-}
-
-}
-
-/* Emoji jatuh */
-
-.fall{
-
-    position:fixed;
-
-    top:-50px;
-
-    pointer-events:none;
-
-    user-select:none;
-
-    z-index:1;
-
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-
-from{
-
-    transform:translateY(-50px) rotate(0deg);
-
-    opacity:1;
-}
-
-to{
-
-    transform:translateY(110vh) rotate(360deg);
-
-    opacity:0;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THOM</title>
+
+    <!-- SEO & Social Sharing -->
+    <meta name="description" content="The less you know, the better.">
+    <meta property="og:title" content="THOM">
+    <meta property="og:description" content="The less you know, the better.">
+    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' style='font-weight:bold'>✦</text></svg>">
+
+    <style>
+        /* ==========================================
+                   GLOBAL & RESET
+                   ========================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Arial', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+            overscroll-behavior: none;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            inset: 0;
+        }
+
+        /* ==========================================
+                   BINTANG BACKGROUND
+                   ========================================== */
+        #stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: twinkle var(--duration) infinite alternate;
+            opacity: 0.3;
+        }
+        @keyframes twinkle {
+            0% {
+                opacity: 0.1;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* ==========================================
+                   WRAPPER UTAMA (2 KOLOM)
+                   ========================================== */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            width: 420px;
+            max-width: 94%;
+            max-height: 96vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ==========================================
+                   KOLOM 1 — PROFIL UTAMA (HITAM)
+                   ========================================== */
+        .card-profile {
+            padding: 24px 20px 20px;
+            text-align: center;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        /* ==========================================
+                   KOLOM 2 — INFO GTPS (BIRU PUTIH HITAM)
+                   ========================================== */
+        .card-gtps {
+            padding: 20px 20px 18px;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(20, 30, 50, 0.92), rgba(10, 15, 30, 0.92));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(79, 172, 254, 0.25);
+            border-radius: 28px;
+            box-shadow: 0 10px 40px rgba(79, 172, 254, 0.15);
+            animation: fadeUp 0.8s ease-out 0.15s both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================
+                   AVATAR
+                   ========================================== */
+        .avatar-wrapper {
+            margin-bottom: 10px;
+        }
+        .avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
+            display: block;
+            margin: 0 auto;
+            transition: 0.3s;
+        }
+        .avatar:hover {
+            transform: scale(1.03);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ==========================================
+                   USERNAME & BIO
+                   ========================================== */
+        .username {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .bio {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        /* ==========================================
+                   LAST SEEN
+                   ========================================== */
+        .lastseen {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+        }
+        .lastseen span {
+            color: #777;
+        }
+
+        /* ==========================================
+                   TOMBOL AKSI LANGSUNG (Discord & TikTok)
+                   ========================================== */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            color: #ddd;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            width: 100%;
+        }
+        .btn:active {
+            transform: scale(0.97);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .btn .icon {
+            font-size: 18px;
+        }
+
+        .btn-action {
+            color: transparent;
+            background: linear-gradient(90deg, #ffffff, #000000, #ffffff, #000000, #ffffff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textSlide 2.8s linear infinite;
+            font-weight: 800;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.04);
+            background-blend-mode: overlay;
+        }
+        @keyframes textSlide {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        /* ==========================================
+                   STATISTIK — views
+                   ========================================== */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* ==========================================
+                   GTPS CARD — BIRU PUTIH HITAM
+                   ========================================== */
+        .gtps-brand {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: blueWhiteShift 4s ease-in-out infinite;
+            margin-bottom: 2px;
+        }
+        @keyframes blueWhiteShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gtps-sub {
+            font-size: 12px;
+            color: #8899bb;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(79, 172, 254, 0.15);
+            padding-bottom: 12px;
+        }
+        .gtps-sub span {
+            color: #4facfe;
+        }
+
+        /* Tombol Join Discord — BIRU PUTIH BERGERAK */
+        .btn-join-gtps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
+            background-size: 300% 300%;
+            animation: blueWhiteBg 4s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.3);
+            text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes blueWhiteBg {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .btn-join-gtps:active {
+            transform: scale(0.97);
+            opacity: 0.85;
+        }
+        .btn-join-gtps .icon {
+            font-size: 16px;
+        }
+
+        .gtps-legal {
+            font-size: 9px;
+            color: #445566;
+            text-align: center;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+        .gtps-legal a {
+            color: #557799;
+            text-decoration: none;
+        }
+
+        /* ==========================================
+                   TOAST NOTIF
+                   ========================================== */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(16, 16, 16, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 10px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 13px;
+            color: #eee;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+            z-index: 99;
+            white-space: nowrap;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ==========================================
+                   SCROLLBAR HIDE
+                   ========================================== */
+        .wrapper {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .wrapper::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="card">
+    <!-- ===== BINTANG ===== -->
+    <div id="stars"></div>
 
-<img class="avatar"
-src="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png">
+    <!-- ===== WRAPPER (2 KOLOM) ===== -->
+    <div class="wrapper">
 
-<div class="name">
-𝗧𝗛𝗢𝗠
-</div>
+        <!-- ===== KOLOM 1 — PROFIL ===== -->
+        <div class="card-profile">
 
-<div class="bio">
-The less you know, the better.
-</div>
+            <!-- AVATAR -->
+            <div class="avatar-wrapper">
+                <img class="avatar"
+                src="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png"
+                alt="Avatar THOM"
+                onerror="this.src='https://ui-avatars.com/api/?name=THOM&size=96&background=1a1a1a&color=fff&bold=true'">
+            </div>
 
-<div class="buttons">
+            <!-- USERNAME & BIO -->
+            <div class="username">𝗧𝗛𝗢𝗠</div>
+            <div class="bio">🜲 The less you know, the better. 🜲</div>
 
-<a href="https://discord.gg/GeXwAPfUY">
-🎮 Discord
-</a>
+            <!-- LAST SEEN -->
+            <div class="lastseen">⏱ last seen <span id="lastSeen">just now</span></div>
 
-<a href="https://tiktok.com/@thom_id">
-💎 TikTok
-</a>
+            <!-- TOMBOL AKSI -->
+            <div class="buttons">
+                <a href="https://discord.gg/GeXwAPfUY" target="_blank" rel="noopener" class="btn btn-action">
+                    <span class="icon">🎮</span> Discord
+                </a>
+                <a href="https://tiktok.com/@thom_id" target="_blank" rel="noopener" class="btn btn-action">
+                    <span class="icon">▶</span> TikTok
+                </a>
+            </div>
 
-</div>
+            <!-- STATS -->
+            <div class="stats">
+                <span>👁️ Views <span id="views">0</span></span>
+            </div>
+        </div>
 
-</div><script>
+        <!-- ===== KOLOM 2 — INFO GTPS (BIRU PUTIH HITAM) ===== -->
+        <div class="card-gtps">
 
-function createEmoji(){
+            <div class="gtps-brand">⚒ Info GTPS Hosting ⚒</div>
+            <div class="gtps-sub">Discord <span>GTPS Hosting</span></div>
 
-    const emoji = document.createElement("div");
+            <a href="https://discord.gg/54F85nVrn" target="_blank" rel="noopener" class="btn-join-gtps">
+                <span class="icon"></span>Discord
+            </a>
 
-    emoji.className = "fall";
+            <div class="gtps-legal">
+                GTPS Hosting is a fan-made hosting service and is not affiliated with,<br>
+                endorsed by, or sponsored by Ubisoft or Growtopia.<br>
+                
+                © 2026 GTPS Hosting. All rights reserved.
+            </div>
+        </div>
 
-    emoji.innerHTML = "🜲";
+    </div>
 
-    emoji.style.left = Math.random() * window.innerWidth + "px";
+    <!-- ===== TOAST ===== -->
+    <div id="toast">✅ Membuka link...</div>
 
-    emoji.style.fontSize = (18 + Math.random() * 20) + "px";
+    <script>
+        // =============================================
+        // 1. BINTANG
+        // =============================================
+        (function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (2 + Math.random() * 3) + 's');
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                const size = 1 + Math.random() * 2;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                container.appendChild(star);
+            }
+        })();
 
-    emoji.style.animationDuration = (3 + Math.random() * 3) + "s";
+        // =============================================
+        // 2. LAST SEEN (WIB)
+        // =============================================
+        function updateLastSeen() {
+            const now = new Date();
+            const wib = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+            const hours = String(wib.getUTCHours()).padStart(2, '0');
+            const minutes = String(wib.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(wib.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('lastSeen').textContent = 'today at ' + hours + ':' + minutes + ':' + seconds + ' WIB';
+        }
+        updateLastSeen();
+        setInterval(updateLastSeen, 1000);
 
-    document.body.appendChild(emoji);
+        // =============================================
+        // 3. VIEWS
+        // =============================================
+        (function updateViews() {
+            let views = parseInt(localStorage.getItem('thom_views') || '0');
+            views += 1;
+            localStorage.setItem('thom_views', views);
+            document.getElementById('views').textContent = views;
+        })();
 
-    setTimeout(function(){
-        emoji.remove();
-    },6000);
+        // =============================================
+        // 4. TOAST
+        // =============================================
+        var toast = document.getElementById('toast');
 
-}
+        document.querySelectorAll('.btn-action, .btn-join-gtps').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                showToast('⏳ Membuka ' + (this.innerText.trim() || 'link') + '...');
+            });
+        });
 
-setInterval(() => {
-    for(let i = 0; i < 5; i++){
-        createEmoji();
-    }
-}, 100);
-/* Mencegah scroll */
-document.addEventListener("touchmove", function(e){
-    e.preventDefault();
-}, { passive:false });
-
-/* Mencegah zoom gesture */
-document.addEventListener("gesturestart", function(e){
-    e.preventDefault();
-});
-
-/* Mencegah drag */
-document.addEventListener("dragstart", function(e){
-    e.preventDefault();
-});
-
-/* Mencegah scroll dengan mouse */
-window.addEventListener("wheel", function(e){
-    e.preventDefault();
-}, { passive:false });
-
-</script>
-
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(function() {
+                toast.classList.remove('show');
+            }, 1800);
+        }
+    </script>
 </body>
 </html>
