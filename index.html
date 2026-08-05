@@ -52,6 +52,11 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .scroll-indicator{margin:0.3rem 0;color:#888;font-size:0.7rem;letter-spacing:2px;animation:bounceScroll 2s ease-in-out infinite}
 @keyframes bounceScroll{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .scroll-indicator i{display:block;font-size:1.2rem;margin-top:2px;color:#ff0000}
+.about-section{max-width:900px;margin:1rem auto 2rem;padding:1.5rem 1.2rem;background:rgba(20,20,20,0.7);border-radius:20px;border:1px solid rgba(255,0,0,0.15);backdrop-filter:blur(10px);animation:fadeInUp 1s ease-out 0.3s both}
+.about-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.about-item h3{color:#ff0000;font-size:1.1rem;margin-bottom:0.3rem}
+.about-item h3 i{margin-right:8px}
+.about-item p{color:#c8d0dc;font-size:0.95rem}
 .section-title{font-size:1.6rem;font-weight:700;margin-bottom:1.2rem;text-align:center}
 .section-title span{background:linear-gradient(135deg,#ff0000,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerTitle 3s ease-in-out infinite;background-size:200% 200%}
 @keyframes shimmerTitle{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -75,15 +80,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .link-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border-left:4px solid #ff0000;margin:0.5rem 0;width:100%;word-break:break-all;overflow-wrap:break-word;font-size:0.8rem;text-align:center}
 .link-box a{color:#ff3333;text-decoration:none;word-break:break-all;font-family:monospace}
 .link-box a:hover{text-decoration:underline}
-.ip-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border-left:4px solid #ff0000;margin:0.5rem 0;width:100%;word-break:break-word;overflow-wrap:break-word;font-size:0.8rem}
-.ip-box .ip-line{display:block;color:#ff3333;font-family:monospace;word-break:break-word;padding:0.1rem 0;text-align:center}
 .unduh-box{background:#0a0a0a;padding:0.6rem 0.8rem;border-radius:10px;border:2px solid #ff0000;margin:0.5rem 0;width:100%;text-align:center}
-.unduh-box .unduh-label{color:#ff0000;font-weight:700;font-size:0.85rem;display:block}
-.unduh-box .unduh-btn{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.5rem 1.5rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.3rem;transition:0.3s;font-size:0.85rem;border:none;cursor:pointer;animation:glowBtn 2s ease-in-out infinite alternate}
-.unduh-box .unduh-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,0,0,0.4)}
+.unduh-box .unduh-btn{display:block;width:100%;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.7rem;border-radius:40px;font-weight:700;text-decoration:none;transition:0.3s;font-size:0.85rem;border:none;cursor:pointer;animation:glowBtn 2s ease-in-out infinite alternate;text-align:center}
+.unduh-box .unduh-btn:hover{transform:scale(1.02);box-shadow:0 0 40px rgba(255,0,0,0.4)}
+.unduh-box .unduh-btn i{margin-right:6px}
 code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75rem;color:#ff6666;word-break:break-word}
 .sub-text{text-align:center;color:#b0b0b0;margin-bottom:0.3rem;font-size:0.85rem;word-break:keep-all}
-@media(min-width:768px){.container{max-width:1280px;padding:0 1.5rem}.howto-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:3.5rem}.download-btn{width:auto;display:inline-block;padding:0.5rem 1.5rem}}
+@media(min-width:768px){.container{max-width:1280px;padding:0 1.5rem}.howto-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:3.5rem}.download-btn{width:auto;display:inline-block;padding:0.5rem 1.5rem}.about-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.howto-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
@@ -104,6 +107,26 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn-hero btn-discord"><i class="fab fa-discord"></i> Discord</a>
 </div>
 <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+</section><!-- ABOUT SECTION -->
+<section class="about-section">
+<div class="about-grid">
+<div class="about-item">
+<h3><i class="fas fa-flag"></i>Apa itu Indonesia Private Server?</h3>
+<p>Indonesia private server adalah sebuah growtopia private server yang bertemakan Indonesia, kalian bisa bermain growtopia dengan vibes Indonesia dengan sistem roleplay nya.</p>
+</div>
+<div class="about-item">
+<h3><i class="fas fa-fire"></i>Kenapa Indonesia Private Server bisa seru?</h3>
+<p>Karena di server ini akan memiliki update menarik tiap harinya, dan event event yang sangat berbeda dari gtps lainya, kamu bisa berkreasi kreatif mungkin bermain di server ini.</p>
+</div>
+<div class="about-item">
+<h3><i class="fas fa-lock"></i>Apakah bisa jual beli lock?</h3>
+<p>Tentu sangat bisa disini, kalian bisa mendapat penghasilan dari server ini seperti menjual lock, dan lainya.</p>
+</div>
+<div class="about-item">
+<h3><i class="fas fa-coins"></i>Apa ekonomi di server ini?</h3>
+<p>Ekonomi disini super ez to hard, kenapa bisa dibilang gitu? Karena convert lock terbilang sangat tinggi.</p>
+</div>
+</div>
 </section>
 
 <h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
@@ -143,8 +166,7 @@ code{background:#0a0a0a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.75r
 </ol>
 <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Virtual Host</a>
 <div class="unduh-box">
-<span class="unduh-label">⬇ UNDUH HOST</span>
-<a href="#" class="unduh-btn" onclick="downloadHost()"><i class="fas fa-download"></i> Unduh Host</a>
+<a href="#" class="unduh-btn" onclick="downloadHost()"><i class="fas fa-download"></i> UNDUH HOST</a>
 </div>
 </div>
 
