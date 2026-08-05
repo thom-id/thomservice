@@ -1,439 +1,562 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THOM · Overlay Live</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MafiaPS | The Best Growtopia Private Server</title>
+  <!-- Font Awesome 5 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #0b0e14;
+      color: #e9edf2;
+      line-height: 1.5;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Arial', sans-serif;
-        }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        body {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+    /* header / nav */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #2a313c;
+      flex-wrap: wrap;
+    }
 
-        /* ==========================================
-           BACKGROUND BINTANG (opsional, bisa diaktifkan)
-           ========================================== */
-        #stars {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            opacity: 0.3;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            background: white;
-            animation: twinkle var(--duration) infinite alternate;
-            opacity: 0.5;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.1; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #f5b042, #f2a63a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo i {
+      margin-right: 8px;
+      color: #f5b042;
+    }
 
-        /* ==========================================
-           OVERLAY UTAMA — TRANSPARAN
-           ========================================== */
-        .overlay {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: #bcc3cf;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #f5b042;
+    }
 
-        /* ==========================================
-           HEADER — ATAS
-           ========================================== */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0 10px;
-        }
+    .btn {
+      background: #f5b042;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #0b0e14;
+      cursor: default;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .btn i {
+      margin-right: 6px;
+    }
 
-        /* NAMA STREAMER — MERAH PUTIH HITAM BERGERAK */
-        .streamer-name {
-            font-size: 42px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #ff1a1a, #ffffff, #1a1a1a, #ff1a1a, #ffffff, #1a1a1a);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: merahPutihHitam 3.2s linear infinite;
-            text-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
-            pointer-events: none;
-            user-select: none;
-        }
-        @keyframes merahPutihHitam {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 400% 50%; }
-        }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #f5b042;
+      color: #f5b042;
+    }
 
-        /* INFO VIEWERS — KOTAK TRANSPARAN */
-        .viewers-box {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            pointer-events: none;
-            user-select: none;
-        }
-        .viewers-box .icon {
-            font-size: 20px;
-        }
-        #viewerCount {
-            color: #ff4d4d;
-            min-width: 30px;
-            text-align: center;
-        }
+    /* hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      max-width: 800px;
+      background: linear-gradient(to right, #f5b042, #f7d084);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: #bcc3cf;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
 
-        /* ==========================================
-           CHAT — KIRI BAWAH (opsional)
-           ========================================== */
-        .chat-area {
-            position: absolute;
-            bottom: 40px;
-            left: 30px;
-            max-width: 380px;
-            max-height: 250px;
-            overflow: hidden;
-            pointer-events: none;
-        }
+    .scroll-indicator {
+      margin: 1rem 0 2rem;
+      color: #7b8799;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    .scroll-indicator i {
+      display: block;
+      font-size: 1.8rem;
+      margin-top: 4px;
+      animation: bounceDown 1.8s infinite;
+    }
 
-        .chat-message {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            padding: 8px 14px;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #eee;
-            animation: slideIn 0.4s ease-out;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .chat-message .user {
-            font-weight: 700;
-            color: #ff6b6b;
-        }
-        .chat-message .text {
-            color: #ddd;
-        }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+    /* section titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .section-title span {
+      background: linear-gradient(135deg, #f5b042, #f7d084);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        /* ==========================================
-           GOAL / DONASI — KANAN BAWAH
-           ========================================== */
-        .goal-area {
-            position: absolute;
-            bottom: 40px;
-            right: 30px;
-            pointer-events: none;
-        }
+    /* how to play (tabs) */
+    .howto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
 
-        .goal-box {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 12px 20px;
-            min-width: 180px;
-            text-align: center;
-        }
-        .goal-box .label {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        .goal-box .amount {
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff1a1a, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .goal-box .target {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
-        }
-        .goal-box .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-        .goal-box .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff1a1a, #ffffff);
-            border-radius: 4px;
-            width: 0%;
-            transition: width 0.5s ease;
-        }
+    .howto-card {
+      background: #161c26;
+      padding: 1.8rem 1.5rem;
+      border-radius: 24px;
+      border: 1px solid #2a313c;
+      transition: 0.2s;
+    }
+    .howto-card:hover {
+      border-color: #f5b042;
+      background: #1a212c;
+    }
+    .howto-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #f5b042;
+    }
+    .howto-card h3 i {
+      margin-right: 10px;
+    }
+    .howto-card ul, .howto-card p {
+      color: #c8d0dc;
+      font-size: 0.95rem;
+      list-style: none;
+    }
+    .howto-card li {
+      margin-bottom: 0.6rem;
+      padding-left: 0.2rem;
+    }
+    .howto-card li i {
+      color: #f5b042;
+      width: 20px;
+      font-size: 0.8rem;
+    }
+    .howto-card code {
+      background: #0b0e14;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #f5b042;
+      word-break: break-all;
+    }
+    .hosts-block {
+      background: #0b0e14;
+      padding: 0.8rem 1rem;
+      border-radius: 16px;
+      margin: 0.8rem 0;
+      font-family: monospace;
+      font-size: 0.85rem;
+      border-left: 3px solid #f5b042;
+      color: #d4dce8;
+    }
 
-        /* ==========================================
-           NOTIF / ALERT — TENGAH
-           ========================================== */
-        .alert-area {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            text-align: center;
-        }
+    /* features cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 2.8rem 0;
+    }
+    .feature-item {
+      background: #161c26;
+      padding: 1.8rem 1.2rem;
+      border-radius: 28px;
+      text-align: center;
+      border: 1px solid #2a313c;
+      transition: 0.25s;
+    }
+    .feature-item:hover {
+      transform: translateY(-6px);
+      border-color: #f5b042;
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.6);
+    }
+    .feature-item i {
+      font-size: 2.6rem;
+      color: #f5b042;
+      margin-bottom: 0.8rem;
+    }
+    .feature-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .feature-item p {
+      color: #aeb8c7;
+      font-size: 0.9rem;
+    }
 
-        .alert {
-            font-size: 60px;
-            font-weight: 900;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            color: #fff;
-            text-shadow: 0 0 60px rgba(255, 0, 0, 0.5);
-            pointer-events: none;
-            user-select: none;
-        }
-        .alert.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .alert .sub {
-            font-size: 24px;
-            font-weight: 400;
-            color: #aaa;
-            display: block;
-            margin-top: 10px;
-        }
+    /* about + community */
+    .about-section {
+      background: #111820;
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+      border: 1px solid #2a313c;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .about-section p {
+      color: #c8d0dc;
+      max-width: 800px;
+      margin-bottom: 1.2rem;
+    }
 
-        /* ==========================================
-           RESPONSIVE
-           ========================================== */
-        @media (max-width: 768px) {
-            .streamer-name { font-size: 28px; }
-            .viewers-box { font-size: 14px; padding: 6px 12px; }
-            .chat-area { max-width: 240px; bottom: 20px; left: 16px; }
-            .chat-message { font-size: 12px; padding: 6px 10px; }
-            .goal-area { bottom: 20px; right: 16px; }
-            .goal-box { padding: 10px 14px; min-width: 120px; }
-            .goal-box .amount { font-size: 20px; }
-            .alert { font-size: 40px; }
-            .alert .sub { font-size: 18px; }
-        }
-    </style>
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .community-card {
+      background: #161c26;
+      padding: 1.8rem 1.2rem;
+      border-radius: 30px;
+      text-align: center;
+      border: 1px solid #2a313c;
+    }
+    .community-card i {
+      font-size: 2.8rem;
+      color: #f5b042;
+      margin-bottom: 0.5rem;
+    }
+    .community-card h4 {
+      font-size: 1.2rem;
+    }
+    .community-card p {
+      color: #aeb8c7;
+      font-size: 0.9rem;
+      margin: 0.6rem 0 1rem;
+    }
+    .community-card .btn {
+      background: #f5b042;
+      color: #0b0e14;
+      font-weight: 600;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .team-card {
+      background: #161c26;
+      padding: 1.5rem 0.8rem;
+      border-radius: 30px;
+      text-align: center;
+      border: 1px solid #2a313c;
+      transition: 0.15s;
+    }
+    .team-card:hover {
+      border-color: #f5b042;
+    }
+    .team-card .avatar {
+      width: 70px;
+      height: 70px;
+      background: #2a313c;
+      border-radius: 50%;
+      margin: 0 auto 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #f5b042;
+      border: 2px solid #f5b042;
+    }
+    .team-card h4 {
+      font-size: 1.1rem;
+    }
+    .team-card .role {
+      color: #f5b042;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .team-card .quote {
+      color: #aeb8c7;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .footer-cta {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid #2a313c;
+      margin-top: 2.5rem;
+    }
+    .footer-cta h2 {
+      font-size: 2.2rem;
+    }
+    .footer-cta .btn {
+      font-size: 1.2rem;
+      padding: 0.8rem 3rem;
+      margin-top: 1.5rem;
+      background: #f5b042;
+      color: #0b0e14;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- BINTANG (opsional) -->
-    <div id="stars"></div>
+<div class="container">
 
-    <!-- OVERLAY -->
-    <div class="overlay">
+  <!-- navbar -->
+  <nav class="navbar">
+    <div class="logo"><i class="fas fa-crown"></i> MafiaPS</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">How to Play</a>
+      <a href="#">Features</a>
+      <a href="#">Community</a>
+      <a href="#">Team</a>
+    </div>
+    <div>
+      <span class="btn"><i class="fas fa-rocket"></i> Join now</span>
+    </div>
+  </nav>
 
-        <!-- HEADER ATAS -->
-        <div class="header">
-            <div class="streamer-name">𝗧𝗛𝗢𝗠</div>
-            <div class="viewers-box">
-                <span class="icon">👁️</span>
-                <span id="viewerCount">0</span>
-            </div>
-        </div>
+  <!-- hero -->
+  <section class="hero">
+    <h1>Join a stable Growtopia Private Server</h1>
+    <p>Packed with custom items, fun daily events, and a balanced economy. Build, compete, and connect in a safe, inclusive community with strong moderation and zero tolerance for disruptions.</p>
+    <div class="scroll-indicator">
+      Scroll Down <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
-        <!-- CHAT (kiri bawah) -->
-        <div class="chat-area" id="chatArea">
-            <!-- Chat akan muncul di sini via JS -->
-        </div>
+  <!-- How to Play -->
+  <h2 class="section-title"><span>How to Play</span></h2>
+  <p style="text-align:center; color:#bcc3cf; margin-bottom: 0.5rem;">Please select the application you want to use!</p>
 
-        <!-- GOAL (kanan bawah) -->
-        <div class="goal-area">
-            <div class="goal-box">
-                <div class="label">🎯 Donasi</div>
-                <div class="amount" id="donationAmount">Rp 0</div>
-                <div class="target">Target: Rp 1.000.000</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-            </div>
-        </div>
+  <div class="howto-grid">
 
-        <!-- ALERT (tengah) -->
-        <div class="alert-area" id="alertArea">
-            <div class="alert" id="alert">
-                🎉
-                <span class="sub" id="alertSub">Terima kasih!</span>
-            </div>
-        </div>
-
+    <div class="howto-card">
+      <h3><i class="fas fa-mobile-alt"></i> MafiaPS Mobile APK</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Uninstall Real Growtopia if you have it</li>
+        <li><i class="fas fa-check-circle"></i> Restart your device (optional but recommended)</li>
+        <li><i class="fas fa-check-circle"></i> Install MafiaPS APK</li>
+        <li><i class="fas fa-check-circle"></i> Open MafiaPS APK use your MafiaPS account to login</li>
+      </ul>
     </div>
 
-    <script>
-        // =============================================
-        // 1. BINTANG (opsional)
-        // =============================================
-        (function createStars() {
-            const container = document.getElementById('stars');
-            for (let i = 0; i < 50; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.setProperty('--duration', (2 + Math.random() * 3) + 's');
-                star.style.animationDelay = (Math.random() * 3) + 's';
-                const size = 1 + Math.random() * 2.5;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                container.appendChild(star);
-            }
-        })();
+    <div class="howto-card">
+      <h3><i class="fab fa-windows"></i> MafiaPS Windows Installer</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Uninstall Real Growtopia if you have it</li>
+        <li><i class="fas fa-check-circle"></i> Install MafiaPS APK</li>
+        <li><i class="fas fa-check-circle"></i> Open MafiaPS Installer MafiaPS account to login</li>
+        <li><i class="fas fa-check-circle"></i> Wait until installing succes, then login MafiaPS account to login</li>
+      </ul>
+    </div>
 
-        // =============================================
-        // 2. SIMULASI VIEWER (random)
-        // =============================================
-        let viewers = Math.floor(Math.random() * 50) + 10;
-        document.getElementById('viewerCount').textContent = viewers;
+    <div class="howto-card">
+      <h3><i class="fab fa-windows"></i> Windows (hosts)</h3>
+      <p>Press Win+R → paste <code>C:\Windows\System32\drivers\etc</code></p>
+      <p>Open hosts with Notepad (Admin)</p>
+      <div class="hosts-block">103.126.117.167 www.growtopia1.com<br>103.126.117.167 www.growtopia2.com</div>
+      <p>Save → launch Growtopia</p>
+    </div>
 
-        setInterval(() => {
-            const change = Math.floor(Math.random() * 5) - 2;
-            viewers = Math.max(0, viewers + change);
-            document.getElementById('viewerCount').textContent = viewers;
-        }, 5000);
+    <div class="howto-card">
+      <h3><i class="fas fa-wifi"></i> PowerTunnel (Android)</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Install PowerTunnel APK</li>
+        <li><i class="fas fa-check-circle"></i> Open → Plugin → Hosts → Open the Setting</li>
+        <li><i class="fas fa-check-circle"></i> Enter: <code>https://growtopia.id/android</code></li>
+        <li><i class="fas fa-check-circle"></i> Back, Click "CONNECT" button, open Growtopia</li>
+      </ul>
+    </div>
 
-        // =============================================
-        // 3. SIMULASI CHAT (dari daftar nama)
-        // =============================================
-        const names = ['🪐', '★', '✦', '💫', '🔥', '⚡', '🎮', '👾', '🤖', '👽'];
-        const messages = [
-            'Halo THOM!', 'Mantap live nya!', 'Hadehh', 'Gaskeun!',
-            'Jangan lupa subscribe', 'Gokil abis!', 'Cantik banget!',
-            'Mabar yuk!', 'Thumbs up!', 'Love from me!',
-            'Jago banget!', 'Lucu deh!', 'Aku nonton!'
-        ];
+    <div class="howto-card">
+      <h3><i class="fas fa-file-alt"></i> Hosts Go (Android)</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Install Hosts Go (No Root)</li>
+        <li><i class="fas fa-check-circle"></i> Open → Hosts Editor → enable → Download Hosts File</li>
+        <li><i class="fas fa-check-circle"></i> Enter: <code>https://growtopia.id/android</code></li>
+        <li><i class="fas fa-check-circle"></i> Apply, start protection, open Growtopia</li>
+      </ul>
+    </div>
 
-        function addChat() {
-            const area = document.getElementById('chatArea');
-            const msg = document.createElement('div');
-            msg.className = 'chat-message';
-            const user = names[Math.floor(Math.random() * names.length)];
-            const text = messages[Math.floor(Math.random() * messages.length)];
-            msg.innerHTML = `<span class="user">${user}</span><span class="text">${text}</span>`;
-            area.appendChild(msg);
+    <div class="howto-card">
+      <h3><i class="fas fa-server"></i> Virtual Host (Android)</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Install Virtual Host APK</li>
+        <li><i class="fas fa-check-circle"></i> Download Hosts File <strong>here</strong></li>
+        <li><i class="fas fa-check-circle"></i> Open → SELECT HOSTS FILE</li>
+        <li><i class="fas fa-check-circle"></i> Select the downloaded host file (MAFIAPS-HOST (2).txt)</li>
+        <li><i class="fas fa-check-circle"></i> open Growtopia</li>
+      </ul>
+    </div>
 
-            // Batasi chat maksimal 5
-            while (area.children.length > 5) {
-                area.removeChild(area.firstChild);
-            }
-        }
+    <div class="howto-card">
+      <h3><i class="fab fa-apple"></i> Mac</h3>
+      <p>Finder → Go → Go to Folder → <code>/private/etc/hosts</code></p>
+      <p>Copy to Desktop, edit, then add:</p>
+      <div class="hosts-block">103.126.117.167 www.growtopia1.com<br>103.126.117.167 www.growtopia2.com</div>
+      <p>Save and move back → start Growtopia</p>
+    </div>
 
-        // Chat muncul tiap 3-6 detik
-        setInterval(addChat, 3000 + Math.random() * 3000);
+    <div class="howto-card">
+      <h3><i class="fab fa-apple"></i> Surge5 (iPhone)</h3>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Install Surge5</li>
+        <li><i class="fas fa-check-circle"></i> Import Profile: <code>https://growtopia.id/ios</code></li>
+        <li><i class="fas fa-check-circle"></i> Allow VPN Configuration → Connect → Open Growtopia</li>
+      </ul>
+    </div>
 
-        // Tambahkan chat awal
-        setTimeout(addChat, 500);
-        setTimeout(addChat, 1500);
+  </div>
 
-        // =============================================
-        // 4. SIMULASI DONASI (goal)
-        // =============================================
-        let donation = 0;
-        const target = 1000000;
+  <!-- Why Choose MPS (features) -->
+  <h2 class="section-title"><span>Why Choose MPS?</span></h2>
+  <p style="text-align:center; color:#bcc3cf; margin-bottom: 1rem;">Check out the awesome features that make our server the best choice!</p>
+  <div class="features-grid">
+    <div class="feature-item"><i class="fas fa-shield-alt"></i><h4>Safe Environment</h4><p>Strong moderation with zero-tolerance policy</p></div>
+    <div class="feature-item"><i class="fas fa-users"></i><h4>Active Community</h4><p>Join over 22,000 members</p></div>
+    <div class="feature-item"><i class="fas fa-gamepad"></i><h4>Cool Features</h4><p>Surgery, cooking, fishing, parkour</p></div>
+    <div class="feature-item"><i class="fas fa-clock"></i><h4>24/7 Uptime</h4><p>Reliable server hosting</p></div>
+    <div class="feature-item"><i class="fab fa-discord"></i><h4>Discord Integration</h4><p>Community events & support</p></div>
+    <div class="feature-item"><i class="fas fa-calendar-alt"></i><h4>Regular Events</h4><p>Exclusive rewards & prizes</p></div>
+    <div class="feature-item"><i class="fas fa-headset"></i><h4>Player Support</h4><p>Dedicated support team</p></div>
+  </div>
 
-        function updateDonation() {
-            const add = Math.floor(Math.random() * 50000) + 10000;
-            donation = Math.min(donation + add, target);
-            document.getElementById('donationAmount').textContent = 'Rp ' + donation.toLocaleString('id-ID');
-            document.getElementById('progressFill').style.width = (donation / target * 100) + '%';
+  <!-- Server About -->
+  <div class="about-section">
+    <h2><span style="color:#f5b042;">MafiaPS</span> | The Growtopia Private Server</h2>
+    <p><strong>PT MAFIA JAYA</strong> — Founded on October 10, 2023, by Fery, MafiaPS has grown into a thriving community with over 19,000 members. More than just a game, it's a space where creativity and exploration come to life.</p>
+    <p>MafiaPS is a safe, welcoming, and inclusive server with strong moderation and a zero-tolerance policy for disruptive behavior. Players can enjoy the game without worry, focusing on building, learning, and connecting with others.</p>
+    <p>What started as a simple tree-growing server has expanded into something much bigger. Players can take on different roles, from becoming a surgeon and saving lives to mastering the art of cooking, fishing for rare catches, building ships for exploration, or creating challenging parkour worlds filled with puzzles and obstacles.</p>
+    <p>With so many possibilities, MafiaPS offers a unique experience where every player can find their own path. Whether you're here to create, compete, or simply explore, the choice is yours.</p>
+  </div>
 
-            // Alert kalau ada donasi
-            if (add > 30000) {
-                showAlert('💖', 'Donasi Rp ' + add.toLocaleString('id-ID'));
-            }
-        }
+  <!-- Server Community -->
+  <h2 class="section-title"><span>Server Community</span></h2>
+  <p style="text-align:center; color:#bcc3cf;">Join our community to connect, explore, and shape the future of MafiaPS!</p>
+  <div class="community-grid">
+    <div class="community-card">
+      <i class="fab fa-discord"></i>
+      <h4>Discord</h4>
+      <p>Connect with other players, get support, and stay updated!</p>
+      <span class="btn">Join Discord</span>
+    </div>
+    <div class="community-card">
+      <i class="fab fa-whatsapp"></i>
+      <h4>WhatsApp</h4>
+      <p>Connect with other players, get support, and stay updated!</p>
+      <span class="btn">Join WhatsApp</span>
+    </div>
+    <div class="community-card">
+      <i class="fab fa-tiktok"></i>
+      <h4>TikTok</h4>
+      <p>Follow us for entertaining content, server highlights, and more!</p>
+      <span class="btn">Follow TikTok</span>
+    </div>
+  </div>
 
-        // Donasi tiap 10-20 detik
-        setInterval(updateDonation, 10000 + Math.random() * 10000);
+  <!-- Server Team -->
+  <h2 class="section-title"><span>Server Team</span></h2>
+  <p style="text-align:center; color:#bcc3cf; margin-bottom:1rem;">The Architects of Seamless Server Operations</p>
+  <div class="team-grid">
+    <div class="team-card"><div class="avatar">F</div><h4>Fery</h4><div class="role">Server Owner</div><div class="quote">"MafiaPS is the best place to play, chill, and grind without limits."</div></div>
+    <div class="team-card"><div class="avatar">T</div><h4>Tron</h4><div class="role">Server Coder</div><div class="quote">"I love creating challenging worlds here."</div></div>
+    <div class="team-card"><div class="avatar">H</div><h4>HTA</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS is not just a server, it's a family."</div></div>
+    <div class="team-card"><div class="avatar">S</div><h4>sneevilz</h4><div class="role">Server staff</div><div class="quote">"Every login feels different on MafiaPS."</div></div>
+    <div class="team-card"><div class="avatar">A</div><h4>Angga</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS gives me the chance to enjoy the game freely."</div></div>
+    <div class="team-card"><div class="avatar">I</div><h4>Ilham</h4><div class="role">Server Staff</div><div class="quote">"What makes MafiaPS special is the atmosphere."</div></div>
+    <div class="team-card"><div class="avatar">F</div><h4>Farhat</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS combines fun and grind perfectly."</div></div>
+    <div class="team-card"><div class="avatar">B</div><h4>Berus</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS is where I find my happiness."</div></div>
+    <div class="team-card"><div class="avatar">T</div><h4>Through</h4><div class="role">Server Staff</div><div class="quote">"For me, MafiaPS is the best private server."</div></div>
+    <div class="team-card"><div class="avatar">V</div><h4>Vilo</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS makes the grind feel rewarding."</div></div>
+    <div class="team-card"><div class="avatar">K</div><h4>Kane</h4><div class="role">Server Helper</div><div class="quote">"Being part of MafiaPS means being part of a growing community."</div></div>
+  </div>
 
-        // =============================================
-        // 5. ALERT (tengah)
-        // =============================================
-        let alertTimeout = null;
+  <!-- footer cta -->
+  <div class="footer-cta">
+    <h2>Welcome To <span style="color:#f5b042;">Mafia Private Server</span></h2>
+    <p style="color:#bcc3cf; max-width:600px; margin: 1rem auto;">Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
+    <div class="btn" style="font-size:1.2rem; padding:0.8rem 3rem;">Ready? Press the button to begin!</div>
+    <p style="margin-top: 1.5rem; color:#6a7a8e; font-size:0.8rem;">© MafiaPS — PT MAFIA JAYA</p>
+  </div>
 
-        function showAlert(emoji, subText) {
-            const alertEl = document.getElementById('alert');
-            const subEl = document.getElementById('alertSub');
-            alertEl.innerHTML = `${emoji} <span class="sub">${subText}</span>`;
-            alertEl.classList.add('show');
-
-            clearTimeout(alertTimeout);
-            alertTimeout = setTimeout(() => {
-                alertEl.classList.remove('show');
-            }, 3000);
-        }
-
-        // Tampilkan alert awal
-        setTimeout(() => {
-            showAlert('🎮', 'THOM Live!');
-        }, 1000);
-
-        // =============================================
-        // 6. SIMULASI ALERT LAIN (gift, follow, dll)
-        // =============================================
-        const gifts = ['🎁', '🌹', '🐱', '🚀', '💎', '⭐', '🎊', '❤️'];
-
-        function randomAlert() {
-            const gift = gifts[Math.floor(Math.random() * gifts.length)];
-            const users = ['Naya', 'Raka', 'Dewi', 'Bima', 'Sari', 'Aldo', 'Maya'];
-            const user = users[Math.floor(Math.random() * users.length)];
-            showAlert(gift, `${user} mengirim ${gift}!`);
-        }
-
-        // Alert gift tiap 15-30 detik
-        setInterval(randomAlert, 15000 + Math.random() * 15000);
-    </script>
+</div>
+<!-- end container -->
 </body>
-</html>
+        </html>
