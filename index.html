@@ -2,23 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THOM</title>
-
-    <!-- SEO & Social Sharing -->
-    <meta name="description" content="The less you know, the better.">
-    <meta property="og:title" content="THOM">
-    <meta property="og:description" content="The less you know, the better.">
-    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' style='font-weight:bold'>✦</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THOM · Overlay Live</title>
 
     <style>
-        /* ==========================================
-                   GLOBAL & RESET
-                   ========================================== */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         * {
@@ -28,442 +15,317 @@
             font-family: 'Inter', 'Arial', sans-serif;
         }
 
-        html,
         body {
-            width: 100%;
-            min-height: 100vh;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
-            touch-action: none;
-            overscroll-behavior: none;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: fixed;
-            inset: 0;
+            position: relative;
         }
 
         /* ==========================================
-                   BINTANG BACKGROUND
-                   ========================================== */
+           BACKGROUND BINTANG (opsional, bisa diaktifkan)
+           ========================================== */
         #stars {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
             overflow: hidden;
+            opacity: 0.3;
         }
         .star {
             position: absolute;
             border-radius: 50%;
             background: white;
             animation: twinkle var(--duration) infinite alternate;
-            opacity: 0.3;
+            opacity: 0.5;
         }
         @keyframes twinkle {
-            0% {
-                opacity: 0.1;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
 
         /* ==========================================
-                   WRAPPER UTAMA (2 KOLOM)
-                   ========================================== */
-        .wrapper {
+           OVERLAY UTAMA — TRANSPARAN
+           ========================================== */
+        .overlay {
             position: relative;
             z-index: 1;
-            width: 420px;
-            max-width: 94%;
-            max-height: 96vh;
-            overflow-y: auto;
-            scrollbar-width: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* ==========================================
-                   KOLOM 1 — PROFIL UTAMA (HITAM)
-                   ========================================== */
-        .card-profile {
-            padding: 24px 20px 20px;
-            text-align: center;
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 28px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-            animation: fadeUp 0.8s ease-out;
-        }
-
-        /* ==========================================
-                   KOLOM 2 — INFO GTPS (BIRU PUTIH HITAM)
-                   ========================================== */
-        .card-gtps {
-            padding: 20px 20px 18px;
-            text-align: center;
-            background: linear-gradient(145deg, rgba(20, 30, 50, 0.92), rgba(10, 15, 30, 0.92));
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(79, 172, 254, 0.25);
-            border-radius: 28px;
-            box-shadow: 0 10px 40px rgba(79, 172, 254, 0.15);
-            animation: fadeUp 0.8s ease-out 0.15s both;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ==========================================
-                   AVATAR
-                   ========================================== */
-        .avatar-wrapper {
-            margin-bottom: 10px;
-        }
-        .avatar {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
-            display: block;
-            margin: 0 auto;
-            transition: 0.3s;
-        }
-        .avatar:hover {
-            transform: scale(1.03);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        /* ==========================================
-                   USERNAME & BIO
-                   ========================================== */
-        .username {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-        .bio {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        /* ==========================================
-                   LAST SEEN
-                   ========================================== */
-        .lastseen {
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 16px;
-            letter-spacing: 0.3px;
-        }
-        .lastseen span {
-            color: #777;
-        }
-
-        /* ==========================================
-                   TOMBOL AKSI LANGSUNG (Discord & TikTok)
-                   ========================================== */
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            color: #ddd;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.25s ease;
-            text-decoration: none;
-            letter-spacing: 0.3px;
             width: 100%;
-        }
-        .btn:active {
-            transform: scale(0.97);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        .btn .icon {
-            font-size: 18px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
         }
 
-        .btn-action {
-            color: transparent;
-            background: linear-gradient(90deg, #ffffff, #000000, #ffffff, #000000, #ffffff);
-            background-size: 300% 100%;
+        /* ==========================================
+           HEADER — ATAS
+           ========================================== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 10px;
+        }
+
+        /* NAMA STREAMER — MERAH PUTIH HITAM BERGERAK */
+        .streamer-name {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff1a1a, #ffffff, #1a1a1a, #ff1a1a, #ffffff, #1a1a1a);
+            background-size: 400% 100%;
             -webkit-background-clip: text;
             background-clip: text;
-            animation: textSlide 2.8s linear infinite;
-            font-weight: 800;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background-color: rgba(255, 255, 255, 0.04);
-            background-blend-mode: overlay;
+            -webkit-text-fill-color: transparent;
+            animation: merahPutihHitam 3.2s linear infinite;
+            text-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+            pointer-events: none;
+            user-select: none;
         }
-        @keyframes textSlide {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 300% 50%;
-            }
+        @keyframes merahPutihHitam {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
 
-        /* ==========================================
-                   STATISTIK — views
-                   ========================================== */
-        .stats {
+        /* INFO VIEWERS — KOTAK TRANSPARAN */
+        .viewers-box {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 8px 16px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 14px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 12px;
-            color: #777;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            pointer-events: none;
+            user-select: none;
+        }
+        .viewers-box .icon {
+            font-size: 20px;
+        }
+        #viewerCount {
+            color: #ff4d4d;
+            min-width: 30px;
+            text-align: center;
         }
 
         /* ==========================================
-                   GTPS CARD — BIRU PUTIH HITAM
-                   ========================================== */
-        .gtps-brand {
-            font-size: 20px;
-            font-weight: 900;
+           CHAT — KIRI BAWAH (opsional)
+           ========================================== */
+        .chat-area {
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            max-width: 380px;
+            max-height: 250px;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .chat-message {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 8px 14px;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #eee;
+            animation: slideIn 0.4s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chat-message .user {
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        .chat-message .text {
+            color: #ddd;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ==========================================
+           GOAL / DONASI — KANAN BAWAH
+           ========================================== */
+        .goal-area {
+            position: absolute;
+            bottom: 40px;
+            right: 30px;
+            pointer-events: none;
+        }
+
+        .goal-box {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 12px 20px;
+            min-width: 180px;
+            text-align: center;
+        }
+        .goal-box .label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
-            background-size: 300% 300%;
+            margin-bottom: 4px;
+        }
+        .goal-box .amount {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff1a1a, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: blueWhiteShift 4s ease-in-out infinite;
-            margin-bottom: 2px;
         }
-        @keyframes blueWhiteShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .gtps-sub {
+        .goal-box .target {
             font-size: 12px;
-            color: #8899bb;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(79, 172, 254, 0.15);
-            padding-bottom: 12px;
+            color: #666;
+            margin-top: 4px;
         }
-        .gtps-sub span {
-            color: #4facfe;
+        .goal-box .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
         }
-
-        /* Tombol Join Discord — BIRU PUTIH BERGERAK */
-        .btn-join-gtps {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px;
-            border: none;
-            border-radius: 14px;
-            color: #fff;
-            font-weight: 800;
-            font-size: 14px;
-            text-decoration: none;
-            transition: 0.3s;
-            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
-            background-size: 300% 300%;
-            animation: blueWhiteBg 4s ease-in-out infinite;
-            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.3);
-            text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-        }
-        @keyframes blueWhiteBg {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        .btn-join-gtps:active {
-            transform: scale(0.97);
-            opacity: 0.85;
-        }
-        .btn-join-gtps .icon {
-            font-size: 16px;
+        .goal-box .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1a1a, #ffffff);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.5s ease;
         }
 
-        .gtps-legal {
-            font-size: 9px;
-            color: #445566;
+        /* ==========================================
+           NOTIF / ALERT — TENGAH
+           ========================================== */
+        .alert-area {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
             text-align: center;
-            line-height: 1.5;
+        }
+
+        .alert {
+            font-size: 60px;
+            font-weight: 900;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #fff;
+            text-shadow: 0 0 60px rgba(255, 0, 0, 0.5);
+            pointer-events: none;
+            user-select: none;
+        }
+        .alert.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .alert .sub {
+            font-size: 24px;
+            font-weight: 400;
+            color: #aaa;
+            display: block;
             margin-top: 10px;
         }
-        .gtps-legal a {
-            color: #557799;
-            text-decoration: none;
-        }
 
         /* ==========================================
-                   TOAST NOTIF
-                   ========================================== */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: rgba(16, 16, 16, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 10px 24px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 13px;
-            color: #eee;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
-            z-index: 99;
-            white-space: nowrap;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        }
-        #toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* ==========================================
-                   SCROLLBAR HIDE
-                   ========================================== */
-        .wrapper {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .wrapper::-webkit-scrollbar {
-            display: none;
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 768px) {
+            .streamer-name { font-size: 28px; }
+            .viewers-box { font-size: 14px; padding: 6px 12px; }
+            .chat-area { max-width: 240px; bottom: 20px; left: 16px; }
+            .chat-message { font-size: 12px; padding: 6px 10px; }
+            .goal-area { bottom: 20px; right: 16px; }
+            .goal-box { padding: 10px 14px; min-width: 120px; }
+            .goal-box .amount { font-size: 20px; }
+            .alert { font-size: 40px; }
+            .alert .sub { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== BINTANG ===== -->
+    <!-- BINTANG (opsional) -->
     <div id="stars"></div>
 
-    <!-- ===== WRAPPER (2 KOLOM) ===== -->
-    <div class="wrapper">
+    <!-- OVERLAY -->
+    <div class="overlay">
 
-        <!-- ===== KOLOM 1 — PROFIL ===== -->
-        <div class="card-profile">
-
-            <!-- AVATAR -->
-            <div class="avatar-wrapper">
-                <img class="avatar"
-                src="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png"
-                alt="Avatar THOM"
-                onerror="this.src='https://ui-avatars.com/api/?name=THOM&size=96&background=1a1a1a&color=fff&bold=true'">
-            </div>
-
-            <!-- USERNAME & BIO -->
-            <div class="username">𝗧𝗛𝗢𝗠</div>
-            <div class="bio">🜲 The less you know, the better. 🜲</div>
-
-            <!-- LAST SEEN -->
-            <div class="lastseen">⏱ last seen <span id="lastSeen">just now</span></div>
-
-            <!-- TOMBOL AKSI -->
-            <div class="buttons">
-                <a href="https://discord.gg/GeXwAPfUY" target="_blank" rel="noopener" class="btn btn-action">
-                    <span class="icon">🎮</span> Discord
-                </a>
-                <a href="https://tiktok.com/@thom_id" target="_blank" rel="noopener" class="btn btn-action">
-                    <span class="icon">▶</span> TikTok
-                </a>
-            </div>
-
-            <!-- STATS -->
-            <div class="stats">
-                <span>👁️ Views <span id="views">0</span></span>
+        <!-- HEADER ATAS -->
+        <div class="header">
+            <div class="streamer-name">𝗧𝗛𝗢𝗠</div>
+            <div class="viewers-box">
+                <span class="icon">👁️</span>
+                <span id="viewerCount">0</span>
             </div>
         </div>
 
-        <!-- ===== KOLOM 2 — INFO GTPS (BIRU PUTIH HITAM) ===== -->
-        <div class="card-gtps">
+        <!-- CHAT (kiri bawah) -->
+        <div class="chat-area" id="chatArea">
+            <!-- Chat akan muncul di sini via JS -->
+        </div>
 
-            <div class="gtps-brand">⚒ Info GTPS Hosting ⚒</div>
-            <div class="gtps-sub">Discord <span>GTPS Hosting</span></div>
+        <!-- GOAL (kanan bawah) -->
+        <div class="goal-area">
+            <div class="goal-box">
+                <div class="label">🎯 Donasi</div>
+                <div class="amount" id="donationAmount">Rp 0</div>
+                <div class="target">Target: Rp 1.000.000</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
 
-            <a href="https://discord.gg/54F85nVrn" target="_blank" rel="noopener" class="btn-join-gtps">
-                <span class="icon"></span>Discord
-            </a>
-
-            <div class="gtps-legal">
-                GTPS Hosting is a fan-made hosting service and is not affiliated with,<br>
-                endorsed by, or sponsored by Ubisoft or Growtopia.<br>
-                
-                © 2026 GTPS Hosting. All rights reserved.
+        <!-- ALERT (tengah) -->
+        <div class="alert-area" id="alertArea">
+            <div class="alert" id="alert">
+                🎉
+                <span class="sub" id="alertSub">Terima kasih!</span>
             </div>
         </div>
 
     </div>
 
-    <!-- ===== TOAST ===== -->
-    <div id="toast">✅ Membuka link...</div>
-
     <script>
         // =============================================
-        // 1. BINTANG
+        // 1. BINTANG (opsional)
         // =============================================
         (function createStars() {
             const container = document.getElementById('stars');
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.setProperty('--duration', (2 + Math.random() * 3) + 's');
                 star.style.animationDelay = (Math.random() * 3) + 's';
-                const size = 1 + Math.random() * 2;
+                const size = 1 + Math.random() * 2.5;
                 star.style.width = size + 'px';
                 star.style.height = size + 'px';
                 container.appendChild(star);
@@ -471,48 +333,107 @@
         })();
 
         // =============================================
-        // 2. LAST SEEN (WIB)
+        // 2. SIMULASI VIEWER (random)
         // =============================================
-        function updateLastSeen() {
-            const now = new Date();
-            const wib = new Date(now.getTime() + (7 * 60 * 60 * 1000));
-            const hours = String(wib.getUTCHours()).padStart(2, '0');
-            const minutes = String(wib.getUTCMinutes()).padStart(2, '0');
-            const seconds = String(wib.getUTCSeconds()).padStart(2, '0');
-            document.getElementById('lastSeen').textContent = 'today at ' + hours + ':' + minutes + ':' + seconds + ' WIB';
+        let viewers = Math.floor(Math.random() * 50) + 10;
+        document.getElementById('viewerCount').textContent = viewers;
+
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 5) - 2;
+            viewers = Math.max(0, viewers + change);
+            document.getElementById('viewerCount').textContent = viewers;
+        }, 5000);
+
+        // =============================================
+        // 3. SIMULASI CHAT (dari daftar nama)
+        // =============================================
+        const names = ['🪐', '★', '✦', '💫', '🔥', '⚡', '🎮', '👾', '🤖', '👽'];
+        const messages = [
+            'Halo THOM!', 'Mantap live nya!', 'Hadehh', 'Gaskeun!',
+            'Jangan lupa subscribe', 'Gokil abis!', 'Cantik banget!',
+            'Mabar yuk!', 'Thumbs up!', 'Love from me!',
+            'Jago banget!', 'Lucu deh!', 'Aku nonton!'
+        ];
+
+        function addChat() {
+            const area = document.getElementById('chatArea');
+            const msg = document.createElement('div');
+            msg.className = 'chat-message';
+            const user = names[Math.floor(Math.random() * names.length)];
+            const text = messages[Math.floor(Math.random() * messages.length)];
+            msg.innerHTML = `<span class="user">${user}</span><span class="text">${text}</span>`;
+            area.appendChild(msg);
+
+            // Batasi chat maksimal 5
+            while (area.children.length > 5) {
+                area.removeChild(area.firstChild);
+            }
         }
-        updateLastSeen();
-        setInterval(updateLastSeen, 1000);
+
+        // Chat muncul tiap 3-6 detik
+        setInterval(addChat, 3000 + Math.random() * 3000);
+
+        // Tambahkan chat awal
+        setTimeout(addChat, 500);
+        setTimeout(addChat, 1500);
 
         // =============================================
-        // 3. VIEWS
+        // 4. SIMULASI DONASI (goal)
         // =============================================
-        (function updateViews() {
-            let views = parseInt(localStorage.getItem('thom_views') || '0');
-            views += 1;
-            localStorage.setItem('thom_views', views);
-            document.getElementById('views').textContent = views;
-        })();
+        let donation = 0;
+        const target = 1000000;
 
-        // =============================================
-        // 4. TOAST
-        // =============================================
-        var toast = document.getElementById('toast');
+        function updateDonation() {
+            const add = Math.floor(Math.random() * 50000) + 10000;
+            donation = Math.min(donation + add, target);
+            document.getElementById('donationAmount').textContent = 'Rp ' + donation.toLocaleString('id-ID');
+            document.getElementById('progressFill').style.width = (donation / target * 100) + '%';
 
-        document.querySelectorAll('.btn-action, .btn-join-gtps').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                showToast('⏳ Membuka ' + (this.innerText.trim() || 'link') + '...');
-            });
-        });
-
-        function showToast(msg) {
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(function() {
-                toast.classList.remove('show');
-            }, 1800);
+            // Alert kalau ada donasi
+            if (add > 30000) {
+                showAlert('💖', 'Donasi Rp ' + add.toLocaleString('id-ID'));
+            }
         }
+
+        // Donasi tiap 10-20 detik
+        setInterval(updateDonation, 10000 + Math.random() * 10000);
+
+        // =============================================
+        // 5. ALERT (tengah)
+        // =============================================
+        let alertTimeout = null;
+
+        function showAlert(emoji, subText) {
+            const alertEl = document.getElementById('alert');
+            const subEl = document.getElementById('alertSub');
+            alertEl.innerHTML = `${emoji} <span class="sub">${subText}</span>`;
+            alertEl.classList.add('show');
+
+            clearTimeout(alertTimeout);
+            alertTimeout = setTimeout(() => {
+                alertEl.classList.remove('show');
+            }, 3000);
+        }
+
+        // Tampilkan alert awal
+        setTimeout(() => {
+            showAlert('🎮', 'THOM Live!');
+        }, 1000);
+
+        // =============================================
+        // 6. SIMULASI ALERT LAIN (gift, follow, dll)
+        // =============================================
+        const gifts = ['🎁', '🌹', '🐱', '🚀', '💎', '⭐', '🎊', '❤️'];
+
+        function randomAlert() {
+            const gift = gifts[Math.floor(Math.random() * gifts.length)];
+            const users = ['Naya', 'Raka', 'Dewi', 'Bima', 'Sari', 'Aldo', 'Maya'];
+            const user = users[Math.floor(Math.random() * users.length)];
+            showAlert(gift, `${user} mengirim ${gift}!`);
+        }
+
+        // Alert gift tiap 15-30 detik
+        setInterval(randomAlert, 15000 + Math.random() * 15000);
     </script>
 </body>
 </html>
