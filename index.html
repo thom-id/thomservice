@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MafiaPS | The Best Growtopia Private Server</title>
-  <!-- Font Awesome 5 (free) for icons -->
+  <title>IndonesiaPS | The Best Growtopia Private Server</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,39 +14,123 @@
 
     body {
       font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-      background: #0b0e14;
-      color: #e9edf2;
+      background: #0a0a0a;
+      color: #f0f0f0;
       line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(255,0,0,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(255,0,0,0.05) 0%, transparent 50%);
+      z-index: -1;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatParticle linear infinite;
+    }
+
+    .particle:nth-child(1) { width: 8px; height: 8px; background: #ff0000; left: 10%; animation-duration: 14s; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 12px; height: 12px; background: #ffffff; left: 25%; animation-duration: 18s; animation-delay: 2s; }
+    .particle:nth-child(3) { width: 6px; height: 6px; background: #ff0000; left: 40%; animation-duration: 12s; animation-delay: 4s; }
+    .particle:nth-child(4) { width: 10px; height: 10px; background: #ffffff; left: 55%; animation-duration: 20s; animation-delay: 1s; }
+    .particle:nth-child(5) { width: 7px; height: 7px; background: #ff0000; left: 70%; animation-duration: 16s; animation-delay: 3s; }
+    .particle:nth-child(6) { width: 14px; height: 14px; background: #ffffff; left: 85%; animation-duration: 22s; animation-delay: 5s; }
+    .particle:nth-child(7) { width: 9px; height: 9px; background: #ff0000; left: 15%; animation-duration: 17s; animation-delay: 7s; }
+    .particle:nth-child(8) { width: 11px; height: 11px; background: #ffffff; left: 45%; animation-duration: 19s; animation-delay: 2s; }
+    .particle:nth-child(9) { width: 5px; height: 5px; background: #ff0000; left: 65%; animation-duration: 13s; animation-delay: 6s; }
+    .particle:nth-child(10) { width: 13px; height: 13px; background: #ffffff; left: 90%; animation-duration: 21s; animation-delay: 4s; }
+    .particle:nth-child(11) { width: 8px; height: 8px; background: #ff0000; left: 5%; animation-duration: 15s; animation-delay: 8s; }
+    .particle:nth-child(12) { width: 10px; height: 10px; background: #ffffff; left: 35%; animation-duration: 18s; animation-delay: 3s; }
+    .particle:nth-child(13) { width: 6px; height: 6px; background: #ff0000; left: 75%; animation-duration: 14s; animation-delay: 9s; }
+    .particle:nth-child(14) { width: 12px; height: 12px; background: #ffffff; left: 50%; animation-duration: 20s; animation-delay: 1s; }
+    .particle:nth-child(15) { width: 7px; height: 7px; background: #ff0000; left: 95%; animation-duration: 16s; animation-delay: 5s; }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.2; }
+      90% { opacity: 0.2; }
+      100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
     }
 
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* header / nav */
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.2rem 0;
-      border-bottom: 1px solid #2a313c;
+      border-bottom: 2px solid rgba(255,0,0,0.3);
       flex-wrap: wrap;
+      animation: slideDown 0.8s ease-out;
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #f5b042, #f2a63a);
+      background: linear-gradient(135deg, #ff0000, #ffffff, #ff0000);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: shimmerLogo 3s ease-in-out infinite;
     }
+
+    @keyframes shimmerLogo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .logo i {
       margin-right: 8px;
-      color: #f5b042;
+      color: #ff0000;
+      animation: pulseIcon 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); color: #ff3333; }
     }
 
     .nav-links {
@@ -56,93 +139,136 @@
       font-weight: 500;
     }
     .nav-links a {
-      color: #bcc3cf;
+      color: #d0d0d0;
       text-decoration: none;
-      transition: 0.2s;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff0000;
+      transition: 0.3s;
     }
     .nav-links a:hover {
-      color: #f5b042;
+      color: #ff0000;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .btn {
-      background: #f5b042;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
       border: none;
-      padding: 0.6rem 1.5rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 40px;
-      font-weight: 600;
-      color: #0b0e14;
+      font-weight: 700;
+      color: #ffffff;
       cursor: default;
       display: inline-block;
-      transition: 0.2s;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
+      animation: glowBtn 2s ease-in-out infinite alternate;
     }
+
+    @keyframes glowBtn {
+      0% { box-shadow: 0 0 15px rgba(255,0,0,0.2); }
+      100% { box-shadow: 0 0 35px rgba(255,0,0,0.5); }
+    }
+
     .btn i {
       margin-right: 6px;
     }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #f5b042;
-      color: #f5b042;
+    .btn:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 0 50px rgba(255,0,0,0.6);
     }
 
-    /* hero */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 3rem 0 2.5rem;
+      padding: 3.5rem 0 2.5rem;
+      animation: fadeInUp 1s ease-out;
     }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
     .hero h1 {
       font-size: 3.2rem;
-      font-weight: 700;
+      font-weight: 800;
       max-width: 800px;
-      background: linear-gradient(to right, #f5b042, #f7d084);
+      background: linear-gradient(135deg, #ff0000, #ffffff, #ff0000, #ffffff);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: shimmerHero 4s ease-in-out infinite;
       margin-bottom: 1.2rem;
     }
+
+    @keyframes shimmerHero {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .hero p {
       font-size: 1.25rem;
-      color: #bcc3cf;
+      color: #b0b0b0;
       max-width: 700px;
       margin-bottom: 2rem;
     }
 
     .scroll-indicator {
       margin: 1rem 0 2rem;
-      color: #7b8799;
+      color: #888;
       font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-    .scroll-indicator i {
-      display: block;
-      font-size: 1.8rem;
-      margin-top: 4px;
-      animation: bounceDown 1.8s infinite;
+      letter-spacing: 2px;
+      animation: bounceScroll 2s ease-in-out infinite;
     }
 
-    @keyframes bounceDown {
+    @keyframes bounceScroll {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(8px); }
     }
 
-    /* section titles */
+    .scroll-indicator i {
+      display: block;
+      font-size: 1.8rem;
+      margin-top: 4px;
+      color: #ff0000;
+    }
+
     .section-title {
       font-size: 2.2rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 2rem;
       text-align: center;
     }
     .section-title span {
-      background: linear-gradient(135deg, #f5b042, #f7d084);
+      background: linear-gradient(135deg, #ff0000, #ffffff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: shimmerTitle 3s ease-in-out infinite;
+      background-size: 200% 200%;
     }
 
-    /* how to play (tabs) */
+    @keyframes shimmerTitle {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .howto-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -151,102 +277,125 @@
     }
 
     .howto-card {
-      background: #161c26;
+      background: rgba(20, 20, 20, 0.9);
       padding: 1.8rem 1.5rem;
       border-radius: 24px;
-      border: 1px solid #2a313c;
-      transition: 0.2s;
+      border: 1px solid rgba(255,0,0,0.2);
+      transition: 0.4s;
+      backdrop-filter: blur(10px);
+      animation: cardFadeIn 0.8s ease-out forwards;
+      opacity: 0;
     }
+
+    .howto-card:nth-child(1) { animation-delay: 0.1s; }
+    .howto-card:nth-child(2) { animation-delay: 0.2s; }
+    .howto-card:nth-child(3) { animation-delay: 0.3s; }
+    .howto-card:nth-child(4) { animation-delay: 0.4s; }
+    .howto-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes cardFadeIn {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
     .howto-card:hover {
-      border-color: #f5b042;
-      background: #1a212c;
+      border-color: #ff0000;
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 15px 40px rgba(255,0,0,0.15);
     }
+
     .howto-card h3 {
       font-size: 1.4rem;
       margin-bottom: 1rem;
-      color: #f5b042;
+      color: #ff0000;
     }
     .howto-card h3 i {
       margin-right: 10px;
+      animation: pulseIcon 2s ease-in-out infinite;
     }
-    .howto-card ul, .howto-card p {
+
+    .howto-card ul, .howto-card p, .howto-card ol {
       color: #c8d0dc;
       font-size: 0.95rem;
       list-style: none;
+      padding-left: 0;
     }
     .howto-card li {
       margin-bottom: 0.6rem;
       padding-left: 0.2rem;
     }
     .howto-card li i {
-      color: #f5b042;
+      color: #ff0000;
       width: 20px;
       font-size: 0.8rem;
     }
-    .howto-card code {
-      background: #0b0e14;
+    .howto-card code, .howto-card .hosts-block {
+      background: #0a0a0a;
       padding: 0.2rem 0.6rem;
       border-radius: 30px;
       font-size: 0.8rem;
-      color: #f5b042;
+      color: #ff3333;
       word-break: break-all;
     }
-    .hosts-block {
-      background: #0b0e14;
+    .howto-card .hosts-block {
+      display: block;
       padding: 0.8rem 1rem;
-      border-radius: 16px;
+      border-left: 3px solid #ff0000;
       margin: 0.8rem 0;
       font-family: monospace;
-      font-size: 0.85rem;
-      border-left: 3px solid #f5b042;
       color: #d4dce8;
+      border-radius: 16px;
     }
-
-    /* features cards */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.8rem;
-      margin: 2.8rem 0;
+    .howto-card .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #ffffff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: 0.3s;
+      animation: glowBtn 2s ease-in-out infinite alternate;
     }
-    .feature-item {
-      background: #161c26;
-      padding: 1.8rem 1.2rem;
-      border-radius: 28px;
+    .howto-card .download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255,0,0,0.4);
+    }
+    .howto-card .step-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #ffffff;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
       text-align: center;
-      border: 1px solid #2a313c;
-      transition: 0.25s;
-    }
-    .feature-item:hover {
-      transform: translateY(-6px);
-      border-color: #f5b042;
-      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.6);
-    }
-    .feature-item i {
-      font-size: 2.6rem;
-      color: #f5b042;
-      margin-bottom: 0.8rem;
-    }
-    .feature-item h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
-    }
-    .feature-item p {
-      color: #aeb8c7;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      line-height: 24px;
+      margin-right: 8px;
     }
 
-    /* about + community */
     .about-section {
-      background: #111820;
+      background: rgba(20, 20, 20, 0.9);
       border-radius: 40px;
       padding: 2.5rem 2rem;
       margin: 3rem 0;
-      border: 1px solid #2a313c;
+      border: 1px solid rgba(255,0,0,0.2);
+      backdrop-filter: blur(10px);
+      transition: 0.4s;
+      animation: fadeInUp 1s ease-out;
+    }
+    .about-section:hover {
+      border-color: #ff0000;
+      box-shadow: 0 10px 40px rgba(255,0,0,0.1);
     }
     .about-section h2 {
       font-size: 2rem;
       margin-bottom: 1.2rem;
+    }
+    .about-section h2 span {
+      color: #ff0000;
     }
     .about-section p {
       color: #c8d0dc;
@@ -255,107 +404,102 @@
     }
 
     .community-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
+      display: flex;
+      justify-content: center;
       margin: 2.5rem 0;
     }
     .community-card {
-      background: #161c26;
-      padding: 1.8rem 1.2rem;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 2.5rem 2.5rem;
       border-radius: 30px;
       text-align: center;
-      border: 1px solid #2a313c;
+      border: 1px solid rgba(255,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      transition: 0.4s;
+      animation: cardFadeIn 0.8s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+    .community-card:hover {
+      border-color: #ff0000;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(255,0,0,0.15);
     }
     .community-card i {
-      font-size: 2.8rem;
-      color: #f5b042;
+      font-size: 3.5rem;
+      color: #ff0000;
       margin-bottom: 0.5rem;
+      animation: pulseIcon 2s ease-in-out infinite;
     }
     .community-card h4 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      color: #ffffff;
     }
     .community-card p {
       color: #aeb8c7;
-      font-size: 0.9rem;
-      margin: 0.6rem 0 1rem;
+      font-size: 0.95rem;
+      margin: 0.6rem 0 1.5rem;
     }
     .community-card .btn {
-      background: #f5b042;
-      color: #0b0e14;
-      font-weight: 600;
-      padding: 0.5rem 1.8rem;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 0.6rem 2.5rem;
       border-radius: 60px;
       text-decoration: none;
       display: inline-block;
     }
 
-    /* team */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.8rem;
-      margin: 2.5rem 0;
-    }
-    .team-card {
-      background: #161c26;
-      padding: 1.5rem 0.8rem;
-      border-radius: 30px;
-      text-align: center;
-      border: 1px solid #2a313c;
-      transition: 0.15s;
-    }
-    .team-card:hover {
-      border-color: #f5b042;
-    }
-    .team-card .avatar {
-      width: 70px;
-      height: 70px;
-      background: #2a313c;
-      border-radius: 50%;
-      margin: 0 auto 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: #f5b042;
-      border: 2px solid #f5b042;
-    }
-    .team-card h4 {
-      font-size: 1.1rem;
-    }
-    .team-card .role {
-      color: #f5b042;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .team-card .quote {
-      color: #aeb8c7;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-      font-style: italic;
-    }
-
     .footer-cta {
       text-align: center;
       padding: 3rem 1rem;
-      border-top: 1px solid #2a313c;
+      border-top: 2px solid rgba(255,0,0,0.2);
       margin-top: 2.5rem;
+      animation: fadeInUp 1s ease-out;
     }
     .footer-cta h2 {
       font-size: 2.2rem;
     }
+    .footer-cta h2 span {
+      color: #ff0000;
+      animation: pulseIcon 2s ease-in-out infinite;
+      display: inline-block;
+    }
+    .footer-cta p {
+      color: #b0b0b0;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
     .footer-cta .btn {
       font-size: 1.2rem;
-      padding: 0.8rem 3rem;
+      padding: 0.8rem 3.5rem;
       margin-top: 1.5rem;
-      background: #f5b042;
-      color: #0b0e14;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #ffffff;
+    }
+    .footer-cta .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(255,0,0,0.4);
     }
 
-    /* responsive */
+    .ip-box {
+      background: #0a0a0a;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      border-left: 4px solid #ff0000;
+      font-family: monospace;
+      color: #ff3333;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      color: #666;
+      font-size: 0.8rem;
+    }
+
     @media (max-width: 700px) {
       .navbar {
         flex-direction: column;
@@ -370,29 +514,51 @@
       .hero h1 {
         font-size: 2.4rem;
       }
+      .community-grid {
+        padding: 0 0.5rem;
+      }
+      .community-card {
+        padding: 1.8rem 1.2rem;
+      }
     }
   </style>
 </head>
-<body>
+<body><!-- PARTIKEL MERAH PUTIH -->
+<div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
 
 <div class="container">
 
-  <!-- navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo"><i class="fas fa-crown"></i> MafiaPS</div>
+    <div class="logo"><i class="fas fa-crown"></i> IndonesiaPS</div>
     <div class="nav-links">
       <a href="#">Home</a>
       <a href="#">How to Play</a>
-      <a href="#">Features</a>
+      <a href="#">About</a>
       <a href="#">Community</a>
-      <a href="#">Team</a>
     </div>
     <div>
       <span class="btn"><i class="fas fa-rocket"></i> Join now</span>
     </div>
   </nav>
 
-  <!-- hero -->
+  <!-- HERO -->
   <section class="hero">
     <h1>Join a stable Growtopia Private Server</h1>
     <p>Packed with custom items, fun daily events, and a balanced economy. Build, compete, and connect in a safe, inclusive community with strong moderation and zero tolerance for disruptions.</p>
@@ -401,162 +567,103 @@
     </div>
   </section>
 
-  <!-- How to Play -->
+  <!-- HOW TO PLAY -->
   <h2 class="section-title"><span>How to Play</span></h2>
-  <p style="text-align:center; color:#bcc3cf; margin-bottom: 0.5rem;">Please select the application you want to use!</p>
+  <p style="text-align:center; color:#b0b0b0; margin-bottom: 0.5rem;">Please select the application you want to use!</p>
 
   <div class="howto-grid">
 
+    <!-- Android APK -->
     <div class="howto-card">
-      <h3><i class="fas fa-mobile-alt"></i> MafiaPS Mobile APK</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Uninstall Real Growtopia if you have it</li>
-        <li><i class="fas fa-check-circle"></i> Restart your device (optional but recommended)</li>
-        <li><i class="fas fa-check-circle"></i> Install MafiaPS APK</li>
-        <li><i class="fas fa-check-circle"></i> Open MafiaPS APK use your MafiaPS account to login</li>
-      </ul>
+      <h3><i class="fas fa-mobile-alt"></i> Indonesia APK - Android</h3>
+      <p>You need to delete real Growtopia app first if you want to use Indonesia's app.</p>
+      <p style="margin-top: 0.5rem; color: #ff3333;">Jika ingin login menggunakan aplikasi Indonesia, tidak perlu lagi untuk menggunakan virtual host ataupun powertunnel. Kalian bisa langsung login ke dalam game.</p>
+      <a href="https://www.mediafire.com/file/mt1hhcikzmnbue7/Indonesia.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Indonesia APK - Android</a>
     </div>
 
-    <div class="howto-card">
-      <h3><i class="fab fa-windows"></i> MafiaPS Windows Installer</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Uninstall Real Growtopia if you have it</li>
-        <li><i class="fas fa-check-circle"></i> Install MafiaPS APK</li>
-        <li><i class="fas fa-check-circle"></i> Open MafiaPS Installer MafiaPS account to login</li>
-        <li><i class="fas fa-check-circle"></i> Wait until installing succes, then login MafiaPS account to login</li>
-      </ul>
-    </div>
-
-    <div class="howto-card">
-      <h3><i class="fab fa-windows"></i> Windows (hosts)</h3>
-      <p>Press Win+R → paste <code>C:\Windows\System32\drivers\etc</code></p>
-      <p>Open hosts with Notepad (Admin)</p>
-      <div class="hosts-block">103.126.117.167 www.growtopia1.com<br>103.126.117.167 www.growtopia2.com</div>
-      <p>Save → launch Growtopia</p>
-    </div>
-
+    <!-- PowerTunnel -->
     <div class="howto-card">
       <h3><i class="fas fa-wifi"></i> PowerTunnel (Android)</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Install PowerTunnel APK</li>
-        <li><i class="fas fa-check-circle"></i> Open → Plugin → Hosts → Open the Setting</li>
-        <li><i class="fas fa-check-circle"></i> Enter: <code>https://growtopia.id/android</code></li>
-        <li><i class="fas fa-check-circle"></i> Back, Click "CONNECT" button, open Growtopia</li>
-      </ul>
+      <ol style="list-style: none; padding-left: 0;">
+        <li><span class="step-number">1</span> Download <a href="https://github.com/krlvm/PowerTunnel-Android/releases/download/v2.6.3/PowerTunnel.apk" target="_blank" style="color: #ff3333;">PowerTunnel APK</a> dan instal.</li>
+        <li><span class="step-number">2</span> Buka aplikasi lalu pencet tombol bergambar titik tiga-list di sebelah kiri tombol bergambar gir.</li>
+        <li><span class="step-number">3</span> Pencet tombol bergambar gir di opsi "Hosts".</li>
+        <li><span class="step-number">4</span> Copy dan paste <a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank" style="color: #ff3333;">Server link</a> pada opsi "Hosts File URL".</li>
+        <li><span class="step-number">5</span> Pencet tombol "Connect" dan cobalah login melalui Growtopia.</li>
+      </ol>
     </div>
 
-    <div class="howto-card">
-      <h3><i class="fas fa-file-alt"></i> Hosts Go (Android)</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Install Hosts Go (No Root)</li>
-        <li><i class="fas fa-check-circle"></i> Open → Hosts Editor → enable → Download Hosts File</li>
-        <li><i class="fas fa-check-circle"></i> Enter: <code>https://growtopia.id/android</code></li>
-        <li><i class="fas fa-check-circle"></i> Apply, start protection, open Growtopia</li>
-      </ul>
-    </div>
-
+    <!-- Virtual Host -->
     <div class="howto-card">
       <h3><i class="fas fa-server"></i> Virtual Host (Android)</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Install Virtual Host APK</li>
-        <li><i class="fas fa-check-circle"></i> Download Hosts File <strong>here</strong></li>
-        <li><i class="fas fa-check-circle"></i> Open → SELECT HOSTS FILE</li>
-        <li><i class="fas fa-check-circle"></i> Select the downloaded host file (MAFIAPS-HOST (2).txt)</li>
-        <li><i class="fas fa-check-circle"></i> open Growtopia</li>
-      </ul>
+      <ol style="list-style: none; padding-left: 0;">
+        <li><span class="step-number">1</span> Download <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" style="color: #ff3333;">Virtual Host APK</a> dan instal.</li>
+        <li><span class="step-number">2</span> Buka aplikasi lalu pencet tombol <strong>RE-SELECT HOSTS FILE.</strong></li>
+        <li><span class="step-number">3</span> Pencet Host yang sudah di download.</li>
+        <li><span class="step-number">4</span> Download Host <a href="https://gtpshosting.web.id/how-to-play/Indonesia" target="_blank" style="color: #ff3333;">Server link</a> pada opsi "Hosts File URL".</li>
+        <li><span class="step-number">5</span> Cobalah login melalui Growtopia.</li>
+      </ol>
+    </div>    <!-- Windows -->
+    <div class="howto-card">
+      <h3><i class="fab fa-windows"></i> Windows</h3>
+      <ol style="list-style: none; padding-left: 0;">
+        <li><span class="step-number">1</span> Press <strong>⊞ Win+R</strong> (Windows Key + R) to open the "Run" window.</li>
+        <li><span class="step-number">2</span> Type <code>C:\Windows\System32\drivers\etc</code> in the textbox.</li>
+        <li><span class="step-number">3</span> Find the file named <strong>hosts</strong>.</li>
+        <li><span class="step-number">4</span> Right-click on the "hosts" file and edit it with Notepad/text editor.</li>
+        <li><span class="step-number">5</span> Copy the Server IP Below and Paste it in the file.</li>
+        <li><span class="step-number">6</span> Save, then log in to your Growtopia.</li>
+      </ol>
+      <p style="margin-top: 0.8rem;"><strong>🖥️ <a href="https://gtpshosting.web.id/raw/Indonesia" target="_blank" style="color: #ff3333;">➔ Anddres Windows IP</a></strong></p>
+      <div class="ip-box">
+        149.202.58.185 www.growtopia1.com<br>
+        149.202.58.185 www.growtopia2.com
+      </div>
     </div>
 
+    <!-- IOS / SURGE 5 -->
     <div class="howto-card">
-      <h3><i class="fab fa-apple"></i> Mac</h3>
-      <p>Finder → Go → Go to Folder → <code>/private/etc/hosts</code></p>
-      <p>Copy to Desktop, edit, then add:</p>
-      <div class="hosts-block">103.126.117.167 www.growtopia1.com<br>103.126.117.167 www.growtopia2.com</div>
-      <p>Save and move back → start Growtopia</p>
-    </div>
-
-    <div class="howto-card">
-      <h3><i class="fab fa-apple"></i> Surge5 (iPhone)</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Install Surge5</li>
-        <li><i class="fas fa-check-circle"></i> Import Profile: <code>https://growtopia.id/ios</code></li>
-        <li><i class="fas fa-check-circle"></i> Allow VPN Configuration → Connect → Open Growtopia</li>
-      </ul>
+      <h3><i class="fab fa-apple"></i> IOS / SURGE 5</h3>
+      <ol style="list-style: none; padding-left: 0;">
+        <li><span class="step-number">1</span> Install Surge di iPhone / iPad kamu.</li>
+        <li><span class="step-number">2</span> Salin konfigurasi Surge menggunakan <a href="https://gtpshosting.web.id/ios/Indonesia" target="_blank" style="color: #ff3333;">Server Link</a>.</li>
+        <li><span class="step-number">3</span> Buka Surge → import konfigurasi dari clipboard.</li>
+        <li><span class="step-number">4</span> Aktifkan Surge - Growtopia akan diarahkan ke server kami.</li>
+        <li><span class="step-number">5</span> Buka Growtopia dan selamat bermain!</li>
+      </ol>
     </div>
 
   </div>
 
-  <!-- Why Choose MPS (features) -->
-  <h2 class="section-title"><span>Why Choose MPS?</span></h2>
-  <p style="text-align:center; color:#bcc3cf; margin-bottom: 1rem;">Check out the awesome features that make our server the best choice!</p>
-  <div class="features-grid">
-    <div class="feature-item"><i class="fas fa-shield-alt"></i><h4>Safe Environment</h4><p>Strong moderation with zero-tolerance policy</p></div>
-    <div class="feature-item"><i class="fas fa-users"></i><h4>Active Community</h4><p>Join over 22,000 members</p></div>
-    <div class="feature-item"><i class="fas fa-gamepad"></i><h4>Cool Features</h4><p>Surgery, cooking, fishing, parkour</p></div>
-    <div class="feature-item"><i class="fas fa-clock"></i><h4>24/7 Uptime</h4><p>Reliable server hosting</p></div>
-    <div class="feature-item"><i class="fab fa-discord"></i><h4>Discord Integration</h4><p>Community events & support</p></div>
-    <div class="feature-item"><i class="fas fa-calendar-alt"></i><h4>Regular Events</h4><p>Exclusive rewards & prizes</p></div>
-    <div class="feature-item"><i class="fas fa-headset"></i><h4>Player Support</h4><p>Dedicated support team</p></div>
-  </div>
-
-  <!-- Server About -->
+  <!-- ABOUT -->
   <div class="about-section">
-    <h2><span style="color:#f5b042;">MafiaPS</span> | The Growtopia Private Server</h2>
-    <p><strong>PT MAFIA JAYA</strong> — Founded on October 10, 2023, by Fery, MafiaPS has grown into a thriving community with over 19,000 members. More than just a game, it's a space where creativity and exploration come to life.</p>
-    <p>MafiaPS is a safe, welcoming, and inclusive server with strong moderation and a zero-tolerance policy for disruptive behavior. Players can enjoy the game without worry, focusing on building, learning, and connecting with others.</p>
+    <h2><span>IndonesiaPS</span> | The Growtopia Private Server</h2>
+    <p><strong>PT MAFIA JAYA</strong> — Founded on October 10, 2023, by Fery, IndonesiaPS has grown into a thriving community with over 19,000 members. More than just a game, it's a space where creativity and exploration come to life.</p>
+    <p>IndonesiaPS is a safe, welcoming, and inclusive server with strong moderation and a zero-tolerance policy for disruptive behavior. Players can enjoy the game without worry, focusing on building, learning, and connecting with others.</p>
     <p>What started as a simple tree-growing server has expanded into something much bigger. Players can take on different roles, from becoming a surgeon and saving lives to mastering the art of cooking, fishing for rare catches, building ships for exploration, or creating challenging parkour worlds filled with puzzles and obstacles.</p>
-    <p>With so many possibilities, MafiaPS offers a unique experience where every player can find their own path. Whether you're here to create, compete, or simply explore, the choice is yours.</p>
+    <p>With so many possibilities, IndonesiaPS offers a unique experience where every player can find their own path. Whether you're here to create, compete, or simply explore, the choice is yours.</p>
   </div>
 
-  <!-- Server Community -->
+  <!-- COMMUNITY -->
   <h2 class="section-title"><span>Server Community</span></h2>
-  <p style="text-align:center; color:#bcc3cf;">Join our community to connect, explore, and shape the future of MafiaPS!</p>
+  <p style="text-align:center; color:#b0b0b0;">Join our community to connect, explore, and shape the future of IndonesiaPS!</p>
   <div class="community-grid">
     <div class="community-card">
       <i class="fab fa-discord"></i>
       <h4>Discord</h4>
-      <p>Connect with other players, get support, and stay updated!</p>
-      <span class="btn">Join Discord</span>
-    </div>
-    <div class="community-card">
-      <i class="fab fa-whatsapp"></i>
-      <h4>WhatsApp</h4>
-      <p>Connect with other players, get support, and stay updated!</p>
-      <span class="btn">Join WhatsApp</span>
-    </div>
-    <div class="community-card">
-      <i class="fab fa-tiktok"></i>
-      <h4>TikTok</h4>
-      <p>Follow us for entertaining content, server highlights, and more!</p>
-      <span class="btn">Follow TikTok</span>
+      <p>Connect with other players, get support, and stay updated with all the latest news and events!</p>
+      <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn">Join Discord</a>
     </div>
   </div>
 
-  <!-- Server Team -->
-  <h2 class="section-title"><span>Server Team</span></h2>
-  <p style="text-align:center; color:#bcc3cf; margin-bottom:1rem;">The Architects of Seamless Server Operations</p>
-  <div class="team-grid">
-    <div class="team-card"><div class="avatar">F</div><h4>Fery</h4><div class="role">Server Owner</div><div class="quote">"MafiaPS is the best place to play, chill, and grind without limits."</div></div>
-    <div class="team-card"><div class="avatar">T</div><h4>Tron</h4><div class="role">Server Coder</div><div class="quote">"I love creating challenging worlds here."</div></div>
-    <div class="team-card"><div class="avatar">H</div><h4>HTA</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS is not just a server, it's a family."</div></div>
-    <div class="team-card"><div class="avatar">S</div><h4>sneevilz</h4><div class="role">Server staff</div><div class="quote">"Every login feels different on MafiaPS."</div></div>
-    <div class="team-card"><div class="avatar">A</div><h4>Angga</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS gives me the chance to enjoy the game freely."</div></div>
-    <div class="team-card"><div class="avatar">I</div><h4>Ilham</h4><div class="role">Server Staff</div><div class="quote">"What makes MafiaPS special is the atmosphere."</div></div>
-    <div class="team-card"><div class="avatar">F</div><h4>Farhat</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS combines fun and grind perfectly."</div></div>
-    <div class="team-card"><div class="avatar">B</div><h4>Berus</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS is where I find my happiness."</div></div>
-    <div class="team-card"><div class="avatar">T</div><h4>Through</h4><div class="role">Server Staff</div><div class="quote">"For me, MafiaPS is the best private server."</div></div>
-    <div class="team-card"><div class="avatar">V</div><h4>Vilo</h4><div class="role">Server Staff</div><div class="quote">"MafiaPS makes the grind feel rewarding."</div></div>
-    <div class="team-card"><div class="avatar">K</div><h4>Kane</h4><div class="role">Server Helper</div><div class="quote">"Being part of MafiaPS means being part of a growing community."</div></div>
-  </div>
-
-  <!-- footer cta -->
+  <!-- FOOTER -->
   <div class="footer-cta">
-    <h2>Welcome To <span style="color:#f5b042;">Mafia Private Server</span></h2>
-    <p style="color:#bcc3cf; max-width:600px; margin: 1rem auto;">Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
-    <div class="btn" style="font-size:1.2rem; padding:0.8rem 3rem;">Ready? Press the button to begin!</div>
-    <p style="margin-top: 1.5rem; color:#6a7a8e; font-size:0.8rem;">© MafiaPS — PT MAFIA JAYA</p>
+    <h2>Welcome To <span>Indonesia Private Server</span></h2>
+    <p>Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
+    <div class="btn">Ready? Press the button to begin!</div>
+    <p class="copyright">© IndonesiaPS — PT MAFIA JAYA</p>
   </div>
 
 </div>
-<!-- end container -->
 </body>
-        </html>
+</html>
