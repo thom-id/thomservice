@@ -72,14 +72,16 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 .howto-card .step-number{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;font-weight:700;font-size:0.8rem;line-height:24px;margin-right:8px}
 .download-btn{display:inline-block;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:0.5rem 1.5rem;border-radius:40px;font-weight:700;text-decoration:none;margin-top:0.5rem;transition:0.3s;animation:glowBtn 2s ease-in-out infinite alternate;white-space:nowrap;font-size:0.95rem}
 .download-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,0,0,0.4)}
-.server-link-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;white-space:nowrap;overflow-x:auto}
+.server-link-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.85rem;word-break:break-all;overflow-wrap:break-word}
 .server-link-box a{color:#ff3333;text-decoration:none}
 .server-link-box a:hover{text-decoration:underline}
-.ip-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;white-space:nowrap;overflow-x:auto}
-@media(max-width:700px){.hero h1{font-size:2.2rem}.hero-buttons{gap:0.5rem}.hero-buttons .sep{font-size:1.2rem}.btn-hero{padding:0.5rem 1.2rem;font-size:0.9rem;white-space:nowrap}.server-link-box{white-space:normal;overflow-x:auto}.ip-box{white-space:normal;overflow-x:auto}}
+.ip-box{background:#0a0a0a;padding:0.8rem 1.2rem;border-radius:12px;border-left:4px solid #ff0000;font-family:monospace;color:#ff3333;margin:0.6rem 0;font-size:0.9rem;word-break:break-all;overflow-wrap:break-word}
+.ip-box .ip-line{display:block}
+@media(max-width:700px){.hero h1{font-size:2.2rem}.hero-buttons{gap:0.5rem}.hero-buttons .sep{font-size:1.2rem}.btn-hero{padding:0.5rem 1.2rem;font-size:0.9rem;white-space:nowrap}}
 </style>
 </head>
-<body><div class="particles">
+<body>
+<div class="particles">
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -144,10 +146,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 <li><span class="step-number">3</span> Copy IP di bawah & paste</li>
 <li><span class="step-number">4</span> Save → buka Growtopia</li>
 </ol>
-<div class="ip-box">149.202.58.185 www.growtopia1.com<br>149.202.58.185 www.growtopia2.com</div>
+<div class="ip-box">
+<span class="ip-line">149.202.58.185 www.growtopia1.com</span>
+<span class="ip-line">149.202.58.185 www.growtopia2.com</span>
+</div>
 </div>
 
-<!-- IOS / Surge 5 -->
+<!-- iOS / Surge 5 -->
 <div class="howto-card">
 <h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
 <ol style="list-style:none;padding-left:0">
@@ -162,4 +167,4 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 </div>
 </div>
 </body>
-</html>
+  </html>
