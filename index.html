@@ -12,6 +12,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
       background: #0a0a0a;
@@ -89,13 +93,13 @@
       z-index: 1;
     }
 
+    /* === NAVBAR (hanya logo) === */
     .navbar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 1.2rem 0;
       border-bottom: 2px solid rgba(255,0,0,0.3);
-      flex-wrap: wrap;
       animation: slideDown 0.8s ease-out;
     }
 
@@ -105,7 +109,7 @@
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       letter-spacing: -0.5px;
       background: linear-gradient(135deg, #ff0000, #ffffff, #ff0000);
@@ -133,67 +137,13 @@
       50% { transform: scale(1.2); color: #ff3333; }
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      font-weight: 500;
-    }
-    .nav-links a {
-      color: #d0d0d0;
-      text-decoration: none;
-      transition: 0.3s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #ff0000;
-      transition: 0.3s;
-    }
-    .nav-links a:hover {
-      color: #ff0000;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-      border: none;
-      padding: 0.6rem 1.8rem;
-      border-radius: 40px;
-      font-weight: 700;
-      color: #ffffff;
-      cursor: default;
-      display: inline-block;
-      transition: 0.3s;
-      box-shadow: 0 0 20px rgba(255,0,0,0.3);
-      animation: glowBtn 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glowBtn {
-      0% { box-shadow: 0 0 15px rgba(255,0,0,0.2); }
-      100% { box-shadow: 0 0 35px rgba(255,0,0,0.5); }
-    }
-
-    .btn i {
-      margin-right: 6px;
-    }
-    .btn:hover {
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 0 50px rgba(255,0,0,0.6);
-    }
-
+    /* === HERO === */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 3.5rem 0 2.5rem;
+      padding: 3rem 0 1.5rem;
       animation: fadeInUp 1s ease-out;
     }
 
@@ -228,26 +178,88 @@
       margin-bottom: 2rem;
     }
 
+    /* === TOMBOL PLAY NOW & DISCORD SEJAJAR === */
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .btn-hero {
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-play {
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #ffffff;
+      box-shadow: 0 0 30px rgba(255,0,0,0.3);
+      animation: glowBtn 2s ease-in-out infinite alternate;
+    }
+
+    .btn-play:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 60px rgba(255,0,0,0.5);
+    }
+
+    .btn-discord {
+      background: linear-gradient(135deg, #5865F2, #4752c4);
+      color: #ffffff;
+      box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+      animation: glowDiscord 2s ease-in-out infinite alternate;
+    }
+
+    .btn-discord:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 60px rgba(88, 101, 242, 0.5);
+    }
+
+    @keyframes glowBtn {
+      0% { box-shadow: 0 0 15px rgba(255,0,0,0.2); }
+      100% { box-shadow: 0 0 40px rgba(255,0,0,0.5); }
+    }
+
+    @keyframes glowDiscord {
+      0% { box-shadow: 0 0 15px rgba(88,101,242,0.2); }
+      100% { box-shadow: 0 0 40px rgba(88,101,242,0.5); }
+    }
+
+    .btn-hero i {
+      font-size: 1.2rem;
+    }
+
     .scroll-indicator {
-      margin: 1rem 0 2rem;
+      margin: 0.5rem 0 1rem;
       color: #888;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
       animation: bounceScroll 2s ease-in-out infinite;
     }
 
     @keyframes bounceScroll {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
+      50% { transform: translateY(6px); }
     }
 
     .scroll-indicator i {
       display: block;
-      font-size: 1.8rem;
-      margin-top: 4px;
+      font-size: 1.5rem;
+      margin-top: 2px;
       color: #ff0000;
     }
 
+    /* === SECTION TITLE === */
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -269,6 +281,7 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* === HOW TO PLAY CARDS === */
     .howto-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -376,6 +389,17 @@
       margin-right: 8px;
     }
 
+    .ip-box {
+      background: #0a0a0a;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      border-left: 4px solid #ff0000;
+      font-family: monospace;
+      color: #ff3333;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+
     .about-section {
       background: rgba(20, 20, 20, 0.9);
       border-radius: 40px;
@@ -401,54 +425,6 @@
       color: #c8d0dc;
       max-width: 800px;
       margin-bottom: 1.2rem;
-    }
-
-    .community-grid {
-      display: flex;
-      justify-content: center;
-      margin: 2.5rem 0;
-    }
-    .community-card {
-      background: rgba(20, 20, 20, 0.9);
-      padding: 2.5rem 2.5rem;
-      border-radius: 30px;
-      text-align: center;
-      border: 1px solid rgba(255,0,0,0.2);
-      max-width: 400px;
-      width: 100%;
-      backdrop-filter: blur(10px);
-      transition: 0.4s;
-      animation: cardFadeIn 0.8s ease-out 0.3s forwards;
-      opacity: 0;
-    }
-    .community-card:hover {
-      border-color: #ff0000;
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(255,0,0,0.15);
-    }
-    .community-card i {
-      font-size: 3.5rem;
-      color: #ff0000;
-      margin-bottom: 0.5rem;
-      animation: pulseIcon 2s ease-in-out infinite;
-    }
-    .community-card h4 {
-      font-size: 1.5rem;
-      color: #ffffff;
-    }
-    .community-card p {
-      color: #aeb8c7;
-      font-size: 0.95rem;
-      margin: 0.6rem 0 1.5rem;
-    }
-    .community-card .btn {
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-      color: #ffffff;
-      font-weight: 700;
-      padding: 0.6rem 2.5rem;
-      border-radius: 60px;
-      text-decoration: none;
-      display: inline-block;
     }
 
     .footer-cta {
@@ -477,21 +453,15 @@
       margin-top: 1.5rem;
       background: linear-gradient(135deg, #ff0000, #cc0000);
       color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: default;
+      transition: 0.3s;
     }
     .footer-cta .btn:hover {
       transform: scale(1.05);
       box-shadow: 0 0 60px rgba(255,0,0,0.4);
-    }
-
-    .ip-box {
-      background: #0a0a0a;
-      padding: 1rem 1.5rem;
-      border-radius: 16px;
-      border-left: 4px solid #ff0000;
-      font-family: monospace;
-      color: #ff3333;
-      margin: 0.8rem 0;
-      font-size: 0.9rem;
     }
 
     .copyright {
@@ -501,24 +471,17 @@
     }
 
     @media (max-width: 700px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: stretch;
-      }
-      .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
       .hero h1 {
         font-size: 2.4rem;
       }
-      .community-grid {
-        padding: 0 0.5rem;
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
       }
-      .community-card {
-        padding: 1.8rem 1.2rem;
+      .btn-hero {
+        width: 80%;
+        justify-content: center;
       }
     }
   </style>
@@ -544,31 +507,33 @@
 
 <div class="container">
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (hanya logo) -->
   <nav class="navbar">
     <div class="logo"><i class="fas fa-crown"></i> IndonesiaPS</div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">How to Play</a>
-      <a href="#">About</a>
-      <a href="#">Community</a>
-    </div>
-    <div>
-      <span class="btn"><i class="fas fa-rocket"></i> Join now</span>
-    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <h1>Join a stable Growtopia Private Server</h1>
     <p>Packed with custom items, fun daily events, and a balanced economy. Build, compete, and connect in a safe, inclusive community with strong moderation and zero tolerance for disruptions.</p>
+
+    <!-- TOMBOL PLAY NOW & DISCORD SEJAJAR -->
+    <div class="hero-buttons">
+      <a href="#how-to-play" class="btn-hero btn-play">
+        <i class="fas fa-play"></i> Play Now
+      </a>
+      <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn-hero btn-discord">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+    </div>
+
     <div class="scroll-indicator">
-      Scroll Down <i class="fas fa-chevron-down"></i>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
   <!-- HOW TO PLAY -->
-  <h2 class="section-title"><span>How to Play</span></h2>
+  <h2 id="how-to-play" class="section-title"><span>How to Play</span></h2>
   <p style="text-align:center; color:#b0b0b0; margin-bottom: 0.5rem;">Please select the application you want to use!</p>
 
   <div class="howto-grid">
@@ -603,7 +568,9 @@
         <li><span class="step-number">4</span> Download Host <a href="https://gtpshosting.web.id/how-to-play/Indonesia" target="_blank" style="color: #ff3333;">Server link</a> pada opsi "Hosts File URL".</li>
         <li><span class="step-number">5</span> Cobalah login melalui Growtopia.</li>
       </ol>
-    </div>    <!-- Windows -->
+    </div>
+
+    <!-- Windows -->
     <div class="howto-card">
       <h3><i class="fab fa-windows"></i> Windows</h3>
       <ol style="list-style: none; padding-left: 0;">
@@ -635,25 +602,13 @@
 
   </div>
 
-  <!-- ABOUT -->
+  <!-- ABOUT (tanpa PT MAFIA JAYA) -->
   <div class="about-section">
     <h2><span>IndonesiaPS</span> | The Growtopia Private Server</h2>
-    <p><strong>PT MAFIA JAYA</strong> — Founded on October 10, 2023, by Fery, IndonesiaPS has grown into a thriving community with over 19,000 members. More than just a game, it's a space where creativity and exploration come to life.</p>
+    <p>Founded on October 10, 2023, by Fery, IndonesiaPS has grown into a thriving community with over 19,000 members. More than just a game, it's a space where creativity and exploration come to life.</p>
     <p>IndonesiaPS is a safe, welcoming, and inclusive server with strong moderation and a zero-tolerance policy for disruptive behavior. Players can enjoy the game without worry, focusing on building, learning, and connecting with others.</p>
     <p>What started as a simple tree-growing server has expanded into something much bigger. Players can take on different roles, from becoming a surgeon and saving lives to mastering the art of cooking, fishing for rare catches, building ships for exploration, or creating challenging parkour worlds filled with puzzles and obstacles.</p>
     <p>With so many possibilities, IndonesiaPS offers a unique experience where every player can find their own path. Whether you're here to create, compete, or simply explore, the choice is yours.</p>
-  </div>
-
-  <!-- COMMUNITY -->
-  <h2 class="section-title"><span>Server Community</span></h2>
-  <p style="text-align:center; color:#b0b0b0;">Join our community to connect, explore, and shape the future of IndonesiaPS!</p>
-  <div class="community-grid">
-    <div class="community-card">
-      <i class="fab fa-discord"></i>
-      <h4>Discord</h4>
-      <p>Connect with other players, get support, and stay updated with all the latest news and events!</p>
-      <a href="https://discord.gg/2mnM5aqxy" target="_blank" class="btn">Join Discord</a>
-    </div>
   </div>
 
   <!-- FOOTER -->
@@ -661,7 +616,7 @@
     <h2>Welcome To <span>Indonesia Private Server</span></h2>
     <p>Discover exclusive features, meet incredible players from around the world, and dive into a community built for epic journeys and unforgettable experiences.</p>
     <div class="btn">Ready? Press the button to begin!</div>
-    <p class="copyright">© IndonesiaPS — PT MAFIA JAYA</p>
+    <p class="copyright">© IndonesiaPS</p>
   </div>
 
 </div>
