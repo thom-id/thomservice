@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURIX</title>
+<title>Lucid Private Server</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -40,7 +40,7 @@ body::before{
     background-image:
         linear-gradient(
             rgba(10,10,10,0.40),
-            rgba(10,10,10,0.78)
+            rgba(20,5,30,0.85) /* Sedikit nuansa ungu di bagian bawah */
         ),
         url('https://cdn.phototourl.com/free/2026-09-01-52e6970d-e427-406a-8b3f-68d5b1bc1685.png');
 
@@ -67,7 +67,7 @@ body::after{
     background:
         radial-gradient(
             ellipse at 20% 50%,
-            rgba(255,196,0,0.08) 0%,
+            rgba(122,0,230,0.15) 0%, /* Glow ungu */
             transparent 60%
         ),
         radial-gradient(
@@ -106,9 +106,10 @@ body::after{
     animation:floatParticle linear infinite;
 }
 
+/* Warna partikel diubah jadi ungu dan putih */
 .particle:nth-child(1){
     width:8px;height:8px;
-    background:#FFC400;
+    background:#BA68C8;
     left:10%;
     animation-duration:14s;
     animation-delay:0s
@@ -116,7 +117,7 @@ body::after{
 
 .particle:nth-child(2){
     width:12px;height:12px;
-    background:#FFF8DC;
+    background:#FFFFFF;
     left:25%;
     animation-duration:18s;
     animation-delay:2s
@@ -124,7 +125,7 @@ body::after{
 
 .particle:nth-child(3){
     width:6px;height:6px;
-    background:#FFC400;
+    background:#9C27B0;
     left:40%;
     animation-duration:12s;
     animation-delay:4s
@@ -132,7 +133,7 @@ body::after{
 
 .particle:nth-child(4){
     width:10px;height:10px;
-    background:#FFF8DC;
+    background:#E1BEE7;
     left:55%;
     animation-duration:20s;
     animation-delay:1s
@@ -140,7 +141,7 @@ body::after{
 
 .particle:nth-child(5){
     width:7px;height:7px;
-    background:#FFC400;
+    background:#BA68C8;
     left:70%;
     animation-duration:16s;
     animation-delay:3s
@@ -148,7 +149,7 @@ body::after{
 
 .particle:nth-child(6){
     width:14px;height:14px;
-    background:#FFF8DC;
+    background:#FFFFFF;
     left:85%;
     animation-duration:22s;
     animation-delay:5s
@@ -156,7 +157,7 @@ body::after{
 
 .particle:nth-child(7){
     width:9px;height:9px;
-    background:#FFC400;
+    background:#9C27B0;
     left:15%;
     animation-duration:17s;
     animation-delay:7s
@@ -164,7 +165,7 @@ body::after{
 
 .particle:nth-child(8){
     width:11px;height:11px;
-    background:#FFF8DC;
+    background:#E1BEE7;
     left:45%;
     animation-duration:19s;
     animation-delay:2s
@@ -172,7 +173,7 @@ body::after{
 
 .particle:nth-child(9){
     width:5px;height:5px;
-    background:#FFC400;
+    background:#BA68C8;
     left:65%;
     animation-duration:13s;
     animation-delay:6s
@@ -180,7 +181,7 @@ body::after{
 
 .particle:nth-child(10){
     width:13px;height:13px;
-    background:#FFF8DC;
+    background:#FFFFFF;
     left:90%;
     animation-duration:21s;
     animation-delay:4s
@@ -188,7 +189,7 @@ body::after{
 
 .particle:nth-child(11){
     width:8px;height:8px;
-    background:#FFC400;
+    background:#9C27B0;
     left:5%;
     animation-duration:15s;
     animation-delay:8s
@@ -196,7 +197,7 @@ body::after{
 
 .particle:nth-child(12){
     width:10px;height:10px;
-    background:#FFF8DC;
+    background:#E1BEE7;
     left:35%;
     animation-duration:18s;
     animation-delay:3s
@@ -204,7 +205,7 @@ body::after{
 
 .particle:nth-child(13){
     width:6px;height:6px;
-    background:#FFC400;
+    background:#BA68C8;
     left:75%;
     animation-duration:14s;
     animation-delay:9s
@@ -212,7 +213,7 @@ body::after{
 
 .particle:nth-child(14){
     width:12px;height:12px;
-    background:#FFF8DC;
+    background:#FFFFFF;
     left:50%;
     animation-duration:20s;
     animation-delay:1s
@@ -220,7 +221,7 @@ body::after{
 
 .particle:nth-child(15){
     width:7px;height:7px;
-    background:#FFC400;
+    background:#9C27B0;
     left:95%;
     animation-duration:16s;
     animation-delay:5s
@@ -247,7 +248,7 @@ body::after{
 }
 
 /* ==============================
-   CONTAINER
+   CONTAINER & NAVBAR
    ============================== */
 .container{
     max-width:100%;
@@ -257,18 +258,13 @@ body::after{
     z-index:1;
 }
 
-/* ==============================
-   NAVBAR
-   ============================== */
 .navbar{
     display:flex;
     align-items:center;
     justify-content:center;
     padding:0.8rem 0;
 
-    /* Garis atas/bawah dihilangkan */
     border-bottom:none;
-
     animation:slideDown 0.8s ease-out;
 }
 
@@ -290,9 +286,9 @@ body::after{
     letter-spacing:-0.5px;
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFF8DC,
-        #FFC400
+        #BA68C8,
+        #FFFFFF,
+        #BA68C8
     );
     background-size:200% 200%;
     -webkit-background-clip:text;
@@ -317,7 +313,7 @@ body::after{
 
 .logo i{
     margin-right:8px;
-    color:#FFC400;
+    color:#BA68C8;
     animation:pulseIcon 2s ease-in-out infinite
 }
 
@@ -328,10 +324,9 @@ body::after{
 
     50%{
         transform:scale(1.2);
-        color:#FFD84D
+        color:#E1BEE7
     }
 }
-
 /* ==============================
    HERO
    ============================== */
@@ -362,10 +357,10 @@ body::after{
     max-width:100%;
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFF8DC,
-        #FFC400,
-        #FFF8DC
+        #BA68C8,
+        #FFFFFF,
+        #BA68C8,
+        #FFFFFF
     );
     background-size:300% 300%;
     -webkit-background-clip:text;
@@ -392,7 +387,7 @@ body::after{
 
 .hero p{
     font-size:1rem;
-    color:#b0b0b0;
+    color:#cbb8d4;
     max-width:100%;
     margin-bottom:1.2rem;
     padding:0 0.3rem;
@@ -426,22 +421,22 @@ body::after{
 .btn-play{
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFB000
+        #9C27B0,
+        #7A00E6
     );
-    color:#0a0a0a;
-    box-shadow:0 0 30px rgba(255,196,0,0.3);
+    color:#FFFFFF;
+    box-shadow:0 0 30px rgba(156,39,176,0.4);
     animation:glowBtn 2s ease-in-out infinite alternate
 }
 
 .btn-play:hover{
     transform:scale(1.05);
-    box-shadow:0 0 60px rgba(255,196,0,0.5)
+    box-shadow:0 0 60px rgba(122,0,230,0.6)
 }
 
 .btn-discord{
     background:transparent;
-    color:#FFF8DC;
+    color:#FFFFFF;
     border:2px solid #5865F2
 }
 
@@ -452,11 +447,11 @@ body::after{
 
 @keyframes glowBtn{
     0%{
-        box-shadow:0 0 15px rgba(255,196,0,0.2)
+        box-shadow:0 0 15px rgba(122,0,230,0.2)
     }
 
     100%{
-        box-shadow:0 0 40px rgba(255,196,0,0.5)
+        box-shadow:0 0 40px rgba(122,0,230,0.5)
     }
 }
 
@@ -486,7 +481,7 @@ body::after{
     display:block;
     font-size:1.2rem;
     margin-top:2px;
-    color:#FFC400
+    color:#BA68C8
 }
 
 /* ==============================
@@ -502,8 +497,8 @@ body::after{
 .section-title span{
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFF8DC
+        #BA68C8,
+        #FFFFFF
     );
     -webkit-background-clip:text;
     background-clip:text;
@@ -537,10 +532,10 @@ body::after{
 }
 
 .howto-card{
-    background:rgba(20,20,20,0.9);
+    background:rgba(20,10,25,0.9);
     padding:1.2rem 1rem;
     border-radius:18px;
-    border:1px solid rgba(255,196,0,0.2);
+    border:1px solid rgba(186,104,200,0.2);
     transition:0.4s;
     backdrop-filter:blur(10px);
     animation:cardFadeIn 0.8s ease-out forwards;
@@ -581,15 +576,15 @@ body::after{
 }
 
 .howto-card:hover{
-    border-color:#FFC400;
+    border-color:#BA68C8;
     transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(255,196,0,0.15)
+    box-shadow:0 10px 30px rgba(122,0,230,0.15)
 }
 
 .howto-card h3{
     font-size:1.2rem;
     margin-bottom:0.6rem;
-    color:#FFC400;
+    color:#BA68C8;
     word-break:keep-all
 }
 
@@ -601,7 +596,7 @@ body::after{
 .howto-card ul,
 .howto-card p,
 .howto-card ol{
-    color:#c8d0dc;
+    color:#d8c9e0;
     font-size:0.9rem;
     list-style:none;
     padding-left:0;
@@ -617,10 +612,10 @@ body::after{
     display:inline-block;
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFB000
+        #9C27B0,
+        #7A00E6
     );
-    color:#0a0a0a;
+    color:#FFFFFF;
     border-radius:50%;
     width:20px;
     height:20px;
@@ -640,10 +635,10 @@ body::after{
     width:100%;
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFB000
+        #9C27B0,
+        #7A00E6
     );
-    color:#0a0a0a;
+    color:#FFFFFF;
     padding:0.6rem 0.8rem;
     border-radius:40px;
     font-weight:700;
@@ -660,7 +655,7 @@ body::after{
 
 .download-btn:hover{
     transform:scale(1.02);
-    box-shadow:0 0 40px rgba(255,196,0,0.4)
+    box-shadow:0 0 40px rgba(122,0,230,0.4)
 }
 
 .download-btn i{
@@ -671,7 +666,7 @@ body::after{
     background:#0a0a0a;
     padding:0.6rem 0.8rem;
     border-radius:10px;
-    border-left:4px solid #FFC400;
+    border-left:4px solid #BA68C8;
     margin:0.5rem 0;
     width:100%;
     word-break:break-all;
@@ -681,7 +676,7 @@ body::after{
 }
 
 .link-box a{
-    color:#FFD84D;
+    color:#E1BEE7;
     text-decoration:none;
     word-break:break-all;
     font-family:monospace
@@ -696,13 +691,13 @@ code{
     padding:0.15rem 0.4rem;
     border-radius:4px;
     font-size:0.75rem;
-    color:#FFD84D;
+    color:#E1BEE7;
     word-break:break-word
 }
 
 .sub-text{
     text-align:center;
-    color:#b0b0b0;
+    color:#cbb8d4;
     margin-bottom:0.3rem;
     font-size:0.85rem;
     word-break:keep-all
@@ -712,19 +707,19 @@ code{
     background:#0a0a0a;
     padding:0.5rem 0.8rem;
     border-radius:8px;
-    border:1px solid rgba(255,196,0,0.3);
+    border:1px solid rgba(186,104,200,0.3);
     margin:0.5rem 0;
     font-family:monospace;
     font-size:0.8rem;
-    color:#FFD84D;
+    color:#E1BEE7;
     text-align:center;
     word-break:break-all
 }
 
 .mode-badge{
     display:inline-block;
-    background:#6B42D7;
-    color:#FAF9FB;
+    background:#BA68C8;
+    color:#0a0a0a;
     font-size:0.65rem;
     padding:0.15rem 0.6rem;
     border-radius:30px;
@@ -737,10 +732,10 @@ code{
     display:inline-block;
     background:linear-gradient(
         135deg,
-        #6B42D7,
-        #FAF9FB
+        #9C27B0,
+        #7A00E6
     );
-    color:#0a0a0a;
+    color:#FFFFFF;
     font-size:0.9rem;
     padding:0.2rem 1rem;
     border-radius:30px;
@@ -749,22 +744,22 @@ code{
 }
 
 .notif{
-    background:rgba(255,196,0,0.1);
-    border:1px solid rgba(255,196,0,0.3);
+    background:rgba(186,104,200,0.1);
+    border:1px solid rgba(186,104,200,0.3);
     padding:0.4rem 0.8rem;
     border-radius:10px;
     font-size:0.8rem;
-    color:#6B42D7;
+    color:#E1BEE7;
     margin:0.3rem 0
 }
 
 .unduh-btn{
     background:linear-gradient(
         135deg,
-        #FFC400,
-        #FFB000
+        #9C27B0,
+        #7A00E6
     );
-    color:#0a0a0a;
+    color:#FFFFFF;
     padding:0.6rem 1.5rem;
     border-radius:40px;
     font-weight:700;
@@ -781,7 +776,7 @@ code{
 
 .unduh-btn:hover{
     transform:scale(1.02);
-    box-shadow:0 0 40px rgba(255,196,0,0.4)
+    box-shadow:0 0 40px rgba(122,0,230,0.4)
 }
 
 .unduh-btn i{
@@ -789,9 +784,9 @@ code{
 }
 
 .salin-btn{
-    background: linear-gradient(90deg, #8E52E9, #FFFFFF);
-    border:2px solid #460E63;
-    color: #6B42D7;
+    background:#0a0a0a;
+    border:2px solid #BA68C8;
+    color:#FFFFFF;
     padding:0.5rem 1rem;
     border-radius:30px;
     font-weight:700;
@@ -803,8 +798,8 @@ code{
 }
 
 .salin-btn:hover{
-    background:#6B42D7;
-    color:#FAF9FB;
+    background:#BA68C8;
+    color:#0a0a0a;
     transform:scale(1.02)
 }
 
@@ -865,7 +860,6 @@ code{
 }
 </style>
 </head>
-
 <body>
 
 <div class="particles">
@@ -899,8 +893,8 @@ code{
     <h1>Welcome To LucidPS</h1>
 
     <p>
-        New Server yang memiliki Economy Mid To Ez, dan memberikan
-        pengalaman yang enak, juga memiliki banyak event yang menarik
+        Server Lucid Private Server memberikan Economy Mid to Ez,
+        dan memberikan event yang menarik serta pengalaman bermain di GTPS
     </p>
 
     <div class="hero-buttons">
@@ -909,7 +903,7 @@ code{
             <i class="fas fa-play"></i> Play Now
         </a>
 
-        <a href="https://discord.gg/tDGW9zN7t"
+        <a href="https://discord.gg/vXNngsmcn"
            target="_blank"
            class="btn-hero btn-discord">
             <i class="fab fa-discord"></i> Discord
@@ -935,10 +929,10 @@ code{
 
 <!-- Android APK -->
 <div class="howto-card">
-<h3><i class="fas fa-mobile-alt"></i> AURIX APK - Android</h3>
-<div class="notif"><i class="fas fa-exclamation-triangle"></i> Hapus Growtopia asli dulu jika ingin menggunakan aplikasi AURIX.</div>
-<p style="margin-top:0.4rem;color:#FFD84D;font-size:0.85rem;">Langsung login tanpa Virtual Host / PowerTunnel.</p>
-<a href="https://www.mediafire.com/file/54uthtvlm1u8otk/LucidPS.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download AURIX APK</a>
+<h3><i class="fas fa-mobile-alt"></i> LucidPS APK - Android</h3>
+<div class="notif"><i class="fas fa-exclamation-triangle"></i> Hapus Growtopia asli dulu jika ingin menggunakan aplikasi LucidPS.</div>
+<p style="margin-top:0.4rem;color:#E1BEE7;font-size:0.85rem;">Langsung login tanpa Virtual Host / PowerTunnel.</p>
+<a href="https://www.mediafire.com/file/54uthtvlm1u8otk/LucidPS.apk/file" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download LucidPS APK</a>
 </div>
 
 <!-- PowerTunnel -->
@@ -965,13 +959,13 @@ code{
 <li><span class="step-number">2</span> Buka → <strong>SELECT HOSTS FILE</strong></li>
 <li><span class="step-number">3</span> Klik tombol <strong>"Unduh Host"</strong> di bawah</li>
 <li><span class="step-number">4</span> Pilih file Host yang sudah di download</li>
-<li><span class="step-number">5</span> Buka Growtopia → Play → name server <strong>AURIX</strong></li>
+<li><span class="step-number">5</span> Buka Growtopia → Play → name server <strong>LucidPS</strong></li>
 </ol>
 <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Virtual Host App</a>
 <a href="#" onclick="downloadHost()" class="unduh-btn" style="margin-top:0.4rem;"><i class="fas fa-file-download"></i> Unduh Host</a>
 </div>
 
-<!-- iOS / Surge 5 (DIPINDAHKAN KE ATAS) -->
+<!-- iOS / Surge 5 -->
 <div class="howto-card">
 <h3><i class="fab fa-apple"></i> iOS / Surge 5</h3>
 <ol style="list-style:none;padding-left:0">
@@ -980,11 +974,11 @@ code{
 <li><span class="step-number">3</span> Buka Surge → Import dari clipboard</li>
 <li><span class="step-number">4</span> Aktifkan → buka Growtopia → name server <strong>LucidPS</strong></li>
 </ol>
-<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surg
+<a href="https://apps.apple.com/us/app/surge-5/id1442620678" target="_blank" class="download-btn"><i class="fab fa-app-store"></i> Download Surge 5</a>
 <button class="salin-btn" onclick="copyIOS()"><i class="fas fa-copy"></i> Salin Konfigurasi</button>
 </div>
 
-<!-- Windows (DIPINDAHKAN KE BAWAH, IP DAN LucidPS DIHAPUS) -->
+<!-- Windows -->
 <div class="howto-card">
 <h3><i class="fab fa-windows"></i> Windows</h3>
 <ol style="list-style:none;padding-left:0">
@@ -994,7 +988,6 @@ code{
 <li><span class="step-number">4</span> Save → buka Growtopia → name server <strong>LucidPS</strong></li>
 </ol>
 <button class="salin-btn" onclick="copyWindowsIP()" style="margin-top:0.3rem;"><i class="fas fa-copy"></i> Salin IP</button>
-<!-- IP Address dan Server LucidPS di bagian bawah sengaja dihapus sesuai permintaan -->
 </div>
 
 </div>
@@ -1018,7 +1011,7 @@ function downloadHost() {
 function copyPowerTunnel() {
     var text = "https://gtpshosting.web.id/raw/LucidPS";
     navigator.clipboard.writeText(text).then(() => {
-        alert("Host PowerTunnel berhasil disalin! Gunakan name server: AURIX");
+        alert("Host PowerTunnel berhasil disalin! Gunakan name server: LucidPS");
     });
 }
 
@@ -1032,10 +1025,10 @@ function copyIOS() {
 function copyWindowsIP() {
     var text = "149.202.58.185 www.growtopia1.com\n149.202.58.185 www.growtopia2.com";
     navigator.clipboard.writeText(text).then(() => {
-        alert("IP Windows berhasil disalin! Paste di file hosts, lalu gunakan name server: AURIX");
+        alert("IP Windows berhasil disalin! Paste di file hosts, lalu gunakan name server: LucidPS");
     });
 }
 </script>
 
 </body>
-</html>
+                                                       </html>
