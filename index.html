@@ -46,6 +46,32 @@
             font-size: 1.2rem;
         }
 
+        /* ===== JOIN DISCORD ===== */
+        .join-discord {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+        .join-discord .btn-discord {
+            display: inline-block;
+            background: #5865F2;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .join-discord .btn-discord:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
+        }
+        .join-discord .btn-discord i {
+            margin-right: 10px;
+        }
+
         /* ===== PACKAGES ===== */
         .packages {
             display: flex;
@@ -127,6 +153,38 @@
         }
         .btn:hover {
             transform: scale(1.05);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        .faq-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item .q {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+        .faq-item .a {
+            color: #ccc;
+            margin-top: 5px;
+            padding-left: 20px;
+            font-size: 0.95rem;
         }
 
         /* ===== INFO ===== */
@@ -301,6 +359,13 @@
             .qris-section .qris-image {
                 max-width: 180px;
             }
+            .faq-item .q {
+                font-size: 0.95rem;
+            }
+            .faq-item .a {
+                font-size: 0.85rem;
+                padding-left: 10px;
+            }
         }
 
         /* ===== LOADING ===== */
@@ -326,17 +391,17 @@
             <p>Jasa Setup Server Discord Profesional & Terpercaya</p>
         </header>
 
-        <div class="packages">
-            <!-- Paket C -->
-            <div class="card">
-                <h2>Paket C</h2>
-                <div class="price">Rp5.000</div>
-                <ul>
-                    <li>✅ Custom Request</li>
-                </ul>
-                <button class="btn" onclick="showPage('page-order', 'C')">Pesan Sekarang</button>
-            </div>
+        <!-- ===== JOIN DISCORD ===== -->
+        <div class="join-discord">
+            <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn-discord">
+                💬 Join Discord
+            </a>
+            <p style="color:#888;margin-top:10px;font-size:0.9rem;">
+                Gabung ke server Discord kami untuk info lebih lanjut
+            </p>
+        </div>
 
+        <div class="packages">
             <!-- Paket B -->
             <div class="card">
                 <h2>Paket B</h2>
@@ -365,6 +430,61 @@
                     <li>✅ Custom Request (2x Req)</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'A')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <div class="faq-section">
+            <h3>❓ FAQ</h3>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah saya harus memiliki server Discord?</div>
+                <div class="a">A: Tidak. Server Discord akan disediakan oleh THOM Services.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah server akan menjadi milik saya?</div>
+                <div class="a">A: Ya. Setelah setup selesai, server akan diserahkan sepenuhnya kepada pembeli.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah server dibuat dari awal?</div>
+                <div class="a">A: Ya. Server akan dibuat dan disusun dari awal sesuai kebutuhan dan permintaan pembeli.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Berapa lama proses pengerjaan?</div>
+                <div class="a">A: Waktu pengerjaan menyesuaikan antrean dan tingkat kesulitan pesanan.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa request sesuai keinginan?</div>
+                <div class="a">A: Bisa. Paket A sudah termasuk request custom.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa revisi?</div>
+                <div class="a">A: Ya, gratis revisi sebanyak 1 kali.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah saya bisa menambahkan bot sendiri?</div>
+                <div class="a">A: Bisa. Kamu dapat meminta bot tertentu untuk ditambahkan selama sesuai dengan kebutuhan server.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Bagaimana cara melakukan pembayaran?</div>
+                <div class="a">A: Pembayaran dilakukan sebelum pengerjaan dimulai.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa refund?</div>
+                <div class="a">A: Tidak. Refund tidak berlaku setelah pengerjaan dimulai.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Bagaimana cara order?</div>
+                <div class="a">A: Buat #ticket atau DM @THOM melalui Discord.</div>
             </div>
         </div>
 
@@ -397,7 +517,6 @@
                 <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
                 <select name="paket" id="paket" required onchange="toggleCustomRequest()">
-                    <option value="C">Paket C - Rp5.000</option>
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
                 </select>
@@ -411,9 +530,9 @@
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
 
-                <!-- Custom Request - Hanya untuk Paket C & A -->
+                <!-- Custom Request - Hanya untuk Paket A -->
                 <div id="customRequestWrapper">
-                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket C & A)</span></label>
+                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
                     <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
                 </div>
 
@@ -426,7 +545,7 @@
                             ✅ Scan QRIS di atas untuk membayar
                         </p>
                     </div>
-                    <div class="total-harga" id="totalDisplay">Total: Rp5.000</div>
+                    <div class="total-harga" id="totalDisplay">Total: Rp15.000</div>
                     <p style="color:#888;font-size:0.85rem;">📸 Setelah bayar, upload bukti di bawah</p>
                 </div>
 
@@ -490,7 +609,7 @@
 
             if (paket === 'B') {
                 wrapper.style.display = 'none';
-                textarea.value = ''; // kosongkan jika paket B
+                textarea.value = '';
             } else {
                 wrapper.style.display = 'block';
             }
@@ -499,7 +618,7 @@
         // ===== Update total harga =====
         function updateQRIS() {
             const paket = document.getElementById('paket').value;
-            const hargaMap = { C: 'Rp5.000', B: 'Rp15.000', A: 'Rp25.000' };
+            const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
             document.getElementById('totalDisplay').textContent = 'Total: ' + hargaMap[paket];
         }
 
@@ -516,36 +635,30 @@
             const logo_server = formData.get('logo_server');
             const bukti = formData.get('bukti');
 
-            // Validasi bukti bayar
             if (!bukti || bukti.size === 0) {
                 alert('⚠️ Silakan upload bukti pembayaran!');
                 return;
             }
 
-            const hargaMap = { C: 'Rp5.000', B: 'Rp15.000', A: 'Rp25.000' };
+            const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
             const total_harga = hargaMap[paket] || 'Rp0';
 
-            // ===== WEBHOOK URL KAMU =====
             const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
-            // Baca file bukti sebagai base64
             const reader = new FileReader();
             reader.readAsDataURL(bukti);
             reader.onload = async function() {
-                // Siapkan pesan ke Discord
                 let fields = [
                     { name: '📦 Paket', value: `Paket ${paket} - ${total_harga}`, inline: true },
                     { name: '🖥️ Nama Server', value: nama_server, inline: true }
                 ];
 
-                // Custom Request hanya jika paket C atau A
-                if (paket !== 'B' && custom_request && custom_request !== '-') {
+                if (paket === 'A' && custom_request && custom_request !== '-') {
                     fields.push({ name: '📝 Custom Request', value: custom_request, inline: false });
                 }
 
                 fields.push({ name: '📎 Bukti Bayar', value: 'Lihat lampiran di bawah ⬇️', inline: false });
 
-                // Jika ada logo server, tambahkan info
                 if (logo_server && logo_server.size > 0) {
                     fields.splice(2, 0, { name: '🖼️ Logo Server', value: 'Terdapat lampiran logo', inline: true });
                 }
@@ -561,14 +674,12 @@
                 };
 
                 try {
-                    // Kirim JSON ke Discord
                     const res1 = await fetch(WEBHOOK_URL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
 
-                    // Kirim file bukti
                     const formDataFile = new FormData();
                     formDataFile.append('file', bukti);
                     const res2 = await fetch(WEBHOOK_URL + '?wait=true', {
@@ -576,7 +687,6 @@
                         body: formDataFile
                     });
 
-                    // Jika ada logo server, kirim juga
                     let res3 = { ok: true };
                     if (logo_server && logo_server.size > 0) {
                         const formDataLogo = new FormData();
@@ -606,7 +716,7 @@
         (function() {
             const params = new URLSearchParams(window.location.search);
             const paket = params.get('paket');
-            if (paket && ['C', 'B', 'A'].includes(paket)) {
+            if (paket && ['B', 'A'].includes(paket)) {
                 showPage('page-order', paket);
             }
         })();
