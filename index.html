@@ -223,6 +223,34 @@
             text-decoration: underline;
         }
 
+        /* ===== QRIS SECTION ===== */
+        .qris-section {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px dashed rgba(255, 215, 0, 0.3);
+        }
+        .qris-section h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        .qris-section .qris-image {
+            max-width: 250px;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: #fff;
+            padding: 10px;
+        }
+        .qris-section .total-harga {
+            font-size: 1.5rem;
+            color: #ffd700;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
         /* ===== SUCCESS ===== */
         .success {
             text-align: center;
@@ -270,6 +298,9 @@
                 padding: 20px;
                 margin: 20px 10px;
             }
+            .qris-section .qris-image {
+                max-width: 180px;
+            }
         }
 
         /* ===== LOADING ===== */
@@ -298,7 +329,6 @@
         <div class="packages">
             <!-- Paket C -->
             <div class="card">
-                <div class="badge">HEMAT</div>
                 <h2>Paket C</h2>
                 <div class="price">Rp5.000</div>
                 <ul>
@@ -309,7 +339,6 @@
 
             <!-- Paket B -->
             <div class="card">
-                <div class="badge">POPULER</div>
                 <h2>Paket B</h2>
                 <div class="price">Rp15.000</div>
                 <ul>
@@ -320,9 +349,9 @@
                 <button class="btn" onclick="showPage('page-order', 'B')">Pesan Sekarang</button>
             </div>
 
-            <!-- Paket A -->
+            <!-- Paket A - BEST SELLER -->
             <div class="card featured">
-                <div class="badge">BEST DEAL</div>
+                <div class="badge">BEST SELLER</div>
                 <h2>Paket A</h2>
                 <div class="price">Rp25.000</div>
                 <ul>
@@ -355,7 +384,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== HALAMAN 2: FORM ORDER ===== -->
+    <!-- ===== HALAMAN 2: FORM ORDER + QRIS ===== -->
     <!-- ============================================================ -->
     <div id="page-order" class="container">
         <header>
@@ -367,28 +396,40 @@
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
-                <select name="paket" id="paket" required>
+                <select name="paket" id="paket" required onchange="updateQRIS()">
                     <option value="C">Paket C - Rp5.000</option>
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
                 </select>
 
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" name="nama" id="nama" placeholder="Masukkan nama kamu" required>
+                <!-- Nama Server -->
+                <label for="nama_server">Nama Server</label>
+                <input type="text" name="nama_server" id="nama_server" placeholder="Masukkan nama server kamu" required>
 
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email (opsional)">
+                <!-- Logo Server (Upload) -->
+                <label for="logo_server">Logo Server</label>
+                <input type="file" name="logo_server" id="logo_server" accept="image/*">
+                <p class="note">📸 Upload logo server kamu (opsional)</p>
 
-                <label for="discord_id">ID Discord / Username</label>
-                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @THOM atau THOM#1234" required>
-
-                <label for="server_id">ID Server Discord (jika sudah punya)</label>
-                <input type="text" name="server_id" id="server_id" placeholder="Masukkan ID server (opsional)">
-
+                <!-- Custom Request -->
                 <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
                 <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
 
-                <label for="bukti">Upload Bukti Pembayaran (QRIS)</label>
+                <!-- ===== QRIS SECTION ===== -->
+                <div class="qris-section" id="qrisSection">
+                    <h3>💳 Scan QRIS untuk Membayar</h3>
+                    <div id="qrisDisplay">
+                        <img src="https://cdn.phototourl.com/free/2026-09-04-e7a4a63a-8beb-455a-a614-fa54a5c90ddf.png" alt="QRIS Pembayaran" class="qris-image" id="qrisImage">
+                        <p style="color:#888;font-size:0.8rem;margin-top:5px;">
+                            ✅ Scan QRIS di atas untuk membayar
+                        </p>
+                    </div>
+                    <div class="total-harga" id="totalDisplay">Total: Rp5.000</div>
+                    <p style="color:#888;font-size:0.85rem;">📸 Setelah bayar, upload bukti di bawah</p>
+                </div>
+
+                <!-- Bukti Pembayaran (Upload) -->
+                <label for="bukti">Upload Bukti Pembayaran</label>
                 <input type="file" name="bukti" id="bukti" accept="image/*" required>
                 <p class="note">📸 Upload screenshot atau foto bukti transfer</p>
 
@@ -426,20 +467,23 @@
 
         // ===== Fungsi pindah halaman =====
         function showPage(pageId, paket) {
-            // Sembunyikan semua halaman
             document.querySelectorAll('.container').forEach(el => {
                 el.classList.remove('active');
             });
-            // Tampilkan halaman yang dipilih
             document.getElementById(pageId).classList.add('active');
 
-            // Jika ke halaman order, set paket otomatis
             if (pageId === 'page-order' && paket) {
                 document.getElementById('paket').value = paket;
+                updateQRIS();
             }
-
-            // Scroll ke atas
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== Update total harga =====
+        function updateQRIS() {
+            const paket = document.getElementById('paket').value;
+            const hargaMap = { C: 'Rp5.000', B: 'Rp15.000', A: 'Rp25.000' };
+            document.getElementById('totalDisplay').textContent = 'Total: ' + hargaMap[paket];
         }
 
         // ===== Submit Order =====
@@ -449,73 +493,79 @@
             const form = document.getElementById('orderForm');
             const formData = new FormData(form);
 
-            // Ambil data
             const paket = formData.get('paket');
-            const nama = formData.get('nama');
-            const email = formData.get('email') || '-';
-            const discord_id = formData.get('discord_id');
-            const server_id = formData.get('server_id') || '-';
+            const nama_server = formData.get('nama_server');
             const custom_request = formData.get('custom_request') || '-';
+            const logo_server = formData.get('logo_server');
             const bukti = formData.get('bukti');
 
-            // Validasi file
+            // Validasi bukti bayar
             if (!bukti || bukti.size === 0) {
                 alert('⚠️ Silakan upload bukti pembayaran!');
                 return;
             }
 
-            // Harga paket
             const hargaMap = { C: 'Rp5.000', B: 'Rp15.000', A: 'Rp25.000' };
             const total_harga = hargaMap[paket] || 'Rp0';
 
-            // ===== KIRIM KE DISCORD VIA WEBHOOK =====
-            // URL Webhook sudah kamu kasih, langsung dipakai!
+            // ===== WEBHOOK URL KAMU =====
             const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
             // Baca file bukti sebagai base64
             const reader = new FileReader();
             reader.readAsDataURL(bukti);
             reader.onload = async function() {
-                const base64Image = reader.result;
+                // Siapkan pesan ke Discord
+                let fields = [
+                    { name: '📦 Paket', value: `Paket ${paket} - ${total_harga}`, inline: true },
+                    { name: '🖥️ Nama Server', value: nama_server, inline: true },
+                    { name: '📝 Custom Request', value: custom_request || '-', inline: false },
+                    { name: '📎 Bukti Bayar', value: 'Lihat lampiran di bawah ⬇️', inline: false }
+                ];
 
-                // Kirim pesan ke Discord
+                // Jika ada logo server, tambahkan info
+                if (logo_server && logo_server.size > 0) {
+                    fields.splice(2, 0, { name: '🖼️ Logo Server', value: 'Terdapat lampiran logo', inline: true });
+                }
+
                 const payload = {
                     content: `📦 **ORDER BARU DARI WEBSITE!**`,
                     embeds: [{
                         title: 'Detail Pesanan',
-                        color: 16766720, // emas
-                        fields: [
-                            { name: '📦 Paket', value: `Paket ${paket} - ${total_harga}`, inline: true },
-                            { name: '👤 Nama', value: nama, inline: true },
-                            { name: '🆔 Discord', value: discord_id, inline: true },
-                            { name: '📧 Email', value: email, inline: true },
-                            { name: '🖥️ Server ID', value: server_id, inline: true },
-                            { name: '📝 Custom Request', value: custom_request || '-', inline: false },
-                            { name: '📎 Bukti Bayar', value: 'Lihat lampiran di bawah ⬇️', inline: false }
-                        ],
+                        color: 16766720,
+                        fields: fields,
                         footer: { text: `THOM Setup Services | ${new Date().toLocaleString('id-ID')}` }
                     }]
                 };
 
                 try {
-                    // Kirim JSON dulu
+                    // Kirim JSON ke Discord
                     const res1 = await fetch(WEBHOOK_URL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
 
-                    // Kirim file sebagai attachment
+                    // Kirim file bukti
                     const formDataFile = new FormData();
                     formDataFile.append('file', bukti);
-
                     const res2 = await fetch(WEBHOOK_URL + '?wait=true', {
                         method: 'POST',
                         body: formDataFile
                     });
 
-                    if (res1.ok && res2.ok) {
-                        // Pindah ke halaman sukses
+                    // Jika ada logo server, kirim juga
+                    let res3 = { ok: true };
+                    if (logo_server && logo_server.size > 0) {
+                        const formDataLogo = new FormData();
+                        formDataLogo.append('file', logo_server);
+                        res3 = await fetch(WEBHOOK_URL + '?wait=true', {
+                            method: 'POST',
+                            body: formDataLogo
+                        });
+                    }
+
+                    if (res1.ok && res2.ok && res3.ok) {
                         showPage('page-success');
                     } else {
                         alert('⚠️ Gagal mengirim ke Discord. Coba lagi nanti.');
@@ -530,7 +580,7 @@
             };
         }
 
-        // ===== URL Parameter untuk langsung ke order =====
+        // ===== URL Parameter =====
         (function() {
             const params = new URLSearchParams(window.location.search);
             const paket = params.get('paket');
@@ -538,6 +588,9 @@
                 showPage('page-order', paket);
             }
         })();
+
+        // ===== Inisialisasi =====
+        updateQRIS();
     </script>
 </body>
 </html>
