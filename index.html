@@ -419,6 +419,7 @@
                     <li>✅ Setup Roles &amp; Auto Role</li>
                     <li>✅ Setup Permissions</li>
                     <li>✅ Custom Request (2x Req)</li>
+                    <li>✅ Free Revisi 1x</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'A')">Pesan Sekarang</button>
             </div>
@@ -455,7 +456,7 @@
 
             <div class="faq-item">
                 <div class="q">Q: Apakah bisa revisi?</div>
-                <div class="a">A: Ya, gratis revisi sebanyak 1 kali.</div>
+                <div class="a">A: Ya, gratis revisi sebanyak 1 kali (khusus Paket A).</div>
             </div>
 
             <div class="faq-item">
@@ -497,7 +498,7 @@
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
-                <select name="paket" id="paket" required onchange="toggleCustomRequest()">
+                <select name="paket" id="paket" required onchange="toggleCustomRequest(); updateTerms();">
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
                 </select>
@@ -535,12 +536,17 @@
                 <input type="file" name="bukti" id="bukti" accept="image/*" required>
                 <p class="note">📸 Upload screenshot atau foto bukti transfer</p>
 
-                <!-- ===== SYARAT & KETENTUAN (DI DALAM FORM) ===== -->
-                <div class="terms-box">
-                    <p>
-                        ⚠️ Dengan mengklik <strong>Kirim Order</strong>, kamu menyetujui:<br>
-                        💳 Pembayaran via QRIS · 🔄 No Refund · ⏳ Proses sesuai antrean
+                <!-- ===== INFORMASI PENTING (BERSUSUN KE BAWAH) ===== -->
+                <div style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:15px;margin:20px 0;">
+                    <p style="color:#ffd700;font-size:0.9rem;margin:0 0 10px 0;font-weight:bold;">
+                        ⚠️ Dengan mengklik Kirim Order, kamu menyetujui:
                     </p>
+                    <ul style="color:#ccc;font-size:0.9rem;margin:0;padding-left:20px;list-style-type:disc;">
+                        <li style="margin-bottom:4px;">Pembayaran via QRIS</li>
+                        <li style="margin-bottom:4px;">No Refund / Pengembalian Dana</li>
+                        <li style="margin-bottom:4px;">Proses pengerjaan sesuai antrian</li>
+                        <li id="revisiTerm" style="margin-bottom:4px;display:none;">Free Revisi 1x (khusus Paket A)</li>
+                    </ul>
                 </div>
 
                 <button type="submit" class="btn-submit">✅ Kirim Order</button>
@@ -586,6 +592,7 @@
                 document.getElementById('paket').value = paket;
                 updateQRIS();
                 toggleCustomRequest();
+                updateTerms();
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -601,6 +608,18 @@
                 textarea.value = '';
             } else {
                 wrapper.style.display = 'block';
+            }
+        }
+
+        // ===== Update Informasi Penting (Free Revisi hanya untuk Paket A) =====
+        function updateTerms() {
+            const paket = document.getElementById('paket').value;
+            const revisiTerm = document.getElementById('revisiTerm');
+
+            if (paket === 'A') {
+                revisiTerm.style.display = 'block';
+            } else {
+                revisiTerm.style.display = 'none';
             }
         }
 
@@ -714,6 +733,7 @@
         // ===== Inisialisasi =====
         updateQRIS();
         toggleCustomRequest();
+        updateTerms();
     </script>
 </body>
 </html>
