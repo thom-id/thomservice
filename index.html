@@ -256,21 +256,6 @@
             text-decoration: underline;
         }
 
-        /* ===== SYARAT & KETENTUAN DI FORM ===== */
-        .terms-box {
-            background: rgba(255, 0, 0, 0.05);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        .terms-box p {
-            color: #ff6b6b;
-            font-size: 0.85rem;
-            margin: 0;
-            text-align: center;
-        }
-
         /* ===== QRIS SECTION ===== */
         .qris-section {
             text-align: center;
@@ -297,6 +282,45 @@
             color: #ffd700;
             font-weight: bold;
             margin: 15px 0;
+        }
+
+        /* ===== PLACEHOLDER SEBELUM PILIH PAKET ===== */
+        .qris-placeholder {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        .qris-placeholder p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        /* ===== TERMS ===== */
+        .terms-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .terms-box .terms-title {
+            color: #ffd700;
+            font-size: 0.9rem;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+        }
+        .terms-box ul {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        .terms-box ul li {
+            margin-bottom: 4px;
         }
 
         /* ===== SUCCESS ===== */
@@ -473,11 +497,7 @@
                 <div class="q">Q: Apakah bisa refund?</div>
                 <div class="a">A: Tidak. Refund tidak berlaku setelah pengerjaan dimulai.</div>
             </div>
-
-            <div class="faq-item">
-                <div class="q">Q: Bagaimana cara order?</div>
-                <div class="a">A: Buat #ticket atau DM @THOM melalui Discord.</div>
-            </div>
+            
         </div>
 
         <footer>
@@ -498,7 +518,8 @@
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
-                <select name="paket" id="paket" required onchange="toggleCustomRequest(); updateTerms();">
+                <select name="paket" id="paket" required onchange="toggleCustomRequest(); updateTerms(); updateQRISVisibility();">
+                    <option value="">-- Pilih Paket --</option>
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
                 </select>
@@ -513,13 +534,13 @@
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
 
                 <!-- Custom Request - Hanya untuk Paket A -->
-                <div id="customRequestWrapper">
+                <div id="customRequestWrapper" style="display:none;">
                     <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
                     <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
                 </div>
 
-                <!-- ===== QRIS SECTION ===== -->
-                <div class="qris-section" id="qrisSection">
+                <!-- ===== QRIS SECTION (AWALNYA SEMBUNYI) ===== -->
+                <div class="qris-section" id="qrisSection" style="display:none;">
                     <h3>💳 Scan QRIS untuk Membayar</h3>
                     <div id="qrisDisplay">
                         <img src="https://cdn.phototourl.com/free/2026-09-04-e7a4a63a-8beb-455a-a614-fa54a5c90ddf.png" alt="QRIS Pembayaran" class="qris-image" id="qrisImage">
@@ -527,8 +548,13 @@
                             ✅ Scan QRIS di atas untuk membayar
                         </p>
                     </div>
-                    <div class="total-harga" id="totalDisplay">Total: Rp15.000</div>
+                    <div class="total-harga" id="totalDisplay">Total: Rp0</div>
                     <p style="color:#888;font-size:0.85rem;">📸 Setelah bayar, upload bukti di bawah</p>
+                </div>
+
+                <!-- ===== PESAN SEBELUM PILIH PAKET ===== -->
+                <div class="qris-placeholder" id="qrisPlaceholder">
+                    <p>👆 Silakan pilih paket di atas untuk melihat QRIS dan total harga</p>
                 </div>
 
                 <!-- Bukti Pembayaran (Upload) -->
@@ -536,16 +562,11 @@
                 <input type="file" name="bukti" id="bukti" accept="image/*" required>
                 <p class="note">📸 Upload screenshot atau foto bukti transfer</p>
 
-                <!-- ===== INFORMASI PENTING (BERSUSUN KE BAWAH) ===== -->
-                <div style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:15px;margin:20px 0;">
-                    <p style="color:#ffd700;font-size:0.9rem;margin:0 0 10px 0;font-weight:bold;">
-                        ⚠️ Dengan mengklik Kirim Order, kamu menyetujui:
-                    </p>
-                    <ul style="color:#ccc;font-size:0.9rem;margin:0;padding-left:20px;list-style-type:disc;">
-                        <li style="margin-bottom:4px;">Free Revisi 1x (khusus Paket A)</li>
-                        <li style="margin-bottom:4px;">No Refund / Pengembalian Dana</li>
-                        <li style="margin-bottom:4px;">Proses pengerjaan sesuai antrian</li>
-                        <li id="revisiTerm" style="margin-bottom:4px;display:none;"></li>
+                <!-- ===== INFORMASI PENTING (DINAMIS) ===== -->
+                <div class="terms-box">
+                    <p class="terms-title">⚠️ Dengan mengklik Kirim Order, kamu menyetujui:</p>
+                    <ul id="termsList">
+                        <!-- Isi akan diisi oleh JavaScript -->
                     </ul>
                 </div>
 
@@ -555,7 +576,7 @@
         </div>
 
         <footer>
-            <p>© 2026 THOM Services | Kebijakan No Refund</p>
+            <p>© 2026 THOM Setup | Kebijakan No Refund</p>
         </footer>
     </div>
 
@@ -571,10 +592,10 @@
             <button class="btn" onclick="showPage('page-home')">Kembali ke Beranda</button>
         </div>
         <footer>
-            <p>© 2026 THOM Services</p>
+            <p>© 2026 THOM Setup</p>
         </footer>
-    </div>
-        <!-- ============================================================ -->
+                    </div>
+                        <!-- ============================================================ -->
     <!-- ===== JAVASCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
@@ -593,6 +614,7 @@
                 updateQRIS();
                 toggleCustomRequest();
                 updateTerms();
+                updateQRISVisibility();
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -606,20 +628,53 @@
             if (paket === 'B') {
                 wrapper.style.display = 'none';
                 textarea.value = '';
-            } else {
+            } else if (paket === 'A') {
                 wrapper.style.display = 'block';
+            } else {
+                wrapper.style.display = 'none';
+                textarea.value = '';
             }
         }
 
-        // ===== Update Informasi Penting (Free Revisi hanya untuk Paket A) =====
+        // ===== Update Informasi Penting =====
         function updateTerms() {
             const paket = document.getElementById('paket').value;
-            const revisiTerm = document.getElementById('revisiTerm');
+            const termsList = document.getElementById('termsList');
 
+            // Kosongkan daftar
+            termsList.innerHTML = '';
+
+            // Daftar aturan berdasarkan paket
+            let terms = [];
             if (paket === 'A') {
-                revisiTerm.style.display = 'block';
+                terms.push('Free Revisi 1x');
+            }
+            // Aturan berikut berlaku untuk semua paket
+            terms.push('No Refund / Pengembalian Dana');
+            terms.push('Proses pengerjaan sesuai antrian');
+
+            // Tampilkan aturan
+            terms.forEach(term => {
+                const li = document.createElement('li');
+                li.textContent = term;
+                li.style.marginBottom = '4px';
+                termsList.appendChild(li);
+            });
+        }
+
+        // ===== Tampilkan/Sembunyikan QRIS =====
+        function updateQRISVisibility() {
+            const paket = document.getElementById('paket').value;
+            const qrisSection = document.getElementById('qrisSection');
+            const placeholder = document.getElementById('qrisPlaceholder');
+
+            if (paket === 'B' || paket === 'A') {
+                qrisSection.style.display = 'block';
+                placeholder.style.display = 'none';
+                updateQRIS();
             } else {
-                revisiTerm.style.display = 'none';
+                qrisSection.style.display = 'none';
+                placeholder.style.display = 'block';
             }
         }
 
@@ -627,7 +682,7 @@
         function updateQRIS() {
             const paket = document.getElementById('paket').value;
             const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
-            document.getElementById('totalDisplay').textContent = 'Total: ' + hargaMap[paket];
+            document.getElementById('totalDisplay').textContent = 'Total: ' + (hargaMap[paket] || 'Rp0');
         }
 
         // ===== Submit Order =====
@@ -642,6 +697,12 @@
             const custom_request = formData.get('custom_request') || '-';
             const logo_server = formData.get('logo_server');
             const bukti = formData.get('bukti');
+
+            // Validasi paket terpilih
+            if (!paket) {
+                alert('⚠️ Silakan pilih paket terlebih dahulu!');
+                return;
+            }
 
             if (!bukti || bukti.size === 0) {
                 alert('⚠️ Silakan upload bukti pembayaran!');
@@ -734,6 +795,7 @@
         updateQRIS();
         toggleCustomRequest();
         updateTerms();
+        updateQRISVisibility();
     </script>
 </body>
 </html>
