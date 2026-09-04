@@ -68,9 +68,6 @@
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
         }
-        .join-discord .btn-discord i {
-            margin-right: 10px;
-        }
 
         /* ===== PACKAGES ===== */
         .packages {
@@ -187,28 +184,6 @@
             font-size: 0.95rem;
         }
 
-        /* ===== INFO ===== */
-        .info {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-        }
-        .info h3 {
-            color: #ffd700;
-            margin-bottom: 15px;
-        }
-        .info ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
-        .info ul li {
-            color: #ccc;
-            padding: 5px 0;
-        }
-
         /* ===== FORM ===== */
         .order-form {
             background: rgba(255, 255, 255, 0.05);
@@ -279,6 +254,21 @@
         }
         .back-link:hover {
             text-decoration: underline;
+        }
+
+        /* ===== SYARAT & KETENTUAN DI FORM ===== */
+        .terms-box {
+            background: rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .terms-box p {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin: 0;
+            text-align: center;
         }
 
         /* ===== QRIS SECTION ===== */
@@ -393,7 +383,7 @@
 
         <!-- ===== JOIN DISCORD ===== -->
         <div class="join-discord">
-            <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn-discord">
+            <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-discord">
                 💬 Join Discord
             </a>
             <p style="color:#888;margin-top:10px;font-size:0.9rem;">
@@ -401,6 +391,7 @@
             </p>
         </div>
 
+        <!-- ===== PAKET ===== -->
         <div class="packages">
             <!-- Paket B -->
             <div class="card">
@@ -433,7 +424,7 @@
             </div>
         </div>
 
-        <!-- ===== FAQ SECTION ===== -->
+        <!-- ===== FAQ ===== -->
         <div class="faq-section">
             <h3>❓ FAQ</h3>
 
@@ -486,16 +477,6 @@
                 <div class="q">Q: Bagaimana cara order?</div>
                 <div class="a">A: Buat #ticket atau DM @THOM melalui Discord.</div>
             </div>
-        </div>
-
-        <div class="info">
-            <h3>📌 Informasi Penting</h3>
-            <ul>
-                <li>💳 Metode Pembayaran: QRIS</li>
-                <li>🔄 Kebijakan No Refund</li>
-                <li>📢 Order via website, konfirmasi di Discord</li>
-                <li>⏳ Waktu pengerjaan menyesuaikan antrean</li>
-            </ul>
         </div>
 
         <footer>
@@ -553,6 +534,14 @@
                 <label for="bukti">Upload Bukti Pembayaran</label>
                 <input type="file" name="bukti" id="bukti" accept="image/*" required>
                 <p class="note">📸 Upload screenshot atau foto bukti transfer</p>
+
+                <!-- ===== SYARAT & KETENTUAN (DI DALAM FORM) ===== -->
+                <div class="terms-box">
+                    <p>
+                        ⚠️ Dengan mengklik <strong>Kirim Order</strong>, kamu menyetujui:<br>
+                        💳 Pembayaran via QRIS · 🔄 No Refund · ⏳ Proses sesuai antrean
+                    </p>
+                </div>
 
                 <button type="submit" class="btn-submit">✅ Kirim Order</button>
             </form>
@@ -643,6 +632,7 @@
             const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
             const total_harga = hargaMap[paket] || 'Rp0';
 
+            // ===== WEBHOOK URL KAMU =====
             const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
             const reader = new FileReader();
