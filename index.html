@@ -396,7 +396,7 @@
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
-                <select name="paket" id="paket" required onchange="updateQRIS()">
+                <select name="paket" id="paket" required onchange="toggleCustomRequest()">
                     <option value="C">Paket C - Rp5.000</option>
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
@@ -411,9 +411,11 @@
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
 
-                <!-- Custom Request -->
-                <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
-                <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
+                <!-- Custom Request - Hanya untuk Paket C & A -->
+                <div id="customRequestWrapper">
+                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket C & A)</span></label>
+                    <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
+                </div>
 
                 <!-- ===== QRIS SECTION ===== -->
                 <div class="qris-section" id="qrisSection">
@@ -475,8 +477,23 @@
             if (pageId === 'page-order' && paket) {
                 document.getElementById('paket').value = paket;
                 updateQRIS();
+                toggleCustomRequest();
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== Tampilkan/Sembunyikan Custom Request =====
+        function toggleCustomRequest() {
+            const paket = document.getElementById('paket').value;
+            const wrapper = document.getElementById('customRequestWrapper');
+            const textarea = document.getElementById('custom_request');
+
+            if (paket === 'B') {
+                wrapper.style.display = 'none';
+                textarea.value = ''; // kosongkan jika paket B
+            } else {
+                wrapper.style.display = 'block';
+            }
         }
 
         // ===== Update total harga =====
@@ -518,10 +535,15 @@
                 // Siapkan pesan ke Discord
                 let fields = [
                     { name: '📦 Paket', value: `Paket ${paket} - ${total_harga}`, inline: true },
-                    { name: '🖥️ Nama Server', value: nama_server, inline: true },
-                    { name: '📝 Custom Request', value: custom_request || '-', inline: false },
-                    { name: '📎 Bukti Bayar', value: 'Lihat lampiran di bawah ⬇️', inline: false }
+                    { name: '🖥️ Nama Server', value: nama_server, inline: true }
                 ];
+
+                // Custom Request hanya jika paket C atau A
+                if (paket !== 'B' && custom_request && custom_request !== '-') {
+                    fields.push({ name: '📝 Custom Request', value: custom_request, inline: false });
+                }
+
+                fields.push({ name: '📎 Bukti Bayar', value: 'Lihat lampiran di bawah ⬇️', inline: false });
 
                 // Jika ada logo server, tambahkan info
                 if (logo_server && logo_server.size > 0) {
@@ -591,6 +613,7 @@
 
         // ===== Inisialisasi =====
         updateQRIS();
+        toggleCustomRequest();
     </script>
 </body>
 </html>
