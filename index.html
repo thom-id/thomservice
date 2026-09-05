@@ -642,8 +642,8 @@
 
                 <!-- Discord ID / Username (Revisi) -->
                 <label for="discord_id">Username</label>
-                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @thom_id atau 123456789012345678">
-                <p class="note">Masukkan username (opsional)</p>
+                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @thom_id">
+                <p class="note">Masukkan username Discord (opsional)</p>
 
                 <div id="customRequestWrapper" style="display:none;">
                     <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
@@ -699,10 +699,10 @@
         </nav>
 
         <div class="success">
-            <div class="icon">✅</div>
+            <div class="icon"></div>
             <h2>Pesanan Berhasil!</h2>
             <p>Pesanan kamu sudah kami terima. Admin akan menghubungi kamu setelah Seever Discord selesai.</p>
-            <p style="color:#888;font-size:0.95rem;">📌 Jangan lupa cek DM atau channel #ticket di server kami.</p>
+            <p style="color:#888;font-size:0.95rem;">Jangan lupa DM @THOM atau Open #ticket di Discord kami, untuk verifi purchase!.</p>
             <button class="btn" onclick="showPage('page-home')">Kembali ke Beranda</button>
         </div>
         <footer>
@@ -869,9 +869,9 @@
                     fields.splice(2, 0, { name: '• Logo Server', value: 'Terdapat lampiran logo', inline: true });
                 }
 
-                let content = `• **PESANAN BARU DARI WEBSITE!**`;
+                let content = `**PESANAN BARU DARI WEBSITE!**`;
                 if (mentionText) {
-                    content += `\• n${mentionText} pesanan kamu sedang diproses!`;
+                    content += `\ n${mentionText} pesanan kamu sedang diproses!`;
                 }
 
                 const payload = {
