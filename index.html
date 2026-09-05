@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THOM Setup</title>
+    <title>THOM Setup Services</title>
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -14,59 +14,146 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+            background: #0d0d0d;
             color: #fff;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
             display: none;
         }
         .container.active {
             display: block;
         }
 
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            padding: 40px 0 20px;
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(13, 13, 13, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
-        header h1 {
-            font-size: 3rem;
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             background: linear-gradient(90deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        header p {
-            color: #aaa;
-            margin-top: 10px;
-            font-size: 1.2rem;
+            text-decoration: none;
         }
 
-        /* ===== JOIN DISCORD ===== */
-        .join-discord {
-            text-align: center;
-            margin: 20px 0 30px;
+        .navbar .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
         }
-        .join-discord .btn-discord {
+
+        .navbar .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .navbar .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .navbar .nav-links .btn-nav {
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .navbar .nav-links .btn-nav:hover {
+            transform: scale(1.05);
+            color: #000;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            color: #aaa;
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .hero .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero .hero-buttons .btn-primary {
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            color: #000;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-decoration: none;
             display: inline-block;
-            background: #5865F2;
+        }
+        .hero .hero-buttons .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        .hero .hero-buttons .btn-secondary {
+            background: transparent;
             color: #fff;
             padding: 14px 40px;
             border-radius: 30px;
-            text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
+            font-size: 1rem;
+            border: 1px solid #ffd700;
             cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
         }
-        .join-discord .btn-discord:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
+        .hero .hero-buttons .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 30px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .features .feature-item {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        .features .feature-item span {
+            color: #ffd700;
+            margin-right: 5px;
         }
 
         /* ===== PACKAGES ===== */
@@ -150,6 +237,29 @@
         }
         .btn:hover {
             transform: scale(1.05);
+        }
+
+        /* ===== JOIN DISCORD ===== */
+        .join-discord {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+        .join-discord .btn-discord {
+            display: inline-block;
+            background: #5865F2;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .join-discord .btn-discord:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
         }
 
         /* ===== FAQ ===== */
@@ -256,7 +366,7 @@
             text-decoration: underline;
         }
 
-        /* ===== QRIS SECTION ===== */
+        /* ===== QRIS ===== */
         .qris-section {
             text-align: center;
             padding: 20px;
@@ -284,7 +394,6 @@
             margin: 15px 0;
         }
 
-        /* ===== PLACEHOLDER SEBELUM PILIH PAKET ===== */
         .qris-placeholder {
             text-align: center;
             padding: 20px;
@@ -355,6 +464,22 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            .navbar .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
             .packages {
                 flex-direction: column;
                 align-items: center;
@@ -362,9 +487,6 @@
             .card {
                 width: 100%;
                 max-width: 350px;
-            }
-            header h1 {
-                font-size: 2rem;
             }
             .order-form {
                 padding: 20px;
@@ -379,6 +501,11 @@
             .faq-item .a {
                 font-size: 0.85rem;
                 padding-left: 10px;
+            }
+            .features {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -400,19 +527,32 @@
     <!-- ===== HALAMAN 1: BERANDA ===== -->
     <!-- ============================================================ -->
     <div id="page-home" class="container active">
-        <header>
-            <h1>🛡️ THOM Setup</h1>
-            <p>Jasa Setup Server Discord Profesional & Terpercaya</p>
-        </header>
+        <!-- ===== NAVIGATION ===== -->
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('page-home')">Home</a>
+                <a href="#" onclick="showPage('page-home')">Servers</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a href="#" onclick="showPage('page-order')" class="btn-nav">Order</a>
+            </div>
+        </nav>
 
-        <!-- ===== JOIN DISCORD ===== -->
-        <div class="join-discord">
-            <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-discord">
-                Join Discord
-            </a>
-            <p style="color:#888;margin-top:10px;font-size:0.9rem;">
-                Join Discord THOM Setup untuk info lebih lanjut
-            </p>
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <h1>Jasa Setup Server Discord</h1>
+            <p>Tanpa Ribet. Tanpa Garang. Profesional.</p>
+            <div class="hero-buttons">
+                <a href="#" onclick="showPage('page-order')" class="btn-primary">Access Your Panel</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-secondary">Join Our Discord</a>
+            </div>
+        </div>
+
+        <!-- ===== FEATURES ===== -->
+        <div class="features">
+            <div class="feature-item"><span>☑</span> Instant Setup</div>
+            <div class="feature-item"><span>☑</span> No Card Required to Start</div>
+            <div class="feature-item"><span>☑</span> Cancel Any Time</div>
         </div>
 
         <!-- ===== PAKET ===== -->
@@ -422,9 +562,9 @@
                 <h2>Paket B</h2>
                 <div class="price">Rp15.000</div>
                 <ul>
-                    <li>→ Setup Category &amp; Channel</li>
-                    <li>→ Setup Roles &amp; Auto Role</li>
-                    <li>→ Setup Permissions</li>
+                    <li>✅ Setup Category &amp; Channel</li>
+                    <li>✅ Setup Roles &amp; Auto Role</li>
+                    <li>✅ Setup Permissions</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'B')">Pesan Sekarang</button>
             </div>
@@ -435,18 +575,28 @@
                 <h2>Paket A</h2>
                 <div class="price">Rp25.000</div>
                 <ul>
-                    <li>→ Setup Category &amp; Channel</li>
-                    <li>→ Ticket System</li>
-                    <li>→ Invite Log</li>
-                    <li>→ Welcome System &amp; Banner</li>
-                    <li>→ Setup Bot All</li>
-                    <li>→ Setup Roles &amp; Auto Role</li>
-                    <li>→ Setup Permissions</li>
-                    <li>→ Custom Request (1x Req)</li>
-                    <li>→ Free Revisi 1x</li>
+                    <li>✅ Setup Category &amp; Channel</li>
+                    <li>✅ Ticket System</li>
+                    <li>✅ Invite Log</li>
+                    <li>✅ Welcome System &amp; Banner</li>
+                    <li>✅ Setup Bot All</li>
+                    <li>✅ Setup Roles &amp; Auto Role</li>
+                    <li>✅ Setup Permissions</li>
+                    <li>✅ Custom Request (2x Req)</li>
+                    <li>✅ Free Revisi 1x</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'A')">Pesan Sekarang</button>
             </div>
+        </div>
+
+        <!-- ===== JOIN DISCORD ===== -->
+        <div class="join-discord">
+            <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-discord">
+                💬 Join Discord
+            </a>
+            <p style="color:#888;margin-top:10px;font-size:0.9rem;">
+                Gabung ke server Discord kami untuk info lebih lanjut
+            </p>
         </div>
 
         <!-- ===== FAQ ===== -->
@@ -497,11 +647,15 @@
                 <div class="q">Q: Apakah bisa refund?</div>
                 <div class="a">A: Tidak. Refund tidak berlaku setelah pengerjaan dimulai.</div>
             </div>
-            
+
+            <div class="faq-item">
+                <div class="q">Q: Bagaimana cara order?</div>
+                <div class="a">A: Buat #ticket atau DM @THOM melalui Discord.</div>
+            </div>
         </div>
 
         <footer>
-            <p>© 2026 | THOM Setup Discord</p>
+            <p>© 2026 THOM Services | Hubungi @THOM di Discord</p>
         </footer>
     </div>
 
@@ -509,14 +663,21 @@
     <!-- ===== HALAMAN 2: FORM ORDER + QRIS ===== -->
     <!-- ============================================================ -->
     <div id="page-order" class="container">
-        <header>
-            <h1>📋 Form Order</h1>
-            <p>Isi data dengan lengkap untuk memproses pesanan</p>
-        </header>
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('page-home')">Home</a>
+                <a href="#" onclick="showPage('page-home')">Servers</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a href="#" onclick="showPage('page-order')" class="btn-nav">Order</a>
+            </div>
+        </nav>
 
         <div class="order-form">
+            <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;">📋 Form Order</h2>
+            <p style="text-align:center;color:#aaa;margin-bottom:20px;">Isi data dengan lengkap untuk memproses pesanan</p>
+
             <form id="orderForm" onsubmit="submitOrder(event)">
-                <!-- Paket -->
                 <label for="paket">Pilih Paket</label>
                 <select name="paket" id="paket" required onchange="toggleCustomRequest(); updateTerms(); updateQRISVisibility();">
                     <option value="">-- Pilih Paket --</option>
@@ -524,50 +685,41 @@
                     <option value="A">Paket A - Rp25.000</option>
                 </select>
 
-                <!-- Nama Server -->
                 <label for="nama_server">Nama Server</label>
                 <input type="text" name="nama_server" id="nama_server" placeholder="Masukkan nama server kamu" required>
 
-                <!-- Logo Server (Upload) -->
                 <label for="logo_server">Logo Server</label>
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
 
-                <!-- Custom Request - Hanya untuk Paket A -->
                 <div id="customRequestWrapper" style="display:none;">
                     <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
                     <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
                 </div>
 
-                <!-- ===== QRIS SECTION (AWALNYA SEMBUNYI) ===== -->
                 <div class="qris-section" id="qrisSection" style="display:none;">
-                    <h3>Scan QRIS untuk Membayar</h3>
+                    <h3>💳 Scan QRIS untuk Membayar</h3>
                     <div id="qrisDisplay">
                         <img src="https://cdn.phototourl.com/free/2026-09-04-e7a4a63a-8beb-455a-a614-fa54a5c90ddf.png" alt="QRIS Pembayaran" class="qris-image" id="qrisImage">
                         <p style="color:#888;font-size:0.8rem;margin-top:5px;">
-                            Scan QRIS di atas untuk membayar
+                            ✅ Scan QRIS di atas untuk membayar
                         </p>
                     </div>
                     <div class="total-harga" id="totalDisplay">Total: Rp0</div>
                     <p style="color:#888;font-size:0.85rem;">📸 Setelah bayar, upload bukti di bawah</p>
                 </div>
 
-                <!-- ===== PESAN SEBELUM PILIH PAKET ===== -->
                 <div class="qris-placeholder" id="qrisPlaceholder">
                     <p>👆 Silakan pilih paket di atas untuk melihat QRIS dan total harga</p>
                 </div>
 
-                <!-- Bukti Pembayaran (Upload) -->
                 <label for="bukti">Upload Bukti Pembayaran</label>
                 <input type="file" name="bukti" id="bukti" accept="image/*" required>
                 <p class="note">📸 Upload screenshot atau foto bukti transfer</p>
 
-                <!-- ===== INFORMASI PENTING (DINAMIS) ===== -->
                 <div class="terms-box">
                     <p class="terms-title">⚠️ Dengan mengklik Kirim Order, kamu menyetujui:</p>
-                    <ul id="termsList">
-                        <!-- Isi akan diisi oleh JavaScript -->
-                    </ul>
+                    <ul id="termsList"></ul>
                 </div>
 
                 <button type="submit" class="btn-submit">✅ Kirim Order</button>
@@ -576,7 +728,7 @@
         </div>
 
         <footer>
-            <p>© 2026 THOM Setup | Kebijakan No Refund</p>
+            <p>© 2026 THOM Services | Kebijakan No Refund</p>
         </footer>
     </div>
 
@@ -584,6 +736,16 @@
     <!-- ===== HALAMAN 3: SUKSES ===== -->
     <!-- ============================================================ -->
     <div id="page-success" class="container">
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('page-home')">Home</a>
+                <a href="#" onclick="showPage('page-home')">Servers</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a href="#" onclick="showPage('page-order')" class="btn-nav">Order</a>
+            </div>
+        </nav>
+
         <div class="success">
             <div class="icon">✅</div>
             <h2>Order Berhasil!</h2>
@@ -592,10 +754,10 @@
             <button class="btn" onclick="showPage('page-home')">Kembali ke Beranda</button>
         </div>
         <footer>
-            <p>© 2026 THOM Setup</p>
+            <p>© 2026 THOM Services</p>
         </footer>
-                    </div>
-                        <!-- ============================================================ -->
+    </div>
+        <!-- ============================================================ -->
     <!-- ===== JAVASCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
@@ -641,19 +803,15 @@
             const paket = document.getElementById('paket').value;
             const termsList = document.getElementById('termsList');
 
-            // Kosongkan daftar
             termsList.innerHTML = '';
 
-            // Daftar aturan berdasarkan paket
             let terms = [];
             if (paket === 'A') {
                 terms.push('Free Revisi 1x');
             }
-            // Aturan berikut berlaku untuk semua paket
             terms.push('No Refund / Pengembalian Dana');
             terms.push('Proses pengerjaan sesuai antrian');
 
-            // Tampilkan aturan
             terms.forEach(term => {
                 const li = document.createElement('li');
                 li.textContent = term;
@@ -698,7 +856,6 @@
             const logo_server = formData.get('logo_server');
             const bukti = formData.get('bukti');
 
-            // Validasi paket terpilih
             if (!paket) {
                 alert('⚠️ Silakan pilih paket terlebih dahulu!');
                 return;
@@ -712,7 +869,6 @@
             const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
             const total_harga = hargaMap[paket] || 'Rp0';
 
-            // ===== WEBHOOK URL KAMU =====
             const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
             const reader = new FileReader();
@@ -763,8 +919,7 @@
                         formDataLogo.append('file', logo_server);
                         res3 = await fetch(WEBHOOK_URL + '?wait=true', {
                             method: 'POST',
-                            body: formDataLogo
-                        });
+                            body: formDataLogo                        });
                     }
 
                     if (res1.ok && res2.ok && res3.ok) {
