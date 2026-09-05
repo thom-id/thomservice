@@ -547,7 +547,7 @@
                     <li>→ Setup Roles &amp; Auto Role</li>
                     <li>→ Setup Permissions</li>
                     <li>→ Custom Request (2x Req)</li>
-                    <li> Free Revisi 1x</li>
+                    <li>→ Free Revisi 1x</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'A')">Pesan Sekarang</button>
             </div>
@@ -675,7 +675,7 @@
                     <ul id="termsList"></ul>
                 </div>
 
-                <button type="submit" class="btn-submit">✅ Kirim Order</button>
+                <button type="submit" class="btn-submit">Kirim Order</button>
             </form>
             <button class="back-link" onclick="showPage('page-home')">← Kembali ke Beranda</button>
         </div>
@@ -701,8 +701,8 @@
         <div class="success">
             <div class="icon"></div>
             <h2>Pesanan Berhasil!</h2>
-            <p>Pesanan kamu sudah kami terima. Admin akan menghubungi kamu setelah Seever Discord selesai.</p>
-            <p style="color:#888;font-size:0.95rem;">Jangan lupa DM @THOM atau Open #ticket di Discord kami, untuk verifi purchase!.</p>
+            <p>Pesanan kamu sudah kami terima. Admin akan menghubungi kamu setelah Server Discord selesai.</p>
+            <p style="color:#888;font-size:0.95rem;">Jangan lupa DM @THOM atau Open #ticket di Discord kami, untuk verify purchase!.</p>
             <button class="btn" onclick="showPage('page-home')">Kembali ke Beranda</button>
         </div>
         <footer>
@@ -870,8 +870,9 @@
                 }
 
                 let content = `**PESANAN BARU DARI WEBSITE!**`;
+                
                 if (mentionText) {
-                    content += `\ n${mentionText} pesanan kamu sedang diproses!`;
+                    content += `\n${mentionText} pesanan kamu sedang diproses!`;
                 }
 
                 const payload = {
