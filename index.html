@@ -645,10 +645,10 @@
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
 
-                <!-- Discord ID untuk mention -->
-                <label for="discord_id">ID / Username Discord</label>
-                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: 123456789012345678 atau @username">
-                <p class="note">📌 Masukkan ID Discord kamu (angka) agar bisa di-tag</p>
+                <!-- Discord ID / Username (Revisi) -->
+                <label for="discord_id">Username / ID Discord</label>
+                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @thom_id atau 123456789012345678">
+                <p class="note">📌 Masukkan username atau ID Discord kamu (opsional)</p>
 
                 <div id="customRequestWrapper" style="display:none;">
                     <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
@@ -713,8 +713,8 @@
         <footer>
             <p>© 2026 THOM Services</p>
         </footer>
-    </div>
-        <!-- ============================================================ -->
+                    </div>
+                        <!-- ============================================================ -->
     <!-- ===== JAVASCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
@@ -723,13 +723,11 @@
 
         // ===== Fungsi Scroll ke FAQ =====
         function goToFAQ() {
-            // Tampilkan halaman beranda dulu
             document.querySelectorAll('.container').forEach(el => {
                 el.classList.remove('active');
             });
             document.getElementById('page-home').classList.add('active');
 
-            // Scroll ke FAQ setelah halaman tampil
             setTimeout(() => {
                 const faqSection = document.getElementById('faqSection');
                 if (faqSection) {
@@ -817,7 +815,7 @@
             document.getElementById('totalDisplay').textContent = 'Total: ' + (hargaMap[paket] || 'Rp0');
         }
 
-        // ===== Submit Order =====
+        // ===== Submit Order (Revisi: Support Username & ID) =====
         async function submitOrder(event) {
             event.preventDefault();
 
@@ -849,14 +847,15 @@
             const reader = new FileReader();
             reader.readAsDataURL(bukti);
             reader.onload = async function() {
-                // Siapkan mention
+                // ===== SUPPORT USERNAME & ID =====
                 let mentionText = '';
                 if (discord_id && discord_id.trim() !== '') {
-                    let cleanId = discord_id.trim().replace(/[<@>]/g, '');
-                    if (/^\d+$/.test(cleanId)) {
-                        mentionText = `<@${cleanId}>`;
+                    let cleanInput = discord_id.trim().replace(/^@/, '');
+                    // Cek apakah ID angka (17-19 digit)
+                    if (/^\d{17,19}$/.test(cleanInput)) {
+                        mentionText = `<@${cleanInput}>`;
                     } else {
-                        mentionText = `@${cleanId}`;
+                        mentionText = `@${cleanInput}`;
                     }
                 }
 
