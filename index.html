@@ -50,6 +50,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .navbar .nav-links {
@@ -63,6 +64,7 @@
             text-decoration: none;
             font-size: 0.95rem;
             transition: color 0.2s;
+            cursor: pointer;
         }
         .navbar .nav-links a:hover {
             color: #ffd700;
@@ -75,6 +77,8 @@
             border-radius: 20px;
             font-weight: bold;
             transition: transform 0.2s;
+            text-decoration: none;
+            cursor: pointer;
         }
         .navbar .nav-links .btn-nav:hover {
             transform: scale(1.05);
@@ -104,22 +108,6 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-        }
-        .hero .hero-buttons .btn-primary {
-            background: linear-gradient(90deg, #f7971e, #ffd200);
-            color: #000;
-            padding: 14px 40px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .hero .hero-buttons .btn-primary:hover {
-            transform: scale(1.05);
         }
         .hero .hero-buttons .btn-secondary {
             background: transparent;
@@ -239,35 +227,13 @@
             transform: scale(1.05);
         }
 
-        /* ===== JOIN DISCORD ===== */
-        .join-discord {
-            text-align: center;
-            margin: 20px 0 30px;
-        }
-        .join-discord .btn-discord {
-            display: inline-block;
-            background: #5865F2;
-            color: #fff;
-            padding: 14px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        .join-discord .btn-discord:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
-        }
-
         /* ===== FAQ ===== */
         .faq-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 30px;
             margin: 40px 0;
+            scroll-margin-top: 80px;
         }
         .faq-section h3 {
             color: #ffd700;
@@ -529,11 +495,11 @@
     <div id="page-home" class="container active">
         <!-- ===== NAVIGATION ===== -->
         <nav class="navbar">
-            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <a class="logo" onclick="goToFAQ()">🛡️ THOM Setup</a>
             <div class="nav-links">
-                <a href="#" onclick="showPage('page-home')">FAQ</a>
+                <a onclick="goToFAQ()">FAQ</a>
                 <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
-                <a href="#" onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
             </div>
         </nav>
 
@@ -587,8 +553,8 @@
             </div>
         </div>
 
-        <!-- ===== FAQ SECTION (DI BAWAH PAKET) ===== -->
-        <div class="faq-section">
+        <!-- ===== FAQ SECTION ===== -->
+        <div class="faq-section" id="faqSection">
             <h3>❓ FAQ</h3>
 
             <div class="faq-item">
@@ -652,11 +618,11 @@
     <!-- ============================================================ -->
     <div id="page-order" class="container">
         <nav class="navbar">
-            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <a class="logo" onclick="goToFAQ()">🛡️ THOM Setup</a>
             <div class="nav-links">
-                <a href="#" onclick="showPage('page-home')">FAQ</a>
+                <a onclick="goToFAQ()">FAQ</a>
                 <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
-                <a href="#" onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
             </div>
         </nav>
 
@@ -678,6 +644,11 @@
                 <label for="logo_server">Logo Server</label>
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">📸 Upload logo server kamu (opsional)</p>
+
+                <!-- Discord ID untuk mention -->
+                <label for="discord_id">ID / Username Discord</label>
+                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: 123456789012345678 atau @username">
+                <p class="note">📌 Masukkan ID Discord kamu (angka) agar bisa di-tag</p>
 
                 <div id="customRequestWrapper" style="display:none;">
                     <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
@@ -724,11 +695,11 @@
     <!-- ============================================================ -->
     <div id="page-success" class="container">
         <nav class="navbar">
-            <a href="#" class="logo" onclick="showPage('page-home')">🛡️ THOM Setup</a>
+            <a class="logo" onclick="goToFAQ()">🛡️ THOM Setup</a>
             <div class="nav-links">
-                <a href="#" onclick="showPage('page-home')">FAQ</a>
+                <a onclick="goToFAQ()">FAQ</a>
                 <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
-                <a href="#" onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
             </div>
         </nav>
 
@@ -749,6 +720,23 @@
     <script>
         // ===== Sembunyikan loading =====
         document.getElementById('loading').style.display = 'none';
+
+        // ===== Fungsi Scroll ke FAQ =====
+        function goToFAQ() {
+            // Tampilkan halaman beranda dulu
+            document.querySelectorAll('.container').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('page-home').classList.add('active');
+
+            // Scroll ke FAQ setelah halaman tampil
+            setTimeout(() => {
+                const faqSection = document.getElementById('faqSection');
+                if (faqSection) {
+                    faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
 
         // ===== Fungsi pindah halaman =====
         function showPage(pageId, paket) {
@@ -841,6 +829,7 @@
             const custom_request = formData.get('custom_request') || '-';
             const logo_server = formData.get('logo_server');
             const bukti = formData.get('bukti');
+            const discord_id = formData.get('discord_id');
 
             if (!paket) {
                 alert('⚠️ Silakan pilih paket terlebih dahulu!');
@@ -860,6 +849,17 @@
             const reader = new FileReader();
             reader.readAsDataURL(bukti);
             reader.onload = async function() {
+                // Siapkan mention
+                let mentionText = '';
+                if (discord_id && discord_id.trim() !== '') {
+                    let cleanId = discord_id.trim().replace(/[<@>]/g, '');
+                    if (/^\d+$/.test(cleanId)) {
+                        mentionText = `<@${cleanId}>`;
+                    } else {
+                        mentionText = `@${cleanId}`;
+                    }
+                }
+
                 let fields = [
                     { name: '📦 Paket', value: `Paket ${paket} - ${total_harga}`, inline: true },
                     { name: '🖥️ Nama Server', value: nama_server, inline: true }
@@ -875,8 +875,13 @@
                     fields.splice(2, 0, { name: '🖼️ Logo Server', value: 'Terdapat lampiran logo', inline: true });
                 }
 
+                let content = `📦 **ORDER BARU DARI WEBSITE!**`;
+                if (mentionText) {
+                    content += `\n📢 ${mentionText} pesanan kamu sedang diproses!`;
+                }
+
                 const payload = {
-                    content: `📦 **ORDER BARU DARI WEBSITE!**`,
+                    content: content,
                     embeds: [{
                         title: 'Detail Pesanan',
                         color: 16766720,
@@ -905,7 +910,8 @@
                         formDataLogo.append('file', logo_server);
                         res3 = await fetch(WEBHOOK_URL + '?wait=true', {
                             method: 'POST',
-                            body: formDataLogo                        });
+                            body: formDataLogo
+                        });
                     }
 
                     if (res1.ok && res2.ok && res3.ok) {
