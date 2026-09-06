@@ -47,12 +47,16 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    /* Tambahkan ini biar lebih ke kiri */
+    margin-left: -15px;
+    padding-left: 0;
 }
 
 .navbar .nav-links {
     display: flex;
     gap: 30px;
     align-items: center;
+    /* Biarkan tetap di kanan */
 }
 
 .navbar .nav-links a {
@@ -80,7 +84,6 @@ body {
     transform: scale(1.05);
     color: #000;
 }
-
 /* ===== HERO ===== */
 .hero {
     text-align: center;
