@@ -48,13 +48,13 @@ body {
     align-items: center;
     gap: 5px;
     /* Cara 1: Pake margin-left negatif */
-    margin-left: -150px;
+    margin-left: -180px;
     padding-left: 0;
 }
 
 /* Atau pake cara 2: Ubah padding navbar */
 .navbar {
-    padding: 20px 40px 20px 0px; /* kiri dikurangi */
+    padding: 20px 40px 10px 0px; /* kiri dikurangi */
 }
 
 .navbar .nav-links {
