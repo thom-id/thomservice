@@ -48,7 +48,7 @@ body {
     align-items: center;
     gap: 5px;
     /* Cara 1: Pake margin-left negatif */
-    margin-left: -100px;
+    margin-left: -150px;
     padding-left: 0;
 }
 
