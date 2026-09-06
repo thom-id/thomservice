@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ===== LOADING ===== -->
+    <div id="loading" class="loading">⏳ Memuat...</div>
+
+    <!-- ============================================================ -->
+    <!-- ===== HALAMAN 1: BERANDA ===== -->
+    <!-- ============================================================ -->
+    <div id="page-home" class="container active">
+        <!-- ===== NAVIGATION ===== -->
+        <nav class="navbar">
+            <a class="logo" onclick="goToFAQ()"> 🛠️ How To Service</a>
+            <div class="nav-links">
+                <a onclick="goToFAQ()">FAQ</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+            </div>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <h1>Setup Server Discord</h1>
+            <p>Tanpa Ribet, dan Profesional.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-secondary">Join Our Discord</a>
+            </div>
+        </div>
+
+        <!-- ===== FEATURES ===== -->
+        <div class="features">
+            <div class="feature-item"><span>☑</span> Instant Setup</div>
+            <div class="feature-item"><span>☑</span> No Card Required to Start</div>
+            <div class="feature-item"><span>☑</span> Cancel Any Time</div>
+        </div>
+
+        <!-- ===== PAKET ===== -->
+        <div class="packages">
+            <!-- Paket B -->
+            <div class="card">
+                <h2>Paket B</h2>
+                <div class="price">Rp15.000</div>
+                <ul>
+                    <li>→ Setup Category &amp; Channel</li>
+                    <li>→ Setup Roles &amp; Auto Role</li>
+                    <li>→ Setup Permissions</li>
+                </ul>
+                <button class="btn" onclick="showPage('page-order', 'B')">Pesan Sekarang</button>
+            </div>
+
+            <!-- Paket A - BEST SELLER -->
+            <div class="card featured">
+                <div class="badge">BEST SELLER</div>
+                <h2>Paket A</h2>
+                <div class="price">Rp25.000</div>
+                <ul>
+                    <li>→ Setup Category &amp; Channel</li>
+                    <li>→ Ticket System</li>
+                    <li>→ Invite Log</li>
+                    <li>→ Welcome System &amp; Banner</li>
+                    <li>→ Setup Bot All</li>
+                    <li>→ Setup Roles &amp; Auto Role</li>
+                    <li>→ Setup Permissions</li>
+                    <li>→ Custom Request (2x Req)</li>
+                    <li>→ Free Revisi 1x</li>
+                </ul>
+                <button class="btn" onclick="showPage('page-order', 'A')">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <div class="faq-section" id="faqSection">
+            <h3>❓ FAQ</h3>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah saya harus memiliki server Discord?</div>
+                <div class="a">A: Tidak. Server Discord akan disediakan oleh THOM Services.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah server akan menjadi milik saya?</div>
+                <div class="a">A: Ya. Setelah setup selesai, server akan diserahkan sepenuhnya kepada pembeli.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah server dibuat dari awal?</div>
+                <div class="a">A: Ya. Server akan dibuat dan disusun dari awal sesuai kebutuhan dan permintaan pembeli.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Berapa lama proses pengerjaan?</div>
+                <div class="a">A: Waktu pengerjaan menyesuaikan antrean dan tingkat kesulitan pesanan.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa request sesuai keinginan?</div>
+                <div class="a">A: Bisa. Paket A sudah termasuk request custom.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa revisi?</div>
+                <div class="a">A: Ya, gratis revisi sebanyak 1 kali (khusus Paket A).</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah saya bisa menambahkan bot sendiri?</div>
+                <div class="a">A: Bisa. Kamu dapat meminta bot tertentu untuk ditambahkan selama sesuai dengan kebutuhan server.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Bagaimana cara melakukan pembayaran?</div>
+                <div class="a">A: Pembayaran dilakukan sebelum pengerjaan dimulai.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa refund?</div>
+                <div class="a">A: Tidak. Refund tidak berlaku setelah pengerjaan dimulai.</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 How To Service</p>
+        </footer>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== HALAMAN 2: FORM ORDER ===== -->
+    <!-- ============================================================ -->
+    <div id="page-order" class="container">
+        <nav class="navbar">
+            <a class="logo" onclick="goToFAQ()">☑️ ✔️ How To Service</a>
+            <div class="nav-links">
+                <a onclick="goToFAQ()">FAQ</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+            </div>
+        </nav>
+
+        <div class="order-form">
+            <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;">📋 Form Order</h2>
+            <p style="text-align:center;color:#aaa;margin-bottom:20px;">Isi data dengan lengkap untuk memproses pesanan</p>
+
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <label for="paket">Pilih Paket</label>
+                <select name="paket" id="paket" required onchange="toggleCustomRequest(); updateTerms(); updateQRISVisibility();">
+                    <option value="">-- Pilih Paket --</option>
+                    <option value="B">Paket B - Rp15.000</option>
+                    <option value="A">Paket A - Rp25.000</option>
+                </select>
+
+                <label for="nama_server">Nama Server Discord</label>
+                <input type="text" name="nama_server" id="nama_server" placeholder="Masukkan nama server kamu" required>
+
+                <label for="logo_server">Logo Server</label>
+                <input type="file" name="logo_server" id="logo_server" accept="image/*">
+                <p class="note">Upload logo server kamu (opsional)</p>
+
+                <label for="discord_id">Username</label>
+                <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @thom_id">
+                <p class="note">Masukkan username Discord (opsional)</p>
+
+                <div id="customRequestWrapper" style="display:none;">
+                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
+                    <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
+                </div>
+
+                <div class="qris-section" id="qrisSection" style="display:none;">
+                    <h3>Scan QRIS untuk Membayar</h3>
+                    <div id="qrisDisplay">
+                        <img src="https://cdn.phototourl.com/free/2026-09-04-e7a4a63a-8beb-455a-a614-fa54a5c90ddf.png" alt="QRIS Pembayaran" class="qris-image" id="qrisImage">
+                        <p style="color:#888;font-size:0.8rem;margin-top:5px;">
+                            Scan QRIS di atas untuk membayar
+                        </p>
+                    </div>
+                    <div class="total-harga" id="totalDisplay">Total: Rp0</div>
+                    <p style="color:#888;font-size:0.85rem;">Setelah bayar, upload bukti di bawah</p>
+                </div>
+
+                <div class="qris-placeholder" id="qrisPlaceholder">
+                    <p>Silakan pilih paket di atas untuk melihat QRIS dan total harga</p>
+                </div>
+
+                <label for="bukti">Upload Bukti Pembayaran</label>
+                <input type="file" name="bukti" id="bukti" accept="image/*" required>
+                <p class="note">Upload screenshot atau foto bukti transfer</p>
+
+                <div class="terms-box">
+                    <p class="terms-title">⚠️ Dengan mengklik Kirim Order, kamu menyetujui:</p>
+                    <ul id="termsList"></ul>
+                </div>
+
+                <button type="submit" class="btn-submit">Kirim Order</button>
+            </form>
+            <button class="back-link" onclick="showPage('page-home')">← Kembali ke Beranda</button>
+        </div>
+
+        <footer>
+            <p>© 2026 How To Service | Kebijakan No Refund</p>
+        </footer>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== HALAMAN 3: SUKSES ===== -->
+    <!-- ============================================================ -->
+    <div id="page-success" class="container">
+        <nav class="navbar">
+            <a class="logo" onclick="goToFAQ()">☑️ ✔️ How To Service</a>
+            <div class="nav-links">
+                <a onclick="goToFAQ()">FAQ</a>
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+            </div>
+        </nav>
+
+        <div class="success">
+            <div class="icon">✅</div>
+            <h2>Pesanan Berhasil!</h2>
+            <p>Pesanan kamu sudah kami terima. Admin akan menghubungi kamu setelah Server Discord selesai.</p>
+            <p style="color:#888;font-size:0.95rem;">Jangan lupa DM @THOM atau Open #ticket di Discord kami, untuk verify purchase!</p>
+            <button class="btn" onclick="showPage('page-home')">Kembali ke Beranda</button>
+        </div>
+        <footer>
+            <p>© 2026 How To Service</p>
+        </footer>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="script.js"></script>
+</body>
+          </html>
