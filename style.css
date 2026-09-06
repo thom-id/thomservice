@@ -47,16 +47,20 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-    /* Tambahkan ini biar lebih ke kiri */
-    margin-left: -15px;
+    /* Cara 1: Pake margin-left negatif */
+    margin-left: -30px;
     padding-left: 0;
+}
+
+/* Atau pake cara 2: Ubah padding navbar */
+.navbar {
+    padding: 20px 40px 20px 10px; /* kiri dikurangi */
 }
 
 .navbar .nav-links {
     display: flex;
     gap: 30px;
     align-items: center;
-    /* Biarkan tetap di kanan */
 }
 
 .navbar .nav-links a {
