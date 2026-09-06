@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 20px 40px 10px 0px;
     background: rgba(13, 13, 13, 0.95);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: sticky;
@@ -47,14 +47,8 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-    /* Cara 1: Pake margin-left negatif */
-    margin-left: -180px;
+    margin-left: -350px;
     padding-left: 0;
-}
-
-/* Atau pake cara 2: Ubah padding navbar */
-.navbar {
-    padding: 20px 40px 10px 0px; /* kiri dikurangi */
 }
 
 .navbar .nav-links {
@@ -129,6 +123,43 @@ body {
 }
 .hero .hero-buttons .btn-secondary:hover {
     background: rgba(255, 215, 0, 0.1);
+}
+
+/* ===== HERO LINKS (FAQ & Purchase) ===== */
+.hero-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-links .hero-link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-links .hero-link:hover {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+.hero-links .btn-purchase {
+    background: linear-gradient(90deg, #f7971e, #ffd200);
+    color: #000;
+    border: none;
+    font-weight: bold;
+}
+
+.hero-links .btn-purchase:hover {
+    transform: scale(1.05);
+    color: #000;
 }
 
 /* ===== FEATURES ===== */
@@ -442,6 +473,7 @@ footer {
     }
     .navbar .logo {
         font-size: 1.5rem;
+        margin-left: 0;
     }
     .navbar .nav-links {
         flex-wrap: wrap;
@@ -490,4 +522,4 @@ footer {
     padding: 50px;
     color: #ffd700;
     font-size: 1.2rem;
-        }
+    }
