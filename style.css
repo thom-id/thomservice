@@ -30,10 +30,6 @@ body {
     padding: 18px 40px 5px 0px;
     background: rgba(10, 10, 15, 0.85);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(20px);
 }
 
 .navbar .logo {
@@ -478,6 +474,7 @@ body {
     color: #555570;
     font-size: 0.9rem;
 }
+
 /* ===== TERMS ===== */
 .terms-box {
     background: rgba(255, 255, 255, 0.03);
@@ -599,4 +596,4 @@ footer {
     padding: 50px;
     color: #E0DBE4;
     font-size: 1.2rem;
-}
+    }
