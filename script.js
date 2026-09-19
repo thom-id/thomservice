@@ -39,10 +39,7 @@ function toggleCustomRequest() {
     const wrapper = document.getElementById('customRequestWrapper');
     const textarea = document.getElementById('custom_request');
 
-    if (paket === 'B') {
-        wrapper.style.display = 'none';
-        textarea.value = '';
-    } else if (paket === 'A') {
+    if (paket === 'A' || paket === 'GTPS') {
         wrapper.style.display = 'block';
     } else {
         wrapper.style.display = 'none';
@@ -61,6 +58,10 @@ function updateTerms() {
     if (paket === 'A') {
         terms.push('Free Revisi 1x');
     }
+    if (paket === 'GTPS') {
+        terms.push('Free Garansi 10 Hari');
+        terms.push('Custom Request (Sesuai Kesepakatan)');
+    }
     terms.push('No Refund / Pengembalian Dana');
     terms.push('Proses pengerjaan sesuai antrian');
 
@@ -78,7 +79,7 @@ function updateQRISVisibility() {
     const qrisSection = document.getElementById('qrisSection');
     const placeholder = document.getElementById('qrisPlaceholder');
 
-    if (paket === 'B' || paket === 'A') {
+    if (paket === 'B' || paket === 'A' || paket === 'GTPS') {
         qrisSection.style.display = 'block';
         placeholder.style.display = 'none';
         updateQRIS();
@@ -91,7 +92,7 @@ function updateQRISVisibility() {
 // ===== Update total harga =====
 function updateQRIS() {
     const paket = document.getElementById('paket').value;
-    const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
+    const hargaMap = { B: 'Rp15.000', A: 'Rp25.000', GTPS: 'Rp100.000' };
     document.getElementById('totalDisplay').textContent = 'Total: ' + (hargaMap[paket] || 'Rp0');
 }
 
@@ -119,7 +120,7 @@ async function submitOrder(event) {
         return;
     }
 
-    const hargaMap = { B: 'Rp15.000', A: 'Rp25.000' };
+    const hargaMap = { B: 'Rp15.000', A: 'Rp25.000', GTPS: 'Rp100.000' };
     const total_harga = hargaMap[paket] || 'Rp0';
 
     const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
@@ -142,7 +143,7 @@ async function submitOrder(event) {
             { name: '- Nama Server', value: nama_server, inline: true }
         ];
 
-        if (paket === 'A' && custom_request && custom_request !== '-') {
+        if ((paket === 'A' || paket === 'GTPS') && custom_request && custom_request !== '-') {
             fields.push({ name: '• Custom Request', value: custom_request, inline: false });
         }
 
@@ -211,7 +212,7 @@ async function submitOrder(event) {
 (function() {
     const params = new URLSearchParams(window.location.search);
     const paket = params.get('paket');
-    if (paket && ['B', 'A'].includes(paket)) {
+    if (paket && ['B', 'A', 'GTPS'].includes(paket)) {
         showPage('page-order', paket);
     }
 })();
