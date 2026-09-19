@@ -33,17 +33,28 @@ function showPage(pageId, paket) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ===== Tampilkan/Sembunyikan Custom Request =====
+// ===== Tampilkan/Sembunyikan Custom Request & Logo =====
 function toggleCustomRequest() {
     const paket = document.getElementById('paket').value;
     const wrapper = document.getElementById('customRequestWrapper');
     const textarea = document.getElementById('custom_request');
+    const logoWrapper = document.getElementById('logoWrapper');
 
+    // Custom Request: tampil untuk paket A & GTPS
     if (paket === 'A' || paket === 'GTPS') {
         wrapper.style.display = 'block';
     } else {
         wrapper.style.display = 'none';
         textarea.value = '';
+    }
+
+    // Logo Server: tampil untuk paket B & A, sembunyi untuk GTPS
+    if (logoWrapper) {
+        if (paket === 'GTPS') {
+            logoWrapper.style.display = 'none';
+        } else {
+            logoWrapper.style.display = 'block';
+        }
     }
 }
 
@@ -124,8 +135,7 @@ async function submitOrder(event) {
     const hargaMap = { B: 'Rp15.000', A: 'Rp25.000', GTPS: 'Rp100.000' };
     const total_harga = hargaMap[paket] || 'Rp0';
 
-    // ⚠️ PENTING: Ganti URL ini dengan webhook kamu sendiri.
-    // Sebaiknya pindahkan ke backend agar tidak terekspos.
+    // ⚠️ Ganti URL ini dengan webhook kamu sendiri.
     const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
     const reader = new FileReader();
@@ -146,13 +156,15 @@ async function submitOrder(event) {
             { name: '- Nama Server', value: nama_server, inline: true }
         ];
 
+        // Custom Request: tampil untuk paket A & GTPS
         if ((paket === 'A' || paket === 'GTPS') && custom_request && custom_request !== '-') {
             fields.push({ name: '• Custom Request', value: custom_request, inline: false });
         }
 
         fields.push({ name: '• Bukti Bayar', value: 'Lihat lampiran di bawah ↓', inline: false });
 
-        if (logo_server && logo_server.size > 0) {
+        // Logo Server: cuma muncul untuk paket B & A
+        if ((paket === 'B' || paket === 'A') && logo_server && logo_server.size > 0) {
             fields.splice(2, 0, { name: '• Logo Server', value: 'Terdapat lampiran logo', inline: true });
         }
 
@@ -186,8 +198,9 @@ async function submitOrder(event) {
                 body: formDataFile
             });
 
+            // Upload Logo: cuma kalau paket B & A
             let res3 = { ok: true };
-            if (logo_server && logo_server.size > 0) {
+            if ((paket === 'B' || paket === 'A') && logo_server && logo_server.size > 0) {
                 const formDataLogo = new FormData();
                 formDataLogo.append('file', logo_server);
                 res3 = await fetch(WEBHOOK_URL + '?wait=true', {
