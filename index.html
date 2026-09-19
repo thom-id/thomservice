@@ -15,25 +15,35 @@
     <!-- ============================================================ -->
     <div id="page-home" class="container active">
         <!-- ===== NAVIGATION ===== -->
-<nav class="navbar">
-    <a class="logo" onclick="goToFAQ()">🛠️ How To Service</a>
-    <div class="nav-links">
-        <!-- Discord dan Purchase dihapus dari sini -->
-</nav>
+        <nav class="navbar">
+            <a class="logo" onclick="goToFAQ()">🛠️ How To Service</a>
+            <div class="nav-links">
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank">Discord</a>
+                <a onclick="goToFAQ()">FAQ</a>
+                <a onclick="showPage('page-order')" class="btn-nav">Purchase</a>
+            </div>
+        </nav>
         
         <!-- ===== HERO ===== -->
-<div class="hero">
-    <h1>Setup Discord</h1>
-    <p>Tanpa Ribet, dan Profesional.</p>
-    <div class="hero-buttons">
-        <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-secondary">Join Our Discord</a>
-    </div>
-    <!-- Tambahkan FAQ dan Purchase di sini -->
-    <div class="hero-links">
-        <a onclick="goToFAQ()" class="hero-link">FAQ</a>
-        <a onclick="showPage('page-order')" class="hero-link btn-purchase">Purchase</a>
-    </div>
-</div>
+        <div class="hero">
+            <h1>Setup Discord &amp; GTPS</h1>
+            <p>Tanpa Ribet, dan Profesional.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/GrMYBpHVn" target="_blank" class="btn-secondary">Join Our Discord</a>
+            </div>
+            <div class="hero-links">
+                <a onclick="goToFAQ()" class="hero-link">FAQ</a>
+                <a onclick="showPage('page-order')" class="hero-link btn-purchase">Purchase</a>
+            </div>
+        </div>
+
+        <!-- ===== FEATURES / KEUNGGULAN ===== -->
+        <div class="features">
+            <div class="feature-item"><span>⚡</span> Pengerjaan Cepat</div>
+            <div class="feature-item"><span>💰</span> Harga Terjangkau</div>
+            <div class="feature-item"><span>🎨</span> Custom Sesuai Request</div>
+            <div class="feature-item"><span>⭐</span> Testimoni Terpercaya</div>
+        </div>
 
         <!-- ===== PAKET ===== -->
         <div class="packages">
@@ -65,7 +75,7 @@
                     <li>→ Custom Request (2x Req)</li>
                     <li>→ Free Revisi 1x</li>
                 </ul>
-                <button class="btn" onclick="showPage('page-order', 'A')">Order now</button>
+                <button class="btn" onclick="showPage('page-order', 'A')">Order Now</button>
             </div>
 
             <!-- Paket GTPS - ECONOMY -->
@@ -77,6 +87,7 @@
                     <li>→ Setup Daily Levels / Rewards</li>
                     <li>→ Setup Sumber Profit Player</li>
                     <li>→ Setup Tambahan (Sesuai Request)</li>
+                    <li>→ Free Revisi 1x</li>
                     <li>→ Free Garansi 10 Hari</li>
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'GTPS')">Order Now</button>
@@ -104,17 +115,17 @@
 
             <div class="faq-item">
                 <div class="q">Q: Berapa lama proses pengerjaan?</div>
-                <div class="a">A: Proses pengerjaan kurang dari 15 menit.</div>
+                <div class="a">A: Proses pengerjaan kurang dari 15 menit untuk Discord. Untuk GTPS, estimasi 1 - 2 minggu tergantung kompleksitas.</div>
             </div>
 
             <div class="faq-item">
                 <div class="q">Q: Apakah bisa request sesuai keinginan?</div>
-                <div class="a">A: Bisa. Paket A sudah termasuk request custom.</div>
+                <div class="a">A: Bisa. Paket A (Discord) dan Paket Economy GTPS sudah termasuk request custom.</div>
             </div>
 
             <div class="faq-item">
                 <div class="q">Q: Apakah bisa revisi?</div>
-                <div class="a">A: Ya, gratis revisi 1 kali (khusus Paket A).</div>
+                <div class="a">A: Ya, gratis revisi 1 kali untuk Paket A dan Paket Economy GTPS.</div>
             </div>
 
             <div class="faq-item">
@@ -131,10 +142,26 @@
                 <div class="q">Q: Apakah bisa refund?</div>
                 <div class="a">A: Tidak. Refund tidak berlaku setelah pengerjaan dimulai.</div>
             </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apa itu Economy GTPS?</div>
+                <div class="a">A: Sistem ekonomi dalam server GTPS yang mencakup Daily Levels / Rewards, Sumber Profit Player, dan sistem tambahan sesuai request.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Apakah bisa request fitur GTPS sendiri?</div>
+                <div class="a">A: Bisa. Paket Economy GTPS sudah termasuk custom request sesuai kesepakatan.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">Q: Berapa lama garansi GTPS?</div>
+                <div class="a">A: Free garansi 10 hari setelah serah terima.</div>
+            </div>
         </div>
 
         <footer>
             <p>© 2026 HTS | How To Service</p>
+            <p style="margin-top:8px;">Discord: <a href="https://discord.gg/GrMYBpHVn" target="_blank" style="color:#12B3FD;text-decoration:none;">discord.gg/GrMYBpHVn</a></p>
         </footer>
     </div>
 
@@ -164,19 +191,19 @@
                     <option value="GTPS">Economy GTPS - Rp100.000</option>
                 </select>
 
-                <label for="nama_server">Nama Server Discord</label>
-                <input type="text" name="nama_server" id="nama_server" placeholder="Masukkan nama server kamu" required>
+                <label for="nama_server">Nama Server</label>
+                <input type="text" name="nama_server" id="nama_server" placeholder="Nama server Discord / GTPS kamu" required>
 
                 <label for="logo_server">Logo Server</label>
                 <input type="file" name="logo_server" id="logo_server" accept="image/*">
                 <p class="note">Upload logo server kamu (opsional)</p>
 
-                <label for="discord_id">Username</label>
+                <label for="discord_id">Username Discord</label>
                 <input type="text" name="discord_id" id="discord_id" placeholder="Contoh: @Hts_id">
                 <p class="note">Masukkan username Discord (opsional)</p>
 
                 <div id="customRequestWrapper" style="display:none;">
-                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A & GTPS)</span></label>
+                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A &amp; GTPS)</span></label>
                     <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
                 </div>
 
