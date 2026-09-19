@@ -59,6 +59,7 @@ function updateTerms() {
         terms.push('Free Revisi 1x');
     }
     if (paket === 'GTPS') {
+        terms.push('Free Revisi 1x');
         terms.push('Free Garansi 10 Hari');
         terms.push('Custom Request (Sesuai Kesepakatan)');
     }
@@ -123,6 +124,8 @@ async function submitOrder(event) {
     const hargaMap = { B: 'Rp15.000', A: 'Rp25.000', GTPS: 'Rp100.000' };
     const total_harga = hargaMap[paket] || 'Rp0';
 
+    // ⚠️ PENTING: Ganti URL ini dengan webhook kamu sendiri.
+    // Sebaiknya pindahkan ke backend agar tidak terekspos.
     const WEBHOOK_URL = 'https://discord.com/api/webhooks/1545504866653446204/teWMxRPPTjyj1wXvtjfE2QreBr1l_kVUB43lGLbFteG7Bh7zVHfrJpmXx0JlO4yqmzGG';
 
     const reader = new FileReader();
