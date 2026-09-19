@@ -67,6 +67,20 @@
                 </ul>
                 <button class="btn" onclick="showPage('page-order', 'A')">Order now</button>
             </div>
+
+            <!-- Paket GTPS - ECONOMY -->
+            <div class="card gtps-card">
+                <div class="badge gtps-badge">🎮 GTPS</div>
+                <h2>Economy GTPS</h2>
+                <div class="price">Rp100.000</div>
+                <ul>
+                    <li>→ Setup Daily Levels / Rewards</li>
+                    <li>→ Setup Sumber Profit Player</li>
+                    <li>→ Setup Tambahan (Sesuai Request)</li>
+                    <li>→ Free Garansi 10 Hari</li>
+                </ul>
+                <button class="btn" onclick="showPage('page-order', 'GTPS')">Order Now</button>
+            </div>
         </div>
 
         <!-- ===== FAQ SECTION ===== -->
@@ -147,6 +161,7 @@
                     <option value="">-- Pilih Paket --</option>
                     <option value="B">Paket B - Rp15.000</option>
                     <option value="A">Paket A - Rp25.000</option>
+                    <option value="GTPS">Economy GTPS - Rp100.000</option>
                 </select>
 
                 <label for="nama_server">Nama Server Discord</label>
@@ -161,7 +176,7 @@
                 <p class="note">Masukkan username Discord (opsional)</p>
 
                 <div id="customRequestWrapper" style="display:none;">
-                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A)</span></label>
+                    <label for="custom_request">Custom Request <span style="color:#888;font-weight:normal;">(khusus paket A & GTPS)</span></label>
                     <textarea name="custom_request" id="custom_request" placeholder="Tulis request khusus kamu di sini..."></textarea>
                 </div>
 
